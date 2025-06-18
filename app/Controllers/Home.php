@@ -1,4 +1,5 @@
 <?php namespace App\Controllers;
+use App\Models\ContenidoModel; // <--- ESTA LÍNEA ES CLAVE
 
 class Home extends BaseController
 {
