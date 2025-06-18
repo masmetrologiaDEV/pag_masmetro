@@ -17,6 +17,4 @@ class Home extends BaseController
 		return view('header') . view('services').view('footer');
 
 	}
-
-
 }

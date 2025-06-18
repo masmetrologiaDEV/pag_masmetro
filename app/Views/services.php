@@ -1,3 +1,12 @@
+
+
+
+    <!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
 <!-- Service Start -->
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
@@ -46,3 +55,5 @@
             </div>
         </div>
     </div>
+</body>
+</html>
