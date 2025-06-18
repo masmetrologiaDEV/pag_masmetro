@@ -20,7 +20,7 @@
 # APP
 #--------------------------------------------------------------------
 
-app.baseURL = 'http://localhost/pag_masmetro/public/'
+app.baseURL = 'http://localhost/pag_masmetro/'
 # app.forceGlobalSecureRequests = false
 
 # app.sessionDriver = 'CodeIgniter\Session\Handlers\FileHandler'

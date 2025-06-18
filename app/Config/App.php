@@ -21,7 +21,7 @@ class App extends BaseConfig
 	| environments.
 	|
 	*/
-	public $baseURL = 'http://localhost/pag_masmetro/public/';
+	public $baseURL = 'http://localhost/pag_masmetro/';
 
 
 	/*

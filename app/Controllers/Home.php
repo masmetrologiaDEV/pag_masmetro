@@ -5,7 +5,7 @@ class Home extends BaseController
 {
 	public function index()
 	{
-		
+		//echo site_url('home/services');die();
 		$idioma = 'es'; // o detecta desde URL, sesión, etc.
         $model = new ContenidoModel();
 
