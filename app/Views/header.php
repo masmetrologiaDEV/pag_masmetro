@@ -40,9 +40,10 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                <div class="navbar-nav ms-auto py-0">
-                  <a href="index.html" class="nav-item nav-link active">Home</a>
-                  <div class="nav-item dropdown">
-                     <a href="<?= site_url('home/services/')?>" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Services</a>
+                  <a href="<?= base_url('/') ?>" class="nav-item nav-link active">Home</a>
+
+               <div class="nav-item dropdown">
+                     <a href="<?= base_url('home/services') ?>" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Services</a>
                      <div class="dropdown-menu m-0">
                         <a href="blog.html" class="dropdown-item">Laboratorio de Calibración</a>
                         <a href="detail.html" class="dropdown-item">Blog Detail</a>
