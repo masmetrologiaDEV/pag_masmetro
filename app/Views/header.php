@@ -44,7 +44,7 @@
                   <div class="nav-item dropdown">
                      <a href="<?= site_url('home/services/')?>" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Services</a>
                      <div class="dropdown-menu m-0">
-                        <a href="blog.html" class="dropdown-item">Laboratorio de Calibración</a>
+                        <a href="<?= site_url('home/services/')?>" class="dropdown-item">Laboratorio de Calibración</a>
                         <a href="detail.html" class="dropdown-item">Blog Detail</a>
                         <a href="detail.html" class="dropdown-item">Blog Detail</a>
                      </div>

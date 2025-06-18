@@ -5,6 +5,7 @@ class Home extends BaseController
 {
 	public function index()
 	{
+		
 		$idioma = 'es'; // o detecta desde URL, sesión, etc.
         $model = new ContenidoModel();
 
@@ -13,7 +14,7 @@ class Home extends BaseController
 		return view('header') . view('inicio', $data).view('footer');
 	}
 	public function services(){
-		return view('header') . view('services/').view('footer');
+		return view('header') . view('services').view('footer');
 
 	}
 
