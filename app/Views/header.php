@@ -16,12 +16,12 @@
       <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
       <!-- Libraries Stylesheet -->
-      <link href="template/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-      <link href="template/lib/animate/animate.min.css" rel="stylesheet">
+      <link href="<?= base_url('template/lib/owlcarousel/assets/owl.carousel.min.css')?>" rel="stylesheet">
+      <link href="<?= base_url('template/lib/animate/animate.min.css')?>" rel="stylesheet">
       <!-- Customized Bootstrap Stylesheet -->
-      <link href="template/template/css/bootstrap.min.css" rel="stylesheet">
+      <link href="<?= base_url('template/css/bootstrap.min.css')?>" rel="stylesheet">
       <!-- Template Stylesheet -->
-      <link href="template/css/style.css" rel="stylesheet">
+      <link href="<?= base_url('template/css/style.css')?>" rel="stylesheet">
    </head>
    <body>
       <!-- Spinner Start -->
@@ -33,7 +33,7 @@
       <div class="container-fluid position-relative p-0">
          <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
             <a href="index.html" class="navbar-brand p-0" >
-            <img class="w-100" src="img/header.png" alt="Image">
+            <img class="w-100" src="<?= base_url('template/img/header.png')?>" alt="Image">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="fa fa-bars"></span>
@@ -43,7 +43,7 @@
                   <a href="<?= base_url('/') ?>" class="nav-item nav-link active">Home</a>
 
                <div class="nav-item dropdown">
-                     <a href="<?= base_url('home/services') ?>" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Services</a>
+                     <a href="<?= base_url('home/services') ?>" class="nav-link dropdown-toggle" >Services</a>
                      <div class="dropdown-menu m-0">
                         <a href="<?= base_url('home/services/')?>" class="dropdown-item">Laboratorio de Calibración</a>
                         <a href="detail.html" class="dropdown-item">Blog Detail</a>
@@ -84,7 +84,7 @@
                   <!-- Slide 1: Calibración -->
                   <div class="carousel-item active">
                      <div class="rounded p-4 d-flex align-items-center shadow" style="max-width: 500px; background-color: rgba(255,255,255,0.2);">
-                        <img src="img/calibracion.jpg" alt="Calibración" class="img-fluid me-4" style="width: 200px; height: auto;">
+                        <img src="<?= base_url('template/img/calibracion.jpg')?>" alt="Calibración" class="img-fluid me-4" style="width: 200px; height: auto;">
                         <div>
                            <h3 class="fw-bold text-light">Laboratorio de Calibración</h3>
                            <p class="mb-0 text-white">
@@ -96,7 +96,7 @@
                   <!-- Slide 2: Inspección Dimensional -->
                   <div class="carousel-item">
                      <div class="rounded p-4 d-flex align-items-center shadow" style="max-width: 500px; background-color: rgba(255,255,255,0.2);">
-                        <img src="img/dimensional.jpg" alt="Inspección Dimensional" class="img-fluid me-4" style="width: 200px; height: auto;">
+                        <img src="template/img/dimensional.jpg" alt="Inspección Dimensional" class="img-fluid me-4" style="width: 200px; height: auto;">
                         <div>
                            <h3 class="fw-bold text-light">Inspección Dimensional</h3>
                            <p class="mb-0 text-white">
@@ -108,7 +108,7 @@
                   <!-- Slide 3: Equipos para Inventarios -->
                   <div class="carousel-item">
                      <div class="rounded p-4 d-flex align-items-center shadow" style="max-width: 500px; background-color: rgba(255,255,255,0.2);">
-                        <img src="img/inventarios.jpg" alt="Inventarios" class="img-fluid me-4" style="width: 200px; height: auto;">
+                        <img src="template/img/inventarios.jpg" alt="Inventarios" class="img-fluid me-4" style="width: 200px; height: auto;">
                         <div>
                            <h3 class="fw-bold text-light">Equipos para Inventarios</h3>
                            <p class="mb-0 text-white">
