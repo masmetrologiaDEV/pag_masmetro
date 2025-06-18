@@ -17,4 +17,16 @@ class Home extends BaseController
 		return view('header') . view('services').view('footer');
 
 	}
+	public function acreditacion(){
+		return view('header') . view('acreditacion').view('footer');
+
+	}
+	public function about(){
+		return view('header') . view('about').view('footer');
+
+	}
+	public function contacto(){
+		return view('header') . view('contacto').view('footer');
+
+	}
 }

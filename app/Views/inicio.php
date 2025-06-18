@@ -12,13 +12,13 @@
                 <div class="row gx-3">
                     <!-- Imagen 1 -->
                     <div class="col-sm-6 wow zoomIn" data-wow-delay="0.2s">
-                        <img src="img/text_mision.png" alt="Imagen 1" class="img-fluid rounded">
+                        <img src="template/img/text_mision.png" alt="Imagen 1" class="img-fluid rounded">
                         <p class="mb-4">Satisfacer la necesidad de certeza metrológica en los procesos productivos del cliente promoviendo un entorno de riqueza y beneficio mutuo.</p>
                     </div>
 
                     <!-- Imagen 2 -->
                     <div class="col-sm-6 wow zoomIn" data-wow-delay="0.4s">
-                        <img src="img/text_vision.png" alt="Imagen 2" class="img-fluid rounded">
+                        <img src="template/img/text_vision.png" alt="Imagen 2" class="img-fluid rounded">
                         <p class="mb-4">Ser una empresa líder en servicios de metrología con prácticas de clase mundial y altamente competitiva, preferida por brindar calidad y confianza, contribuyendo al desarrollo de sus clientes, colaboradores y comunidad.</p>
                     </div>
                 </div>

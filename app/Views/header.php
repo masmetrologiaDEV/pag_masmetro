@@ -46,29 +46,15 @@
                      <a href="<?= base_url('home/services') ?>" class="nav-link dropdown-toggle" >Services</a>
                      <div class="dropdown-menu m-0">
                         <a href="<?= base_url('home/services/')?>" class="dropdown-item">Laboratorio de Calibración</a>
-                        <a href="detail.html" class="dropdown-item">Blog Detail</a>
-                        <a href="detail.html" class="dropdown-item">Blog Detail</a>
+                        <a href="<?= base_url('home/services/')?>" class="dropdown-item">Inspección Dimensional</a>
+                        <a href="<?= base_url('home/services/')?>" class="dropdown-item">Equipos para Inventarios</a>
                      </div>
                   </div>
-                  <a href="about.html" class="nav-item nav-link">About</a>
-                  <div class="nav-item dropdown">
-                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Blog</a>
-                     <div class="dropdown-menu m-0">
-                        <a href="blog.html" class="dropdown-item">Blog Grid</a>
-                        <a href="detail.html" class="dropdown-item">Blog Detail</a>
-                     </div>
-                  </div>
-                  <div class="nav-item dropdown">
-                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                     <div class="dropdown-menu m-0">
-                        <a href="price.html" class="dropdown-item">Pricing Plan</a>
-                        <a href="feature.html" class="dropdown-item">Our features</a>
-                        <a href="team.html" class="dropdown-item">Team Members</a>
-                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                        <a href="quote.html" class="dropdown-item">Free Quote</a>
-                     </div>
-                  </div>
+                  <a href="about.html" class="nav-item nav-link">Acreditación</a>
+                  <a href="<?= base_url('home/about/') ?>" class="nav-item nav-link">About</a>
                   <a href="contact.html" class="nav-item nav-link">Contact</a>
+
+                  
                </div>
             </div>
          </nav>
@@ -96,7 +82,7 @@
                   <!-- Slide 2: Inspección Dimensional -->
                   <div class="carousel-item">
                      <div class="rounded p-4 d-flex align-items-center shadow" style="max-width: 500px; background-color: rgba(255,255,255,0.2);">
-                        <img src="template/img/dimensional.jpg" alt="Inspección Dimensional" class="img-fluid me-4" style="width: 200px; height: auto;">
+                        <img src="<?= base_url('template/img/dimensional.jpg')?>" alt="Inspección Dimensional" class="img-fluid me-4" style="width: 200px; height: auto;">
                         <div>
                            <h3 class="fw-bold text-light">Inspección Dimensional</h3>
                            <p class="mb-0 text-white">
@@ -108,7 +94,7 @@
                   <!-- Slide 3: Equipos para Inventarios -->
                   <div class="carousel-item">
                      <div class="rounded p-4 d-flex align-items-center shadow" style="max-width: 500px; background-color: rgba(255,255,255,0.2);">
-                        <img src="template/img/inventarios.jpg" alt="Inventarios" class="img-fluid me-4" style="width: 200px; height: auto;">
+                        <img src="<?= base_url('template/img/inventarios.jpg')?>" alt="Inventarios" class="img-fluid me-4" style="width: 200px; height: auto;">
                         <div>
                            <h3 class="fw-bold text-light">Equipos para Inventarios</h3>
                            <p class="mb-0 text-white">
