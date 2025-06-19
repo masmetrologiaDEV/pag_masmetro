@@ -50,9 +50,9 @@
                         <a href="<?= base_url('home/services/')?>" class="dropdown-item">Equipos para Inventarios</a>
                      </div>
                   </div>
-                  <a href="about.html" class="nav-item nav-link">Acreditación</a>
+                  <a href="<?= base_url('home/acreditacion/') ?>" class="nav-item nav-link">Acreditación</a>
                   <a href="<?= base_url('home/about/') ?>" class="nav-item nav-link">About</a>
-                  <a href="contact.html" class="nav-item nav-link">Contact</a>
+                  <a href="<?= base_url('home/contact/') ?>" class="nav-item nav-link">Contact</a>
 
                   
                </div>

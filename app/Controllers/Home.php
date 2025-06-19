@@ -25,8 +25,8 @@ class Home extends BaseController
 		return view('header') . view('about').view('footer');
 
 	}
-	public function contacto(){
-		return view('header') . view('contacto').view('footer');
+	public function contact(){
+		return view('header') . view('contact').view('footer');
 
 	}
 }
