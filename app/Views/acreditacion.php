@@ -1,7 +1,7 @@
 <!-- Pricing Plan Start -->
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
-            <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
+            <div class="section-title text-center position-relative pb-3 mb-5 mx-auto">
                 <h1 class="mb-0">Laboratorio de calibración y pruebas acreditado ISO/IEC 17025:2017</h1>
             </div>
             <div class="row g-0">
@@ -61,12 +61,16 @@
                             <a href="" class="btn btn-primary py-2 px-4 mt-4">Order Now</a>
                         </div>
                     </div>
+                                    <br>
+
                 </div>
-                 <div>
-                           <h3 class="fw-bold text-danger">Laboratorio de Calibración</h3>
+                        <div class="text-center mt-4 wow fadeInUp" data-wow-delay="1.2s" data-wow-duration="1s">
+                           <h3 class="fw-bold text-primary">Nuestra acreditación es equivalente a la de EMA.</h3>
                            <p class="mb-0 text-black">
-                              Más de 20 magnitudes acreditadas para cubrir los requerimientos de calibración de instrumentos de medición de clase mundial.
+                            Según el Acuerdo de Reconocimiento Mutuo (MRA), nuestros informes de calibración acreditados son equivalentes a la Entidad Mexicana de Acreditación y cualquier organización perteneciente a la integración de la Cooperación Internacional de Acreditación de Laboratorios (ILAC). 
                            </p>
+                           <br>
+                           <a href="https://www.ema.org.mx/portal_v3/index.php/ilac" target="_blank" rel="noopener">Ver el acuerdo en la pagina de EMA</a>
                         </div>
                     
             </div>

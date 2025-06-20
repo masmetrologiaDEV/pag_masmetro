@@ -45,9 +45,9 @@
                <div class="nav-item dropdown">
                      <a href="<?= base_url('home/services') ?>" class="nav-link dropdown-toggle" >Services</a>
                      <div class="dropdown-menu m-0">
-                        <a href="<?= base_url('home/services/')?>" class="dropdown-item">Laboratorio de Calibración</a>
-                        <a href="<?= base_url('home/services/')?>" class="dropdown-item">Inspección Dimensional</a>
-                        <a href="<?= base_url('home/services/')?>" class="dropdown-item">Equipos para Inventarios</a>
+                        <a href="<?= base_url('home/lab_calibracion/')?>" class="dropdown-item">Laboratorio de Calibración</a>
+                        <a href="<?= base_url('home/inspeccion_dimensional/')?>" class="dropdown-item">Inspección Dimensional</a>
+                        <a href="<?= base_url('home/equipos_inventarios/')?>" class="dropdown-item">Equipos para Inventarios</a>
                      </div>
                   </div>
                   <a href="<?= base_url('home/acreditacion/') ?>" class="nav-item nav-link">Acreditación</a>
