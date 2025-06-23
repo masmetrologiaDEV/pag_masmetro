@@ -14,16 +14,17 @@ class ContenidoModel extends Model
         $this->db = \Config\Database::connect(); // similar a $this->load->database();
     }
 
-    public function getContenidoPublicado($lang = 'es')
+    public function getContenidoPublicado($lang = 'es', $category)
     {
         $builder = $this->db->table('page_content');
         $builder->select('*');
         $builder->where('language', $lang);
+        $builder->where('category', $category);
         $builder->where('is_published', 1);
 
         $query = $builder->get();
 
-        return $query->getResultArray(); // o getResult() si quieres objetos
+        return $query->getResult(); // o getResult() si quieres objetos
     }
 
     public function getBySlug($slug, $lang = 'es')

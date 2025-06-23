@@ -1,13 +1,16 @@
+<?php
+$item=$home_content[0];
+?>
 <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
     <div class="container py-5">
         <div class="row g-5">
             <div class="col-lg-7">
                 <div class="section-title position-relative pb-3 mb-5">
-                    <h3 class="mb-4">Certeza en tus procesos de medición</h3>
-                    <p class="mb-4">Nuevas tecnologías, nuevos procesos de producción y nuevos estándares de calidad, herramientas diseñadas para obtener productos de clase mundial.</p>
+                    <h3 class="mb-4"><?=$item->title?></h3>
+                    <p class="mb-4"><?=$item->intro_text?></p>
                     <p class="mb-4">
-                    En MAS Metrología estas herramientas son esenciales en la prestación de cada uno de los servicios que proporcionamos, sin embargo, consideramos el factor humano como el elemento más importante en la compleja ecuación de la calidad; es en este punto donde nace nuestra filosofía: “Capacitar y desarrollar profesionales en metrología que aseguren la máxima calidad en el servicio a nuestros clientes”. Este es nuestro compromiso, esto es MAS, esto es CERTEZA.</p>
-                    <h5 class="mb-4"></i>Certeza en tus procesos de medición</h5>
+                    <?=$item->content?>.</p>
+                    <h5 class="mb-4"></i><?=$item->title?></h5>
                 </div>
                 <div class="row gx-3">
                     <!-- Imagen 1 -->

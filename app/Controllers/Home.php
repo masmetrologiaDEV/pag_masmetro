@@ -9,9 +9,12 @@ class Home extends BaseController
 		$idioma = 'es'; // o detecta desde URL, sesión, etc.
         $model = new ContenidoModel();
 
-        $data['contenidos'] = $model->getContenidoPublicado($idioma);
 
-		return view('header') . view('inicio', $data).view('footer');
+        $data['contenido'] = $model->getContenidoPublicado($idioma, 'header');
+        $data['header_content'] = $model->getContenidoPublicado($idioma, 'header_content');
+        $data['home_content'] = $model->getContenidoPublicado($idioma, 'home_content');
+
+		return view('header', $data) . view('inicio', $data).view('footer');
 	}
 	public function services(){
 		return view('header') . view('services').view('footer');

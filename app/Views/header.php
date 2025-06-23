@@ -1,8 +1,11 @@
+<?php
+$item=$contenido[0];
+?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
       <meta charset="utf-8">
-      <title>Startup - Startup Website Template</title>
+      <title><?=$item->title?></title>
       <meta content="width=device-width, initial-scale=1.0" name="viewport">
       <meta content="Free HTML Templates" name="keywords">
       <meta content="Free HTML Templates" name="description">
@@ -65,45 +68,19 @@
             </video>
             <!-- Carrusel encima del video -->
             <div id="header-carousel" class="carousel slide h-100" data-bs-ride="carousel">
-               <div class="carousel-inner h-100 d-flex align-items-center justify-content-start" style="padding-left: 200px;">
-
-                  <!-- Slide 1: Calibración -->
-                  <div class="carousel-item active">
-                     <div class="rounded p-4 d-flex align-items-center shadow" style="max-width: 500px; background-color: rgba(255,255,255,0.2);">
-                        <img src="<?= base_url('template/img/calibracion.jpg')?>" alt="Calibración" class="img-fluid me-4" style="width: 200px; height: auto;">
-                        <div>
-                           <h3 class="fw-bold text-light">Laboratorio de Calibración</h3>
-                           <p class="mb-0 text-white">
-                              Más de 20 magnitudes acreditadas para cubrir los requerimientos de calibración de instrumentos de medición de clase mundial.
-                           </p>
-                        </div>
-                     </div>
-                  </div>
-                  <!-- Slide 2: Inspección Dimensional -->
-                  <div class="carousel-item">
-                     <div class="rounded p-4 d-flex align-items-center shadow" style="max-width: 500px; background-color: rgba(255,255,255,0.2);">
-                        <img src="<?= base_url('template/img/dimensional.jpg')?>" alt="Inspección Dimensional" class="img-fluid me-4" style="width: 200px; height: auto;">
-                        <div>
-                           <h3 class="fw-bold text-light">Inspección Dimensional</h3>
-                           <p class="mb-0 text-white">
-                              Tecnología de vanguardia para validar la calidad de sus productos con servicios acreditados. Ideal para moldeado, maquinado y troquelado.
-                           </p>
-                        </div>
-                     </div>
-                  </div>
-                  <!-- Slide 3: Equipos para Inventarios -->
-                  <div class="carousel-item">
-                     <div class="rounded p-4 d-flex align-items-center shadow" style="max-width: 500px; background-color: rgba(255,255,255,0.2);">
-                        <img src="<?= base_url('template/img/inventarios.jpg')?>" alt="Inventarios" class="img-fluid me-4" style="width: 200px; height: auto;">
-                        <div>
-                           <h3 class="fw-bold text-light">Equipos para Inventarios</h3>
-                           <p class="mb-0 text-white">
-                              Tecnología inteligente con un alto grado de precisión, rapidez y flexibilidad en el proceso de inventarios.
-                           </p>
-                        </div>
-                     </div>
-                  </div>
-               </div>
+                   <div class="carousel-inner h-100 d-flex align-items-center justify-content-start" style="padding-left: 200px;">
+    <?php foreach ($header_content as $index => $elem): ?>
+        <div class="carousel-item <?= $index === 0 ? 'active' : '' ?>">
+            <div class="rounded p-4 d-flex align-items-center shadow" style="max-width: 500px; background-color: rgba(255,255,255,0.2);">
+                <img src=<?= 'data:image/bmp;base64,' . base64_encode($elem->img); ?> alt="<?= esc($elem->title) ?>" class="img-fluid me-4" style="width: 200px; height: auto;">
+                <div>
+                    <h3 class="fw-bold text-light"><?= esc($elem->title) ?></h3>
+                    <p class="mb-0 text-white"><?= esc($elem->content) ?></p>
+                </div>
+            </div>
+        </div>
+    <?php endforeach; ?>
+</div>
                <!-- Controles del carrusel -->
                <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
                <span class="carousel-control-prev-icon"></span>
