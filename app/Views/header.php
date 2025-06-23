@@ -40,19 +40,19 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                <div class="navbar-nav ms-auto py-0">
-                  <a href="<?= base_url('/') ?>" class="nav-item nav-link active">Home</a>
+                  <a href="<?= base_url('/') ?>" class="nav-item nav-link <?= uri_string() == '/' ? 'active' : '' ?>">Home</a>
 
                <div class="nav-item dropdown">
-                     <a href="<?= base_url('home/services') ?>" class="nav-link dropdown-toggle" >Services</a>
+                     <a href="<?= base_url('home/services') ?>" class="nav-link dropdown-toggle <?= uri_string() == 'home/services' ? 'active' : '' ?>">Services</a>
                      <div class="dropdown-menu m-0">
-                        <a href="<?= base_url('home/lab_calibracion/')?>" class="dropdown-item">Laboratorio de Calibración</a>
+                        <a href="<?= base_url('home/lab_calibracion/')?>" class="dropdown-item <?= uri_string() == 'home/lab_calibracion' ? 'active' : '' ?>">Laboratorio de Calibración</a>
                         <a href="<?= base_url('home/inspeccion_dimensional/')?>" class="dropdown-item">Inspección Dimensional</a>
                         <a href="<?= base_url('home/equipos_inventarios/')?>" class="dropdown-item">Equipos para Inventarios</a>
                      </div>
                   </div>
-                  <a href="<?= base_url('home/acreditacion/') ?>" class="nav-item nav-link">Acreditación</a>
-                  <a href="<?= base_url('home/about/') ?>" class="nav-item nav-link">About</a>
-                  <a href="<?= base_url('home/contact/') ?>" class="nav-item nav-link">Contact</a>
+                  <a href="<?= base_url('home/acreditacion/') ?>" class="nav-item nav-link <?= uri_string() == 'home/acreditacion' ? 'active' : '' ?>">Acreditación</a>
+                  <a href="<?= base_url('home/about/') ?>" class="nav-item nav-link <?= uri_string() == 'home/about' ? 'active' : '' ?>">About</a>
+                  <a href="<?= base_url('home/contact/') ?>" class="nav-item nav-link <?= uri_string() == 'home/contact' ? 'active' : '' ?>">Contact</a>
 
                   
                </div>
