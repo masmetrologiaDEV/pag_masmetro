@@ -22,6 +22,8 @@
       <link href="<?= base_url('template/css/bootstrap.min.css')?>" rel="stylesheet">
       <!-- Template Stylesheet -->
       <link href="<?= base_url('template/css/style.css')?>" rel="stylesheet">
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
    </head>
    <body>
       <!-- Spinner Start -->
@@ -40,19 +42,22 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                <div class="navbar-nav ms-auto py-0">
-                  <a href="<?= base_url('/') ?>" class="nav-item nav-link <?= uri_string() == '/' ? 'active' : '' ?>">Home</a>
+                  <a href="<?= base_url('/') ?>" class="nav-item nav-link <?= uri_string() == '/' ? 'active' : '' ?>">Inicio</a>
 
                <div class="nav-item dropdown">
-                     <a href="<?= base_url('home/services') ?>" class="nav-link dropdown-toggle <?= uri_string() == 'home/services' ? 'active' : '' ?>">Services</a>
-                     <div class="dropdown-menu m-0">
+               <a href="<?= base_url('home/services') ?>" class="nav-link dropdown-toggle 
+               <?= in_array(uri_string(), ['home/services', 'home/lab_calibracion', 'home/inspeccion_dimensional', 'home/equipos_inventarios']) ? 'active' : '' ?>">Servicios
+               </a>
+
+               <div class="dropdown-menu m-0">
                         <a href="<?= base_url('home/lab_calibracion/')?>" class="dropdown-item <?= uri_string() == 'home/lab_calibracion' ? 'active' : '' ?>">Laboratorio de Calibración</a>
-                        <a href="<?= base_url('home/inspeccion_dimensional/')?>" class="dropdown-item">Inspección Dimensional</a>
-                        <a href="<?= base_url('home/equipos_inventarios/')?>" class="dropdown-item">Equipos para Inventarios</a>
+                        <a href="<?= base_url('home/inspeccion_dimensional/')?>" class="dropdown-item <?= uri_string() == 'home/inspeccion_dimensional' ? 'active' : '' ?>">Inspección Dimensional</a>
+                        <a href="<?= base_url('home/equipos_inventarios/')?>" class="dropdown-item <?= uri_string() == 'home/equipos_inventarios' ? 'active' : '' ?>">Equipos para Inventarios</a>
                      </div>
                   </div>
                   <a href="<?= base_url('home/acreditacion/') ?>" class="nav-item nav-link <?= uri_string() == 'home/acreditacion' ? 'active' : '' ?>">Acreditación</a>
-                  <a href="<?= base_url('home/about/') ?>" class="nav-item nav-link <?= uri_string() == 'home/about' ? 'active' : '' ?>">About</a>
-                  <a href="<?= base_url('home/contact/') ?>" class="nav-item nav-link <?= uri_string() == 'home/contact' ? 'active' : '' ?>">Contact</a>
+                  <a href="<?= base_url('home/about/') ?>" class="nav-item nav-link <?= uri_string() == 'home/about' ? 'active' : '' ?>">Nosotros</a>
+                  <a href="<?= base_url('home/contact/') ?>" class="nav-item nav-link <?= uri_string() == 'home/contact' ? 'active' : '' ?>">Contacto</a>
 
                   
                </div>
