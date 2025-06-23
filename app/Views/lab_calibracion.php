@@ -9,7 +9,7 @@ $calibration=$calibration[0];
             </div>
             <div class="row g-5">
 
-          <?php foreach ($header_content as $index => $elem): ?>
+          <?php foreach ($calibration_content as $index => $elem): ?>
                 <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
                     <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
                         <div class="">
