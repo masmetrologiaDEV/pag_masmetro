@@ -32,7 +32,7 @@ class Home extends BaseController
 
 
         $data['contenido'] = $model->getContenidoPublicado($idioma, 'header');
-        $data['header_content'] = $model->getContenidoPublicado($idioma, 'services_content');
+        $data['header_content'] = $model->getContenidoPublicado($idioma, 'calibration_content');
         $data['calibration'] = $model->getContenidoPublicado($idioma, 'calibration');
 		return view('header', $data) . view('lab_calibracion', $data).view('footer');
 
