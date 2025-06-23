@@ -11,17 +11,30 @@ class Home extends BaseController
 
 
         $data['contenido'] = $model->getContenidoPublicado($idioma, 'header');
-        $data['header_content'] = $model->getContenidoPublicado($idioma, 'header_content');
+        $data['header_content'] = $model->getContenidoPublicado($idioma, 'services_content');
         $data['home_content'] = $model->getContenidoPublicado($idioma, 'home_content');
 
 		return view('header', $data) . view('inicio', $data).view('footer');
 	}
 	public function services(){
-		return view('header') . view('services').view('footer');
+		$model = new ContenidoModel();
+
+		$idioma = 'es'; // o detecta desde URL, sesión, etc.
+        $data['contenido'] = $model->getContenidoPublicado($idioma, 'header');
+        $data['header_content'] = $model->getContenidoPublicado($idioma, 'services_content');
+        $data['services'] = $model->getContenidoPublicado($idioma, 'services');
+		return view('header',$data) . view('services', $data).view('footer');
 
 	}
 	public function lab_calibracion(){
-		return view('header') . view('lab_calibracion').view('footer');
+		$idioma = 'es'; // o detecta desde URL, sesión, etc.
+        $model = new ContenidoModel();
+
+
+        $data['contenido'] = $model->getContenidoPublicado($idioma, 'header');
+        $data['header_content'] = $model->getContenidoPublicado($idioma, 'services_content');
+        $data['calibration'] = $model->getContenidoPublicado($idioma, 'calibration');
+		return view('header', $data) . view('lab_calibracion', $data).view('footer');
 
 	}
 	public function inspeccion_dimensional(){
@@ -33,7 +46,13 @@ class Home extends BaseController
 
 	}
 	public function acreditacion(){
-		return view('header') . view('acreditacion').view('footer');
+		$idioma = 'es'; // o detecta desde URL, sesión, etc.
+        $model = new ContenidoModel();
+
+
+        $data['contenido'] = $model->getContenidoPublicado($idioma, 'header');
+        $data['header_content'] = $model->getContenidoPublicado($idioma, 'services_content');
+		return view('header', $data) . view('acreditacion').view('footer');
 
 	}
 	public function about(){
@@ -41,7 +60,13 @@ class Home extends BaseController
 
 	}
 	public function contact(){
-		return view('header') . view('contact').view('footer');
+		$idioma = 'es'; // o detecta desde URL, sesión, etc.
+        $model = new ContenidoModel();
+
+
+        $data['contenido'] = $model->getContenidoPublicado($idioma, 'header');
+         $data['header_content'] = $model->getContenidoPublicado($idioma, 'services_content');
+		return view('header', $data) . view('contact').view('footer');
 
 	}
 }

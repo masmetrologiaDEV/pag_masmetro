@@ -10,19 +10,24 @@ $item=$home_content[0];
                     <p class="mb-4"><?=$item->intro_text?></p>
                     <p class="mb-4">
                     <?=$item->content?>.</p>
-                    <h5 class="mb-4"></i><?=$item->title?></h5>
+                    <h5 class="mb-4"></i><?=$item->tags?></h5>
                 </div>
                 <div class="row gx-3">
+                    <?php
+$mision=$home_content[1];
+?>
                     <!-- Imagen 1 -->
                     <div class="col-sm-6 wow zoomIn" data-wow-delay="0.2s">
-                        <img src="template/img/text_mision.png" alt="Imagen 1" class="img-fluid rounded">
-                        <p class="mb-4">Satisfacer la necesidad de certeza metrológica en los procesos productivos del cliente promoviendo un entorno de riqueza y beneficio mutuo.</p>
+                        <img src=<?= 'data:image/bmp;base64,' . base64_encode($mision->img); ?> alt="<?= esc($mision->title) ?>" class="img-fluid rounded">
+                        <p class="mb-4"><?= $mision->content?></p>
                     </div>
-
+<?php
+$vision=$home_content[2];
+?>
                     <!-- Imagen 2 -->
                     <div class="col-sm-6 wow zoomIn" data-wow-delay="0.4s">
-                        <img src="template/img/text_vision.png" alt="Imagen 2" class="img-fluid rounded">
-                        <p class="mb-4">Ser una empresa líder en servicios de metrología con prácticas de clase mundial y altamente competitiva, preferida por brindar calidad y confianza, contribuyendo al desarrollo de sus clientes, colaboradores y comunidad.</p>
+                        <img src=<?= 'data:image/bmp;base64,' . base64_encode($vision->img); ?> alt="<?= esc($vision->title) ?>" class="img-fluid rounded">
+                        <p class="mb-4"><?= $vision->content?></p>
                     </div>
                 </div>
             </div>
