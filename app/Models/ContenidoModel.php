@@ -61,4 +61,25 @@ class ContenidoModel extends Model
         $builder->delete();
         return $this->db->affectedRows();
     }
+
+public function consultar(string $query, bool $row = false, bool $array = true)
+{
+   
+    $res = $this->db->query($query);
+
+    if ($res->getResult() > 0) {
+        if ($array) {
+            if ($row) {
+                return $res->getRowArray(); // retorna un solo resultado como array
+            } else {
+                return $res->getResultArray(); // retorna todos los resultados como array
+            }
+        } else {
+            return $res; // devuelve el objeto completo
+        }
+    } else {
+        return false;
+    }
+}
+
 }

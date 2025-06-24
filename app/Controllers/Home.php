@@ -39,11 +39,26 @@ class Home extends BaseController
 
 	}
 	public function inspeccion_dimensional(){
-		return view('header') . view('inspeccion_dimensional').view('footer');
+		$model = new ContenidoModel();
+		$idioma = 'es'; // o detecta desde URL, sesión, etc.
+
+        $data['contenido'] = $model->getContenidoPublicado($idioma, 'header');
+        $data['header_content'] = $model->getContenidoPublicado($idioma, 'services_content');
+	 	$data['inspection'] = $model->getContenidoPublicado($idioma, 'inspection');
+		$data['inspection_content'] = $model->getContenidoPublicado($idioma, 'inspection_content');
+		return view('header', $data) . view('inspeccion_dimensional', $data).view('footer');
 
 	}
 	public function equipos_inventarios(){
-		return view('header') . view('equipos_inventarios').view('footer');
+		$model = new ContenidoModel();
+		$idioma = 'es'; // o detecta desde URL, sesión, etc.
+
+		$data['contenido'] = $model->getContenidoPublicado($idioma, 'header');
+        $data['header_content'] = $model->getContenidoPublicado($idioma, 'services_content');
+		$data['inventory'] = $model->getContenidoPublicado($idioma, 'inventory');
+		
+		$data['inventory_content'] = $model->getContenidoPublicado($idioma, 'inventory_content');
+		return view('header', $data) . view('equipos_inventarios', $data).view('footer');
 
 	}
 	public function acreditacion(){
@@ -68,6 +83,18 @@ class Home extends BaseController
         $data['contenido'] = $model->getContenidoPublicado($idioma, 'header');
          $data['header_content'] = $model->getContenidoPublicado($idioma, 'services_content');
 		return view('header', $data) . view('contact').view('footer');
+
+	}
+	public function content_calibration(){
+		$model = new ContenidoModel();
+		$id = $this->request->getPost('id');
+		$query = "SELECT content from page_content where id=". $id;
+		
+		$res = $model->consultar($query, true);	
+
+		if ($res) {
+			echo json_encode($res);
+		}
 
 	}
 }
