@@ -51,7 +51,7 @@ $calibration=$calibration[0];
                         <div class="">
                             <img src=<?= 'data:image/bmp;base64,' . base64_encode($elem->img); ?> alt="<?= esc($elem->title) ?>" class="img-fluid me-4" style="width: 200px; height: auto;">
                         </div>
-                        
+                        <br>
                         <h4 class="mb-3"><?= esc($elem->title) ?></h4>
                         <a class="btn btn-lg btn-primary rounded" onclick='modal(<?=$elem->id?>)'>
                             <i class="bi bi-arrow-right"></i>
