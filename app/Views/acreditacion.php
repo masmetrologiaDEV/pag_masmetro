@@ -5,6 +5,7 @@
                 <h1 class="mb-0">Laboratorio de calibración y pruebas acreditado ISO/IEC 17025:2017</h1>
             </div>
 
+            
             <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.6s">
                 <div class="testimonial-item bg-light my-4">
                     <div class="d-flex align-items-center border-bottom pt-5 pb-4 px-5">
@@ -18,6 +19,12 @@
                         Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam
                     </div>
                 </div>
+
+
+
+
+
+
                 <div class="testimonial-item bg-light my-4">
                     <div class="d-flex align-items-center border-bottom pt-5 pb-4 px-5">
                         <img class="img-fluid rounded" src="img/testimonial-2.jpg" style="width: 60px; height: 60px;" >

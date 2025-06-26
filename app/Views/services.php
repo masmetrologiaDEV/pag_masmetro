@@ -19,7 +19,7 @@ $service=$services[0];
                         </div>
                         <h4 class="mb-3"><?= esc($elem->title) ?></h4>
                         <p class="m-0"><?= esc($elem->content) ?></p>
-                        <a class="btn btn-lg btn-primary rounded" href=<?= ($elem->slug) ?>>
+                        <a class="btn btn-lg btn-primary rounded" href="<?= esc($elem->slug) ?>">
                             <i class="bi bi-arrow-right"></i>
                         </a>
                     </div>

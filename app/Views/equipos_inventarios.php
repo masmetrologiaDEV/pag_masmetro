@@ -17,8 +17,7 @@ $inventory=$inventory[0];
                         </div>
                         
                         <h4 class="mb-3"><?= esc($elem->title) ?></h4>
-                        <p class="m-0"><?= esc($elem->content) ?></p>
-                        <a class="btn btn-lg btn-primary rounded" href=<?= ($elem->slug) ?>>
+                        <a class="btn btn-lg btn-primary rounded" onclick='modal(<?=$elem->id?>)'>
                             <i class="bi bi-arrow-right"></i>
                         </a>
                     </div>
@@ -30,3 +29,44 @@ $inventory=$inventory[0];
             </div>
         </div>
     </div>
+
+    <!-- Scrollable modal -->
+<div id="inventario" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" >
+  <div class="modal-dialog  modal-lg" role="document" >
+    <div class="modal-content" id="contenido">
+      <!-- Aquí se inyectará el contenido -->
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    const base_url = "<?= base_url() ?>";
+function modal(id)  
+{     
+    var URL=base_url+"/home/content_inventory";
+ 
+    $.ajax({
+        type:'post',
+        url:URL,
+        data:{id:id},
+        success: function(result){
+           
+            if (result) {
+               
+                var rs=JSON.parse(result);
+             
+                $('#contenido').html(rs.content);
+                $('#inventario').modal('show');
+                
+            }
+        }
+
+
+    });
+
+
+}
+</script>

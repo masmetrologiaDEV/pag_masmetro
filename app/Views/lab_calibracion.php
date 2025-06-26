@@ -1,38 +1,3 @@
-<style>
-    .contenido-calibracion {
-  padding: 20px;
-  max-height: 70vh;
-  overflow-y: auto;
-  font-family: "Segoe UI", sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
-  color: #333;
-  background-color: #fff;
-  border-radius: 8px;
-}
-
-/* Para que las listas tengan buen espaciado */
-.contenido-calibracion ul,
-.contenido-calibracion ol {
-  padding-left: 20px;
-  margin-bottom: 1rem;
-}
-
-/* Títulos dentro del contenido */
-.contenido-calibracion h2,
-.contenido-calibracion h5 {
-  margin-top: 1.5rem;
-  margin-bottom: 1rem;
-  color: #19105f; /* azul oscuro de tu paleta */
-}
-
-/* Parrafos */
-.contenido-calibracion p {
-  margin-bottom: 1rem;
-  text-align: justify;
-}
-
-</style>
 
 <?php
 $calibration=$calibration[0];

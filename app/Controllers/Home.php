@@ -72,7 +72,16 @@ class Home extends BaseController
 
 	}
 	public function about(){
-		return view('header') . view('about').view('footer');
+		$idioma = 'es'; // o detecta desde URL, sesión, etc.
+        $model = new ContenidoModel();
+
+
+        $data['contenido'] = $model->getContenidoPublicado($idioma, 'header');
+        $data['header_content'] = $model->getContenidoPublicado($idioma, 'services_content');
+		$data['about'] = $model->getContenidoPublicado($idioma, 'about');
+		
+		$data['about_content'] = $model->getContenidoPublicado($idioma, 'about_content');
+		return view('header', $data) . view('about', $data).view('footer');
 
 	}
 	public function contact(){
@@ -81,11 +90,35 @@ class Home extends BaseController
 
 
         $data['contenido'] = $model->getContenidoPublicado($idioma, 'header');
-         $data['header_content'] = $model->getContenidoPublicado($idioma, 'services_content');
-		return view('header', $data) . view('contact').view('footer');
+        $data['header_content'] = $model->getContenidoPublicado($idioma, 'services_content');
+		return view('header', $data) . view('contact', $data).view('footer');
 
 	}
 	public function content_calibration(){
+		$model = new ContenidoModel();
+		$id = $this->request->getPost('id');
+		$query = "SELECT content from page_content where id=". $id;
+		
+		$res = $model->consultar($query, true);	
+
+		if ($res) {
+			echo json_encode($res);
+		}
+
+	}
+	public function content_inspection(){
+		$model = new ContenidoModel();
+		$id = $this->request->getPost('id');
+		$query = "SELECT content from page_content where id=". $id;
+		
+		$res = $model->consultar($query, true);	
+
+		if ($res) {
+			echo json_encode($res);
+		}
+
+	}
+	public function content_inventory(){
 		$model = new ContenidoModel();
 		$id = $this->request->getPost('id');
 		$query = "SELECT content from page_content where id=". $id;
