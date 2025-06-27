@@ -13,6 +13,8 @@ class Home extends BaseController
         $data['contenido'] = $model->getContenidoPublicado($idioma, 'header');
         $data['header_content'] = $model->getContenidoPublicado($idioma, 'services_content');
         $data['home_content'] = $model->getContenidoPublicado($idioma, 'home_content');
+		$data['footer_content'] = $model->getContenidoPublicado($idioma, 'footer_content');
+		$data['footer_logo'] = $model->getContenidoPublicado($idioma, 'footer_logo');
 
 		return view('header', $data) . view('inicio', $data).view('footer');
 	}
@@ -23,7 +25,11 @@ class Home extends BaseController
         $data['contenido'] = $model->getContenidoPublicado($idioma, 'header');
         $data['header_content'] = $model->getContenidoPublicado($idioma, 'services_content');
         $data['services'] = $model->getContenidoPublicado($idioma, 'services');
+		$data['footer_content'] = $model->getContenidoPublicado($idioma, 'footer_content');
+		$data['footer_logo'] = $model->getContenidoPublicado($idioma, 'footer_logo');
+
 		return view('header',$data) . view('services', $data).view('footer');
+		
 
 	}
 	public function lab_calibracion(){
@@ -35,6 +41,9 @@ class Home extends BaseController
         $data['header_content'] = $model->getContenidoPublicado($idioma, 'services_content');
         $data['calibration'] = $model->getContenidoPublicado($idioma, 'calibration');
         $data['calibration_content'] = $model->getContenidoPublicado($idioma, 'calibration_content');
+		$data['footer_content'] = $model->getContenidoPublicado($idioma, 'footer_content');
+		$data['footer_logo'] = $model->getContenidoPublicado($idioma, 'footer_logo');
+
 		return view('header', $data) . view('lab_calibracion', $data).view('footer');
 
 	}
@@ -46,6 +55,9 @@ class Home extends BaseController
         $data['header_content'] = $model->getContenidoPublicado($idioma, 'services_content');
 	 	$data['inspection'] = $model->getContenidoPublicado($idioma, 'inspection');
 		$data['inspection_content'] = $model->getContenidoPublicado($idioma, 'inspection_content');
+		$data['footer_content'] = $model->getContenidoPublicado($idioma, 'footer_content');
+		$data['footer_logo'] = $model->getContenidoPublicado($idioma, 'footer_logo');
+
 		return view('header', $data) . view('inspeccion_dimensional', $data).view('footer');
 
 	}
@@ -58,6 +70,9 @@ class Home extends BaseController
 		$data['inventory'] = $model->getContenidoPublicado($idioma, 'inventory');
 		
 		$data['inventory_content'] = $model->getContenidoPublicado($idioma, 'inventory_content');
+		$data['footer_content'] = $model->getContenidoPublicado($idioma, 'footer_content');
+		$data['footer_logo'] = $model->getContenidoPublicado($idioma, 'footer_logo');
+
 		return view('header', $data) . view('equipos_inventarios', $data).view('footer');
 
 	}
@@ -68,6 +83,13 @@ class Home extends BaseController
 
         $data['contenido'] = $model->getContenidoPublicado($idioma, 'header');
         $data['header_content'] = $model->getContenidoPublicado($idioma, 'services_content');
+		$data['acreditacion'] = $model->getContenidoPublicado($idioma, 'acreditacion');
+        $data['acreditacion_content'] = $model->getContenidoPublicado($idioma, 'acreditacion_content');
+
+		$data['footer_content'] = $model->getContenidoPublicado($idioma, 'footer_content');
+		$data['footer_logo'] = $model->getContenidoPublicado($idioma, 'footer_logo');
+
+
 		return view('header', $data) . view('acreditacion').view('footer');
 
 	}
@@ -81,6 +103,9 @@ class Home extends BaseController
 		$data['about'] = $model->getContenidoPublicado($idioma, 'about');
 		
 		$data['about_content'] = $model->getContenidoPublicado($idioma, 'about_content');
+		$data['footer_content'] = $model->getContenidoPublicado($idioma, 'footer_content');
+		$data['footer_logo'] = $model->getContenidoPublicado($idioma, 'footer_logo');
+
 		return view('header', $data) . view('about', $data).view('footer');
 
 	}
@@ -91,6 +116,9 @@ class Home extends BaseController
 
         $data['contenido'] = $model->getContenidoPublicado($idioma, 'header');
         $data['header_content'] = $model->getContenidoPublicado($idioma, 'services_content');
+		$data['footer_content'] = $model->getContenidoPublicado($idioma, 'footer_content');
+		$data['footer_logo'] = $model->getContenidoPublicado($idioma, 'footer_logo');
+
 		return view('header', $data) . view('contact', $data).view('footer');
 
 	}
@@ -128,6 +156,38 @@ class Home extends BaseController
 		if ($res) {
 			echo json_encode($res);
 		}
+	}
 
+	public function files($id) {
+	$model = new ContenidoModel();
+	
+    // Se obtiene el nombre y contenido binario del archivo correspondiente
+    $query = "SELECT tags, files from page_content where id=". $id;
+	
+	$res = $model->consultar($query, true);	
+	//echo var_dump($res);die();
+    $nombre = $res['tags'];
+    $file = $res['files'];    
+    
+    // Encabezados para forzar descarga del archivo PDF
+    header('Content-Description: File Transfer');
+    header('Content-Type: application/pdf');
+    header('Content-Disposition: inline; filename="' . $nombre . '"');
+
+    header('Content-Transfer-Encoding: binary');
+    header('Expires: 0');
+    header('Cache-Control: must-revalidate');
+    header('Pragma: public');
+    header('Content-Length: ' . strlen($file));
+
+    // Limpia el búfer de salida por si ya se imprimió algo
+    ob_clean();
+    flush();
+
+    // Imprime el archivo binario al navegador
+    echo $file;
+    exit;
+    
+		
 	}
 }
