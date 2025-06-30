@@ -85,7 +85,7 @@ class Home extends BaseController
         $data['header_content'] = $model->getContenidoPublicado($idioma, 'services_content');
 		$data['acreditacion'] = $model->getContenidoPublicado($idioma, 'acreditacion');
         $data['acreditacion_content'] = $model->getContenidoPublicado($idioma, 'acreditacion_content');
-
+ 		$data['acreditacion_info'] = $model->getContenidoPublicado($idioma, 'acreditacion_info');
 		$data['footer_content'] = $model->getContenidoPublicado($idioma, 'footer_content');
 		$data['footer_logo'] = $model->getContenidoPublicado($idioma, 'footer_logo');
 

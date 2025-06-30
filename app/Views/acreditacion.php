@@ -2,6 +2,9 @@
 $acreditacion=$acreditacion[0];
 ?>
 
+<?php
+$info=$acreditacion_info[0];
+?>
 
 <!-- Testimonial Start -->
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
@@ -12,76 +15,49 @@ $acreditacion=$acreditacion[0];
 
            
             <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.6s">
-                 <?php foreach ($acreditacion_content as $index => $elem): ?>
-                <div class="testimonial-item bg-light my-4">
-                    <div class="d-flex align-items-center border-bottom pt-5 pb-4 px-5">
-                        <img class="img-fluid rounded" src="img/testimonial-1.jpg" style="width: 60px; height: 60px;" >
-                        <div class="ps-4">
-                            <h5 class="text-primary mb-1"> <?= esc($elem->title) ?> </h5>
-                        </div>
-                    </div>
-                    <div class="pt-4 pb-5 px-5">
-                        <a href="<?= base_url('home/files/' . $elem->id) ?>"
-                            target="_blank"
-                            class="btn-descargar">
-                            <span>Descargar PDF</span>
-                            <img style="width: 25px; height: 25px;" src="<?= base_url('template/images/files/pdf.png')  ?>" alt="PDF">
-                        </a>
-
-
-                    </div>
+    <?php foreach ($acreditacion_content as $index => $elem): ?>
+        <div class="testimonial-item bg-light my-4" style="height: 280px;">
+            <div class="d-flex align-items-center border-bottom pt-5 pb-4 px-5" style="min-height: 100px;">
+                
+                <!-- CONTENEDOR DEL LOGO CON ANCHO FIJO -->
+                <div style="flex: 0 0 80px; max-width: 80px;">
+                    <img src="<?= 'data:image/bmp;base64,' . base64_encode($info->img); ?>"
+                         alt="<?= esc($info->title) ?>"
+                         class="img-fluid" style="width: 60px; height: 60px; object-fit: contain;">
                 </div>
-                <?php endforeach; ?>
-
-
-
-
-
-
-                <div class="testimonial-item bg-light my-4">
-                    <div class="d-flex align-items-center border-bottom pt-5 pb-4 px-5">
-                        <img class="img-fluid rounded" src="img/testimonial-2.jpg" style="width: 60px; height: 60px;" >
-                        <div class="ps-4">
-                            <h4 class="text-primary mb-1">Client Name</h4>
-                            <small class="text-uppercase">Profession</small>
-                        </div>
-                    </div>
-                    <div class="pt-4 pb-5 px-5">
-                        Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam
-                    </div>
+                
+                <!-- CONTENEDOR DEL TEXTO -->
+                <div class="ps-4" style="flex: 1;">
+                    <h5 class="text-primary mb-0"
+                        style="font-size: 16px; line-height: 1.2; height: 48px; overflow: hidden;
+                               display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
+                        <?= esc($elem->title) ?>
+                    </h5>
                 </div>
-                <div class="testimonial-item bg-light my-4">
-                    <div class="d-flex align-items-center border-bottom pt-5 pb-4 px-5">
-                        <img class="img-fluid rounded" src="img/testimonial-3.jpg" style="width: 60px; height: 60px;" >
-                        <div class="ps-4">
-                            <h4 class="text-primary mb-1">Client Name</h4>
-                            <small class="text-uppercase">Profession</small>
-                        </div>
-                    </div>
-                    <div class="pt-4 pb-5 px-5">
-                        Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam
-                    </div>
-                </div>
-                <div class="testimonial-item bg-light my-4">
-                    <div class="d-flex align-items-center border-bottom pt-5 pb-4 px-5">
-                        <img class="img-fluid rounded" src="img/testimonial-4.jpg" style="width: 60px; height: 60px;" >
-                        <div class="ps-4">
-                            <h4 class="text-primary mb-1">Client Name</h4>
-                            <small class="text-uppercase">Profession</small>
-                        </div>
-                    </div>
-                    <div class="pt-4 pb-5 px-5">
-                        Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam
-                    </div>
-                </div>
-                </div>
+            </div>
+
+            <div class="pt-4 pb-5 px-5">
+                <a href="<?= base_url('home/files/' . $elem->id) ?>"
+                   target="_blank"
+                   class="btn-descargar"
+                   style="font-size: 16px; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; color: #007bff;">
+                    <span>Descargar PDF</span>
+                    <img style="width: 25px; height: 25px;" src="<?= base_url('template/images/files/pdf.png') ?>" alt="PDF">
+                </a>
+            </div>
+        </div>
+    <?php endforeach; ?>
+</div>
+
+
+
                         <div class="text-center mt-4 wow fadeInUp" data-wow-delay="1.2s" data-wow-duration="1s">
-                           <h3 class="fw-bold text-primary">Nuestra acreditación es equivalente a la de EMA.</h3>
+                           <h3 class="fw-bold text-primary"><?= $info->title?></h3>
                            <p class="mb-0 text-black">
-                            Según el Acuerdo de Reconocimiento Mutuo (MRA), nuestros informes de calibración acreditados son equivalentes a la Entidad Mexicana de Acreditación y cualquier organización perteneciente a la integración de la Cooperación Internacional de Acreditación de Laboratorios (ILAC). 
+                            <?= $info->content?>
                            </p>
                            <br>
-                           <a href="https://www.ema.org.mx/portal_v3/index.php/ilac" target="_blank" rel="noopener">Ver el acuerdo en la pagina de EMA</a>
+                           <a href="<?=$info->slug?>" target="_blank" rel="noopener"><?= $info->intro_text?></a>
                         </div>
                     
         </div>

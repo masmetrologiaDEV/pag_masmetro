@@ -389,6 +389,16 @@ h6,
 }
 
 
+.testimonial-item {
+    height: 280px; /* ajusta a lo que mejor se vea */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+
+
 /*** Team ***/
 .team-item {
     transition: .5s;
