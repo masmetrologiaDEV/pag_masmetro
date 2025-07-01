@@ -15,6 +15,8 @@ class Home extends BaseController
         $data['home_content'] = $model->getContenidoPublicado($idioma, 'home_content');
 		$data['footer_content'] = $model->getContenidoPublicado($idioma, 'footer_content');
 		$data['footer_logo'] = $model->getContenidoPublicado($idioma, 'footer_logo');
+		$data['privacy_content'] = $model->getContenidoPublicado($idioma, 'privacy_content');
+
 
 		return view('header', $data) . view('inicio', $data).view('footer');
 	}
@@ -27,6 +29,7 @@ class Home extends BaseController
         $data['services'] = $model->getContenidoPublicado($idioma, 'services');
 		$data['footer_content'] = $model->getContenidoPublicado($idioma, 'footer_content');
 		$data['footer_logo'] = $model->getContenidoPublicado($idioma, 'footer_logo');
+		$data['privacy_content'] = $model->getContenidoPublicado($idioma, 'privacy_content');
 
 		return view('header',$data) . view('services', $data).view('footer');
 		
@@ -43,6 +46,7 @@ class Home extends BaseController
         $data['calibration_content'] = $model->getContenidoPublicado($idioma, 'calibration_content');
 		$data['footer_content'] = $model->getContenidoPublicado($idioma, 'footer_content');
 		$data['footer_logo'] = $model->getContenidoPublicado($idioma, 'footer_logo');
+		$data['privacy_content'] = $model->getContenidoPublicado($idioma, 'privacy_content');
 
 		return view('header', $data) . view('lab_calibracion', $data).view('footer');
 
@@ -57,6 +61,7 @@ class Home extends BaseController
 		$data['inspection_content'] = $model->getContenidoPublicado($idioma, 'inspection_content');
 		$data['footer_content'] = $model->getContenidoPublicado($idioma, 'footer_content');
 		$data['footer_logo'] = $model->getContenidoPublicado($idioma, 'footer_logo');
+		$data['privacy_content'] = $model->getContenidoPublicado($idioma, 'privacy_content');
 
 		return view('header', $data) . view('inspeccion_dimensional', $data).view('footer');
 
@@ -72,6 +77,7 @@ class Home extends BaseController
 		$data['inventory_content'] = $model->getContenidoPublicado($idioma, 'inventory_content');
 		$data['footer_content'] = $model->getContenidoPublicado($idioma, 'footer_content');
 		$data['footer_logo'] = $model->getContenidoPublicado($idioma, 'footer_logo');
+		$data['privacy_content'] = $model->getContenidoPublicado($idioma, 'privacy_content');
 
 		return view('header', $data) . view('equipos_inventarios', $data).view('footer');
 
@@ -88,6 +94,7 @@ class Home extends BaseController
  		$data['acreditacion_info'] = $model->getContenidoPublicado($idioma, 'acreditacion_info');
 		$data['footer_content'] = $model->getContenidoPublicado($idioma, 'footer_content');
 		$data['footer_logo'] = $model->getContenidoPublicado($idioma, 'footer_logo');
+		$data['privacy_content'] = $model->getContenidoPublicado($idioma, 'privacy_content');
 
 
 		return view('header', $data) . view('acreditacion').view('footer');
@@ -105,6 +112,7 @@ class Home extends BaseController
 		$data['about_content'] = $model->getContenidoPublicado($idioma, 'about_content');
 		$data['footer_content'] = $model->getContenidoPublicado($idioma, 'footer_content');
 		$data['footer_logo'] = $model->getContenidoPublicado($idioma, 'footer_logo');
+		$data['privacy_content'] = $model->getContenidoPublicado($idioma, 'privacy_content');
 
 		return view('header', $data) . view('about', $data).view('footer');
 
@@ -118,6 +126,7 @@ class Home extends BaseController
         $data['header_content'] = $model->getContenidoPublicado($idioma, 'services_content');
 		$data['footer_content'] = $model->getContenidoPublicado($idioma, 'footer_content');
 		$data['footer_logo'] = $model->getContenidoPublicado($idioma, 'footer_logo');
+		$data['privacy_content'] = $model->getContenidoPublicado($idioma, 'privacy_content');
 
 		return view('header', $data) . view('contact', $data).view('footer');
 
@@ -147,6 +156,17 @@ class Home extends BaseController
 
 	}
 	public function content_inventory(){
+		$model = new ContenidoModel();
+		$id = $this->request->getPost('id');
+		$query = "SELECT content from page_content where id=". $id;
+		
+		$res = $model->consultar($query, true);	
+
+		if ($res) {
+			echo json_encode($res);
+		}
+	}
+	public function content_privacy(){
 		$model = new ContenidoModel();
 		$id = $this->request->getPost('id');
 		$query = "SELECT content from page_content where id=". $id;

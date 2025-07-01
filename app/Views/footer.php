@@ -4,6 +4,9 @@ $item=$footer_content[0];
      <?php
 $precision=$footer_logo[0];
 ?>
+ <?php
+$privacy=$privacy_content[0];
+?>
                     
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-light mt-5 wow fadeInUp" data-wow-delay="0.1s">
@@ -28,9 +31,6 @@ $precision=$footer_logo[0];
                             <?php endforeach; ?>
 
                         </div>
-
-
-
             </div>
         </div>
     </div>
@@ -40,12 +40,55 @@ $precision=$footer_logo[0];
             <div class="row justify-content-center">
                 <div class="col-lg-8 col-md-6">
                     <div class="d-flex align-items-center justify-content-center" style="height: 75px;">
-                    <p class="mb-0">&copy; 2025 MAS Metrología | <a class="text-white border-bottom" href="#">Aviso de Privacidad</a></p>
+                                                
+
+                    <p class="mb-0"><a class=" btn text-white border-bottom" onclick='modal_pr(<?=$privacy->id?>)'>&copy;2025 MAS Metrología | Aviso de Privacidad</a></p>
                 </div>
                 </div>
             </div>
         </div>
     </div>
+
+        <!-- Scrollable modal -->
+<div id="privacidad" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" >
+  <div class="modal-dialog  modal-lg" role="document" >
+    <div class="modal-content" id="contenido_privacidad" style='height: 80vh; overflow-y: auto;'>
+      <!-- Aquí se inyectará el contenido -->
+    </div>
+  </div>
+</div>
+<script>
+
+function modal_pr(id)  
+{     
+    var base_url = "<?= base_url() ?>";
+   var URL=base_url+"/home/content_privacy";
+ 
+    $.ajax({
+        type:'post',
+        url:URL,
+        data:{id:id},
+        success: function(result){
+           
+            if (result) {
+               
+                var rs=JSON.parse(result);
+             
+                $('#contenido_privacidad').html(rs.content);
+                $('#privacidad').modal('show');
+                
+            }
+            
+        }
+
+
+    });
+}
+</script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
     <!-- Footer End -->
 
 
@@ -54,7 +97,6 @@ $precision=$footer_logo[0];
 
 
     <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="<?= base_url('template/lib/wow/wow.min.js')?>"></script>
     <script src="<?= base_url('template/lib/easing/easing.min.js')?>"></script>

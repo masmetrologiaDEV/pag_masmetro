@@ -562,3 +562,36 @@ h6,
 
 
 
+.aviso-header {
+      background-color: #031027;
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .aviso-header h1 {
+      color: #fff;
+      font-size: 2.8rem;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .aviso-contenido {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+      background-color: #fff;
+    }
+
+    .aviso-contenido p {
+      margin-bottom: 1.2rem;
+      text-align: justify;
+    }
+
+    .aviso-contenido ol {
+      padding-left: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .aviso-contenido li {
+      margin-bottom: 0.5rem;
+    }

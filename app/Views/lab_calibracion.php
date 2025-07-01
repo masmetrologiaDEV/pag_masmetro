@@ -44,9 +44,10 @@ $calibration=$calibration[0];
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <script>
-    const base_url = "<?= base_url() ?>";
+    
 function modal(id)  
 {     
+    var base_url = "<?= base_url() ?>";
     var URL=base_url+"/home/content_calibration";
  
     $.ajax({
