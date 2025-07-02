@@ -1,8 +1,12 @@
 <?php namespace App\Controllers;
 use App\Models\ContenidoModel; // <--- ESTA LÍNEA ES CLAVE
+$lang = \Config\Services::language();
+use App\Libraries\Correo;
+
 
 class Home extends BaseController
 {
+	
 	public function index()
 	{ 
 		//echo site_url('home/services');die();
@@ -120,10 +124,14 @@ class Home extends BaseController
 	public function contact(){
 		$idioma = 'es'; // o detecta desde URL, sesión, etc.
         $model = new ContenidoModel();
+		\Config\Services::language()->setLocale($idioma);
 
 
         $data['contenido'] = $model->getContenidoPublicado($idioma, 'header');
         $data['header_content'] = $model->getContenidoPublicado($idioma, 'services_content');
+		$data['contact'] = $model->getContenidoPublicado($idioma, 'contact');		
+		$data['contact_content'] = $model->getContenidoPublicado($idioma, 'contact_content');
+		//echo "Contenido contact_content =====> ".var_dump($data['contact_content']);die();
 		$data['footer_content'] = $model->getContenidoPublicado($idioma, 'footer_content');
 		$data['footer_logo'] = $model->getContenidoPublicado($idioma, 'footer_logo');
 		$data['privacy_content'] = $model->getContenidoPublicado($idioma, 'privacy_content');
@@ -206,8 +214,19 @@ class Home extends BaseController
 
     // Imprime el archivo binario al navegador
     echo $file;
-    exit;
-    
-		
+    exit;	
+	}
+	public function correo_contacto(){
+		$correo = new Correo();
+		$datos = array(
+        'usuario' => $this->session->id,
+        'tipo' => $this->input->post('opCategoria'),
+        'titulo' => $this->input->post('titulo'),
+        'descripcion' => $this->input->post('descripcion'),
+        'estatus' => 'ABIERTO',
+        'cierre' => '0',
+    );
+		$correo->correoContacto($datos);
+
 	}
 }

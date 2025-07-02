@@ -1,7 +1,6 @@
 
 <head>
     <meta charset="UTF-8">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-papAaF+G8DAkBnNGt0GuA1pRrGgxz3FbKi4CmLo3zUy6zLVb60vJfdHDKqU9MByxqwdzkMgEUX7GHdpAKC4zXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
@@ -14,19 +13,19 @@
             </div>
             <div class="row g-5">
                 <div class="col-lg-6 wow slideInUp" data-wow-delay="0.3s">
-                    <form>
+                    <form method="POST" action=<?= base_url('home/correo_contacto')?> novalidate>
                         <div class="row g-3">
                             <div class="col-md-6">
-                                <input type="text" class="form-control border-0 bg-light px-4" placeholder="Nombre" style="height: 55px;">
+                                <input type="text" name="name" class="form-control border-0 bg-light px-4" placeholder="<?= lang('Validation.namePlaceholder') ?>" style="height: 55px;">
                             </div>
                             <div class="col-md-6">
-                                <input type="email" class="form-control border-0 bg-light px-4" placeholder="Correo" style="height: 55px;">
+                                <input type="email" name="email" class="form-control border-0 bg-light px-4" placeholder="<?= lang('Validation.email') ?>" style="height: 55px;">
                             </div>
                             <div class="col-12">
-                                <input type="text" class="form-control border-0 bg-light px-4" placeholder="Asunto" style="height: 55px;">
+                                <input type="text" name="subject" class="form-control border-0 bg-light px-4" placeholder="<?= lang('Validation.subject') ?>" style="height: 55px;">
                             </div>
                             <div class="col-12">
-                                <textarea class="form-control border-0 bg-light px-4 py-3" rows="4" placeholder="Mensaje"></textarea>
+                                <textarea name="message" class="form-control border-0 bg-light px-4 py-3" rows="4" placeholder="<?= lang('Validation.message') ?>"></textarea>
                             </div>
                             <div class="col-12">
                                 <button class="btn btn-primary w-100 py-3" type="submit">Enviar mensaje</button>
@@ -63,55 +62,20 @@
                         <div class="section-title text-center position-relative pb-2 mb-3 mx-auto" style="max-width: 600px;">
                             <h6 class="mb-0 text-primary fw-bold">Atención a sus preguntas</h6>
                         </div>
-
                         <div class="owl-carousel testimonial-carousel">
+                            <?php foreach ($contact_content as $index => $elem): ?>
                             <div class="testimonial-item bg-light my-2">
-                                <div class="d-flex align-items-center border-bottom pt-3 pb-3 px-3">
-                                    <img class="img-fluid rounded" src="img/testimonial-2.jpg" style="width: 50px; height: 50px;">
-                                    <div class="ps-3">
-                                        <h6 class="text-primary mb-1">Laboratorio </h6>
-                                        <small class="text-uppercase">Chihuahua</small>
-                                    </div>
-                                </div>
-                                <div class="pt-3 pb-3 px-3 small">
-                                    Calle Amada Armendariz #233
-                                    Colonia Revolución, C.P. 31135
-                                    Chihuahua, Chih.
-                                    (614) 980-0800
-                                </div>
-                            </div>
-                            
-                            <div class="testimonial-item bg-light my-2">
-                                <div class="d-flex align-items-center border-bottom pt-3 pb-3 px-3">
-                                    <img class="img-fluid rounded" src="img/testimonial-3.jpg" style="width: 50px; height: 50px;">
-                                    <div class="ps-3">
-                                        <h6 class="text-primary mb-1">Oficina </h6>
-                                        <small class="text-uppercase">Hermosillo</small>
-                                    </div>
-                                </div>
-                                <div class="pt-3 pb-3 px-3 small">
-                                    Retorno Palma Cocotera No. 17
-                                    Fracc. Palma Dorada C.P. 83117
-                                    Hermosillo, Son.
-                                    (662) 980-0800
-                                </div>
-                            </div>
-
-                            <div class="testimonial-item bg-light my-2">
-                                <div class="d-flex align-items-center border-bottom pt-3 pb-3 px-3">
+                                <div class="d-flex align-items-center border-bottom pt-4 pb-4 px-6">
                                     <img class="img-fluid rounded" src="img/testimonial-1.jpg" style="width: 50px; height: 50px;">
                                     <div class="ps-3">
-                                        <h6 class="text-primary mb-1">Laboratorio </h6>
-                                        <small class="text-uppercase">Ciudad Juarez</small>
+                                        <h6 class="text-primary mb-1"> <?= esc($elem->title) ?> </h6>
                                     </div>
                                 </div>
-                                <div class="pt-3 pb-3 px-3 small">
-                                    Calle Ramón Rayón #1520
-                                    Colonia Rio Bravo, C.P. 32550
-                                    Cd. Juárez, Chih.
-                                    (656) 980-0800
+                                <div class="pt-4 pb-4 px-4 small">
+                                    <small class="text-uppercase"><?= esc($elem->content) ?></small>
                                 </div>
                             </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 </div>   

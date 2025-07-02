@@ -92,7 +92,7 @@ class Email
 	 *
 	 * @var string 'mail', 'sendmail' or 'smtp'
 	 */
-	public $protocol = 'mail';        // mail/sendmail/smtp
+	public $protocol = 'smtp';        // mail/sendmail/smtp
 	/**
 	 * STMP Server host
 	 *
@@ -122,7 +122,7 @@ class Email
 	 *
 	 * @var integer
 	 */
-	public $SMTPTimeout = 5;
+	public $SMTPTimeout = 120;
 	/**
 	 * SMTP persistent connection
 	 *
@@ -134,7 +134,7 @@ class Email
 	 *
 	 * @var string Empty, 'tls' or 'ssl'
 	 */
-	public $SMTPCrypto = '';
+	public $SMTPCrypto = 'tls';
 	/**
 	 * Whether to apply word-wrapping to the message body.
 	 *
@@ -153,7 +153,7 @@ class Email
 	 *
 	 * @var string 'text' or 'html'
 	 */
-	public $mailType = 'text';
+	public $mailType = 'html';
 	/**
 	 * Character set (default: utf-8)
 	 *
