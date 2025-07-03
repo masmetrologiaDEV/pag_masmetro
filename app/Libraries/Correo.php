@@ -1,32 +1,31 @@
-
 <?php namespace App\Libraries;
 
+use CodeIgniter\Email\Email;
 
-class Correo extends BaseController
+class Correo
 {
-    function correoContacto($datos){
-         $CI = & get_instance();
-        $CI->load->library('email');
+    public function correoContacto($datos)
+    {
+        $email = \Config\Services::email(); // Obtiene el servicio de correo de CI4
 
-
+        $logo = base_url('template/images/logo.png');
         $mensaje = <<<EOD
-
-               <img width='400' src='$logo'><br>
-               <h1><font face="Arial">SIGA-MAS</font></h1>
-               <h2>Se ha creado Ticket de Servicio $prefijo</h2>
-               <p><b>ID:</b> $idCompleto</p>
-               <p><b>Usuario:</b> $usuario</p>
-               <p><b>Titulo:</b> $titulo</p>
-               <a href='$url' class='btn btn-primary'>Ver Ticket</a>
+            <img width='400' src='$logo'><br>
+            <h2>Mensaje de contacto desde el sitio web</h2>
+            <p><b>Nombre:</b> {$datos['name']}</p>
+            <p><b>Correo:</b> {$datos['email']}</p>
+            <p><b>Asunto:</b> {$datos['subject']}</p>
+            <p><b>Mensaje:</b><br>{$datos['message']}</p>
 EOD;
+        $correo =$datos['email'];
+        //echo var_dump($correo);die();
+        $email->setFrom($correo);
+        $remitentes = array('posadamartin223@gmail.com','jcastaneda@masmetrologia.com');
+        $email->setTo($remitentes); // Cambia esto por el correo receptor
+        
+        $email->setSubject($datos['subject']);
+        $email->setMessage($mensaje);
 
-        $CI->email->from('tickets@masmetrologia.mx', 'Soporte SIGA-MAS');
-
-        $CI->email->to($remitentes);
-
-        $CI->email->subject('Ticket De Servicio');
-        $CI->email->message($mensaje);
-
-        $CI->email->send();
+        return $email->send();
     }
 }

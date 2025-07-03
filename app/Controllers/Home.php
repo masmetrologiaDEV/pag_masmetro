@@ -216,17 +216,27 @@ class Home extends BaseController
     echo $file;
     exit;	
 	}
-	public function correo_contacto(){
-		$correo = new Correo();
-		$datos = array(
-        'usuario' => $this->session->id,
-        'tipo' => $this->input->post('opCategoria'),
-        'titulo' => $this->input->post('titulo'),
-        'descripcion' => $this->input->post('descripcion'),
-        'estatus' => 'ABIERTO',
-        'cierre' => '0',
-    );
-		$correo->correoContacto($datos);
 
-	}
+	public function correo_contacto()
+{
+    helper(['form', 'url']);
+
+    $datos = [
+        'name' => $this->request->getPost('name'),
+        'email' => $this->request->getPost('email'),
+        'subject' => $this->request->getPost('subject'),
+        'message' => $this->request->getPost('message')
+    ];
+
+    $correo = new \App\Libraries\Correo();
+
+    if ($correo->correoContacto($datos)) {
+		echo 1;
+        //return redirect()->back()->with('mensaje', '¡Mensaje enviado con éxito!');
+    } else {
+        echo 2;
+		//return redirect()->back()->with('mensaje', 'Error al enviar el mensaje.');
+    }
+}
+
 }
