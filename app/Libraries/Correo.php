@@ -19,7 +19,7 @@ class Correo
 EOD;
         $correo =$datos['email'];
         //echo var_dump($correo);die();
-        $email->setFrom($correo);
+        $email->setFrom('tickets@masmetrologia.mx', 'Web MAS Metrología');
         $remitentes = array('posadamartin223@gmail.com','jcastaneda@masmetrologia.com');
         $email->setTo($remitentes); // Cambia esto por el correo receptor
         

@@ -131,7 +131,6 @@ class Home extends BaseController
         $data['header_content'] = $model->getContenidoPublicado($idioma, 'services_content');
 		$data['contact'] = $model->getContenidoPublicado($idioma, 'contact');		
 		$data['contact_content'] = $model->getContenidoPublicado($idioma, 'contact_content');
-		//echo "Contenido contact_content =====> ".var_dump($data['contact_content']);die();
 		$data['footer_content'] = $model->getContenidoPublicado($idioma, 'footer_content');
 		$data['footer_logo'] = $model->getContenidoPublicado($idioma, 'footer_logo');
 		$data['privacy_content'] = $model->getContenidoPublicado($idioma, 'privacy_content');
@@ -230,13 +229,13 @@ class Home extends BaseController
 
     $correo = new \App\Libraries\Correo();
 
-    if ($correo->correoContacto($datos)) {
+   /* if ($correo->correoContacto($datos)) {
 		echo 1;
         //return redirect()->back()->with('mensaje', '¡Mensaje enviado con éxito!');
     } else {
         echo 2;
 		//return redirect()->back()->with('mensaje', 'Error al enviar el mensaje.');
-    }
+    }*/
 }
 
 }
