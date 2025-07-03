@@ -8,4 +8,5 @@ return [
     'message' => 'Message',
     'namePlaceholder' => 'Enter your full name',
     'emailPlaceholder' => 'Enter your email address',
+    'phone' => '    Phone number',
 ];

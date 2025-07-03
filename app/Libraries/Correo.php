@@ -20,7 +20,7 @@ EOD;
         $correo =$datos['email'];
         //echo var_dump($correo);die();
         $email->setFrom('tickets@masmetrologia.mx', 'Web MAS Metrología');
-        $remitentes = array('posadamartin223@gmail.com','jcastaneda@masmetrologia.com');
+        $remitentes = array('tickets@masmetrologia.mx',$correo);
         $email->setTo($remitentes); // Cambia esto por el correo receptor
         
         $email->setSubject($datos['subject']);
