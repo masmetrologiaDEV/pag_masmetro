@@ -229,13 +229,13 @@ class Home extends BaseController
 
     $correo = new \App\Libraries\Correo();
 
-   /* if ($correo->correoContacto($datos)) {
-		echo 1;
+    if ($correo->correoContacto($datos)) {
+		return redirect()->to(base_url('home/contact'));
         //return redirect()->back()->with('mensaje', '¡Mensaje enviado con éxito!');
     } else {
-        echo 2;
-		//return redirect()->back()->with('mensaje', 'Error al enviar el mensaje.');
-    }*/
+     
+		return redirect()->to(base_url('home/'));
+    }
 }
 
 }

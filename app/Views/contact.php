@@ -1,8 +1,6 @@
 
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-papAaF+G8DAkBnNGt0GuA1pRrGgxz3FbKi4CmLo3zUy6zLVb60vJfdHDKqU9MByxqwdzkMgEUX7GHdpAKC4zXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-papAaF+G8DAkBnNGt0GuA1pRrGgxz3FbKi4CmLo3zUy6zLVb60vJfdHDKqU9MByxqwdzkMgEUX7GHdpAKC4zXg==" />
+
 
 <!-- Contact Start -->
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">

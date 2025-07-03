@@ -6,5 +6,5 @@ return [
     'subject' => 'Asunto',
     'message' => 'Mensaje',
     'namePlaceholder' => 'Escribe tu nombre completo',
-    'emailPlaceholder' => 'Escribe tu correo electrónico',
+    'phone' => '     Numero telefonico',
 ];
