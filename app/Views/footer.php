@@ -1,3 +1,9 @@
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-papAaF+G8DAkBnNGt0GuA1pRrGgxz3FbKi4CmLo3zUy6zLVb60vJfdHDKqU9MByxqwdzkMgEUX7GHdpAKC4zXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+    
     <?php
 $item=$footer_content[0];
 ?>
@@ -95,6 +101,11 @@ function modal_pr(id)
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top"><i class="bi bi-arrow-up"></i></a>
 
+    <a href="https://www.whatsapp.com/" target="_blank" class="text-decoration-none content-w" aria-label="Ir al sitio oficial de WhatsApp">
+    <i class="fab fa-whatsapp fa-2x" style="color: #25D366;"></i>
+</a>
+
+   
 
     <!-- JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>

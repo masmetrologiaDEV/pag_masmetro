@@ -1,6 +1,9 @@
 <?php
 $service=$services[0];
 ?>
+<?php
+$footer_content=$footer_content[0];
+?>
 <!-- Service Start -->
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
@@ -19,8 +22,10 @@ $service=$services[0];
                         </div>
                         <h4 class="mb-3"><?= esc($elem->title) ?></h4>
                         <p class="m-0"><?= esc($elem->content) ?></p>
-                        <a class="btn btn-lg btn-primary rounded" href="<?= esc($elem->slug) ?>">
-                            <i class="bi bi-arrow-right"></i>
+                        <br>
+                        <a class="btn" href="<?= esc($elem->slug) ?>">
+                             <img src=<?= 'data:image/bmp;base64,' . base64_encode($footer_content->img); ?> alt="<?= esc($footer_content->img) ?>" class="img-fluid me-4" style="width: 200px; height: auto;">
+
                         </a>
                     </div>
                 </div>
