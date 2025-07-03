@@ -22,6 +22,7 @@ class App extends BaseConfig
 	|
 	*/
 	public $baseURL = 'http://localhost/pag_masmetro/';
+	//public $baseURL = 'http://192.168.6.22/pag_masmetro/';
 
 
 	/*
