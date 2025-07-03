@@ -51,34 +51,61 @@
                 </div>
 
                 <div class="col-lg-6 wow slideInUp" data-wow-delay="0.6s">
-                    <iframe class="position-relative rounded w-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4215.521564684928!2d-106.36969962375483!3d31.62869114178125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86e75c5774096439%3A0xccdf9ccf12d45307!2sMetrologia%20Aplicada%20y%20Servicios%20S%20de%20RL%20de%20CV!5e1!3m2!1ses-419!2smx!4v1750692067241!5m2!1ses-419!2smx"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"  frameborder="0" style="min-height: 350px; border:0;" allowfullscreen="" aria-hidden="false"
-                        tabindex="0">
-                    </iframe>
+                    
+
+                    <iframe id="mapFrame" class="position-relative rounded w-100" src="<?= esc($contact_content[0]->slug) ?>"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"  frameborder="0" style="min-height: 350px; border:0;" allowfullscreen="" aria-hidden="false"
+               tabindex="0">
+            </iframe>
 
                     <!-- Carrusel de testimonios debajo del mapa -->
                     <div class="mt-4 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="section-title text-center position-relative pb-2 mb-3 mx-auto" style="max-width: 600px;">
-                            <h6 class="mb-0 text-primary fw-bold">Atención a sus preguntas</h6>
+               <div class="section-title text-center position-relative ative pb-2 mb-3 mx-auto" style="max-width: 600px;">
+                  <h6 class="mb-0 text-primary fw-bold">Atención a sus preguntas</h6>
+               </div>
+               <div class="owl-carousel testimonial-carousel sync-carousel sync2">
+                  <?php foreach ($contact_content as $index => $elem): ?>
+                  <div class="testimonial-item bg-light my-2" data-iframe="<?= esc($elem->slug) ?>">
+                     <div class="d-flex align-items-center border-bottom pt-4 pb-4 px-6">
+                        <img class="img-fluid rounded" src="img/testimonial-1.jpg" style="width: 50px; height: 50px;">
+                        <div class="ps-3">
+                           <h6 class="text-primary mb-1"> <?= esc($elem->tags) ?> </h6>
                         </div>
-                        <div class="owl-carousel testimonial-carousel">
-                            <?php foreach ($contact_content as $index => $elem): ?>
-                            <div class="testimonial-item bg-light my-2">
-                                <div class="d-flex align-items-center border-bottom pt-4 pb-4 px-6">
-                                    <img class="img-fluid rounded" src="img/testimonial-1.jpg" style="width: 50px; height: 50px;">
-                                    <div class="ps-3">
-                                        <h6 class="text-primary mb-1"> <?= esc($elem->title) ?> </h6>
-                                    </div>
-                                </div>
-                                <div class="pt-4 pb-4 px-4 small">
-                                    <small class="text-uppercase"><?= esc($elem->content) ?></small>
-                                </div>
-                            </div>
-                            <?php endforeach; ?>
-                        </div>
-                    </div>
+                     </div>
+                     <div class="text-center " style="max-width: 600px;">
+                  <h6 class="mb-0 text-primary fw-bold"><?= esc($elem->title) ?></h6>
+               </div>
+                     <div class="pt-4 pb-4 px-4 small">
+                        <small class="text-uppercase"><?= esc($elem->content) ?></small>
+                     </div>
+                  </div>
+                  <?php endforeach; ?>
+               </div>
+            </div>
                 </div>   
             </div>                            
         </div>
     </div>
-
-    <!-- Contact End -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <!-- Contact End --><script>
+   $(document).ready(function () {
+       let sync2 = $(".sync2");
+       let mapFrame = document.getElementById("mapFrame");
+   
+       // Inicializar carrusel de testimonios
+       sync2.owlCarousel({
+           items: 1,
+           dots: false,
+           nav: false,
+           smartSpeed: 1000,
+           loop: true,
+           responsiveRefreshRate: 100
+       }).on('changed.owl.carousel', function (el) {
+           let index = el.item.index;
+           let iframeUrl = sync2.find(".owl-item").eq(index).find(".testimonial-item").data("iframe");
+           if (iframeUrl) {
+               mapFrame.src = iframeUrl;
+           }
+       });
+   });
+</script>
