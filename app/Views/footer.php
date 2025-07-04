@@ -1,8 +1,4 @@
 
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-papAaF+G8DAkBnNGt0GuA1pRrGgxz3FbKi4CmLo3zUy6zLVb60vJfdHDKqU9MByxqwdzkMgEUX7GHdpAKC4zXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
     
     <?php
 $item=$footer_content[0];
@@ -63,6 +59,11 @@ $privacy=$privacy_content[0];
     </div>
   </div>
 </div>
+<a href="#" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+    <a href="https://www.whatsapp.com/" target="_blank" class="text-decoration-none content-w" aria-label="Ir al sitio oficial de WhatsApp">
+    <i class="fab fa-whatsapp fa-2x" style="color: #25D366;"></i>
+</a>
 <script>
 
 function modal_pr(id)  
@@ -91,24 +92,19 @@ function modal_pr(id)
     });
 }
 </script>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 
 
     <!-- Footer End -->
 
 
     <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top"><i class="bi bi-arrow-up"></i></a>
-
-    <a href="https://www.whatsapp.com/" target="_blank" class="text-decoration-none content-w" aria-label="Ir al sitio oficial de WhatsApp">
-    <i class="fab fa-whatsapp fa-2x" style="color:rgb(255, 255, 255);"></i>
-</a>
+    
 
    
 
     <!-- JavaScript Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    
     <script src="<?= base_url('template/lib/wow/wow.min.js')?>"></script>
     <script src="<?= base_url('template/lib/easing/easing.min.js')?>"></script>
     <script src="<?= base_url('template/lib/waypoints/waypoints.min.js')?>"></script>
