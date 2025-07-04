@@ -141,7 +141,10 @@ class Home extends BaseController
 	public function content_calibration(){
 		$model = new ContenidoModel();
 		$id = $this->request->getPost('id');
-		$query = "SELECT content from page_content where id=". $id;
+		
+    $id = intval($id); // Forzar entero para seguridad
+
+    $query = "SELECT content FROM page_content WHERE id = $id";
 		
 		$res = $model->consultar($query, true);	
 

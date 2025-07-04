@@ -1,4 +1,6 @@
-
+<?php
+$footer_content=$footer_content[1];
+?>
 <!-- Contact Start -->
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
@@ -63,16 +65,16 @@
                   <?php foreach ($contact_content as $index => $elem): ?>
                   <div class="testimonial-item bg-light my-2" data-iframe="<?= esc($elem->slug) ?>">
                      <div class="d-flex align-items-center border-bottom pt-4 pb-4 px-6">
-                        <img class="img-fluid rounded" src="img/testimonial-1.jpg" style="width: 50px; height: 50px;">
+                        <img src=<?= 'data:image/bmp;base64,' . base64_encode($footer_content->img); ?> alt="<?= esc($footer_content->img) ?>" class="img-fluid me-4" style="width: 50px; height: 50px;">
                         <div class="ps-3">
-                           <h6 class="text-primary mb-1"> <?= esc($elem->tags) ?> </h6>
+                           <h6 class="text-primary mb-1"> <?= esc($elem->title) ?> </h6>
                         </div>
                      </div>
-                     <div class="text-center " style="max-width: 600px;">
-                  <h6 class="mb-0 text-primary fw-bold"><?= esc($elem->title) ?></h6>
-               </div>
                      <div class="pt-4 pb-4 px-4 small">
                         <small class="text-uppercase"><?= esc($elem->content) ?></small>
+                     </div>
+                     <div class="pt-4 pb-4 px-4 small">
+                        <small class="text-uppercase"><?= esc($elem->tags) ?></small>
                      </div>
                   </div>
                   <?php endforeach; ?>

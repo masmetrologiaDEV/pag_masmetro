@@ -58,7 +58,7 @@ function modal(id)
         url:URL,
         data:{id:id},
         success: function(result){
-           
+           console.log("Respuesta:", result); 
             if (result) {
                
                 var rs=JSON.parse(result);
