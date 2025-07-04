@@ -154,7 +154,6 @@ class Home extends BaseController
 		$model = new ContenidoModel();
 		$id = $this->request->getPost('id');
 		$query = "SELECT content from page_content where id=". $id;
-		
 		$res = $model->consultar($query, true);	
 
 		if ($res) {

@@ -72,7 +72,7 @@ $item=$contenido[0];
                <source src="<?= base_url('template/videos/MAS Cobertura H.mov') ?>" type="video/mp4">
             </video>
             <!-- Carrusel encima del video -->
-            <div id="header-carousel" class="carousel slide h-100" data-bs-ride="carousel">
+         <div id="header-carousel" class="carousel slide h-100" data-bs-ride="carousel">
                    <div class="carousel-inner h-100 d-flex align-items-center justify-content-start" style="padding-left: 200px;">
                   <?php foreach ($header_content as $index => $elem): ?>
                      <div class="carousel-item <?= $index === 0 ? 'active' : '' ?>">

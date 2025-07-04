@@ -23,8 +23,8 @@ $footer_content=$footer_content[0];
                         </div>
                         
                         <h4 class="mb-3"><?= esc($elem->title) ?></h4>
-                        <a class="btn" onclick='modal(<?=$elem->id?>)' >
-                             <img src=<?= 'data:image/bmp;base64,' . base64_encode($footer_content->img); ?> alt="<?= esc($footer_content->img) ?>" class="img-fluid me-4" style="width: 200px; height: auto;">
+                        <a class="btn btn-lg btn-primary rounded" onclick='modal(<?=$elem->id?>)'>
+                            <i class="bi bi-arrow-right"></i>
                         </a>
                     </div>
                 </div>
@@ -52,28 +52,30 @@ $footer_content=$footer_content[0];
 <script>
     const base_url = "<?= base_url() ?>";
 function modal(id)  
-{     
+{     alert(1);
     var URL=base_url+"/home/content_inspection";
- 
+ alert(2);
     $.ajax({
         type:'post',
         url:URL,
         data:{id:id},
         success: function(result){
-           
+            alert(3);
             if (result) {
-               
+               alert(5);
                 var rs=JSON.parse(result);
              
                 $('#contenido').html(rs.content);
                 $('#inspeccion').modal('show');
-                
+              alert(6); 
             }
+                 alert(7); 
         }
+             alert(8); 
 
 
     });
-
+ alert(9); 
 
 }
 </script>
