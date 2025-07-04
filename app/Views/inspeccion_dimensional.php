@@ -23,8 +23,8 @@ $footer_content=$footer_content[0];
                         </div>
                         
                         <h4 class="mb-3"><?= esc($elem->title) ?></h4>
-                        <a class="btn btn-lg btn-primary rounded" onclick='modal(<?=$elem->id?>)'>
-                            <i class="bi bi-arrow-right"></i>
+                        <a class="btn" onclick='modal(<?=$elem->id?>)'>
+                             <img src=<?= 'data:image/bmp;base64,' . base64_encode($footer_content->img); ?> alt="<?= esc($footer_content->img) ?>" class="img-fluid me-4" style="width: 200px; height: auto;">
                         </a>
                     </div>
                 </div>
