@@ -1,6 +1,5 @@
 <?php
 $service = $services[0];
-$footer_content = $footer_content[0];
 ?>
 
 <!-- Service Start -->
@@ -27,7 +26,7 @@ $footer_content = $footer_content[0];
                         <a class="btn btn-ver-mas mt-3 d-inline-flex align-items-center justify-content-center" 
                            href="<?= esc($elem->slug) ?>" 
                            style="width: 45px; height: 45px; border-radius: 6px;">
-                            <img src="<?= 'data:image/bmp;base64,' . base64_encode($footer_content->img); ?>" 
+                            <img src="<?= 'data:image/bmp;base64,' . base64_encode($elem->icon); ?>" 
                                  alt="Ver más" 
                                  style="width: 40px; height: AUTO;">
                         </a>

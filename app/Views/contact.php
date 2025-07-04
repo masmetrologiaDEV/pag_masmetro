@@ -47,7 +47,26 @@ $footer_content=$footer_content[1];
                                 </a>
                             </div>
                         </div>
+                        <div class="mt-4 text-center">
+                            <h6 class="text-primary fw-bold mb-3">Síguenos en nuestras redes</h6>
+                            <div class="d-flex justify-content-center gap-4">
+                                <a href="https://facebook.com/" target="_blank" class="text-decoration-none">
+                                    <i class="fab fa-facebook fa-2x" style="color: #1877F2;"></i>
+                                </a>
+                                <a href="https://twitter.com/" target="_blank" class="text-decoration-none">
+                                    <i class="fab fa-x-twitter  fa-2x" style="color:rgb(0, 0, 0);"></i>
+                                </a>
+                                <a href="https://instagram.com/" target="_blank" class="text-decoration-none">
+                                    <i class="fab fa-instagram fa-2x" style="color: #E1306C;"></i>
+                                </a>
+                                <a href="https://youtube.com/" target="_blank" class="text-decoration-none">
+                                    <i class="fab fa-youtube fa-2x" style="color: #FF0000;"></i>
+                                </a>
+                            </div>
+                        </div>
+
                 </div>
+                
 
                 <div class="col-lg-6 wow slideInUp" data-wow-delay="0.6s">
                     

@@ -2,9 +2,7 @@
 <?php
 $inspection=$inspection[0];
 ?>
-<?php
-$footer_content=$footer_content[0];
-?>
+
 <!-- Service Start -->
 
 
@@ -17,18 +15,23 @@ $footer_content=$footer_content[0];
 
                 <?php foreach ($inspection_content as $index => $elem): ?>
                 <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
-                    <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-                        <div class="">
-                            <img src=<?= 'data:image/bmp;base64,' . base64_encode($elem->img); ?> alt="<?= esc($elem->title) ?>" class="img-fluid me-4" style="width: 200px; height: auto;">
+                    <div class="service-item bg-white rounded shadow-sm p-4 text-center h-100 d-flex flex-column justify-content-between position-relative">
+                        <img src="<?= 'data:image/bmp;base64,' . base64_encode($elem->img); ?>" 
+                             alt="<?= esc($elem->title) ?>" 
+                             class="img-fluid mx-auto mb-3" 
+                             style="max-width: 150px; height: auto;">
+
+                        <div>
+                            <h5 class="fw-bold text-dark mb-2"><?= esc($elem->title) ?></h5>
                         </div>
-                        
-                        <h4 class="mb-3"><?= esc($elem->title) ?></h4>
-                        <a class="btn btn-lg btn-primary rounded" onclick='modal(<?=$elem->id?>)'>
-                            <i class="bi bi-arrow-right"></i>
+
+                         <a class="btn" onclick='modal(<?=$elem->id?>)'>
+                             <img src=<?= 'data:image/bmp;base64,' . base64_encode($elem->icon); ?> alt="<?= esc($elem->icon) ?>" class="img-fluid me-4" style="width: 200px; height: auto;">
                         </a>
                     </div>
                 </div>
-                <?php endforeach; ?>
+            <?php endforeach; ?>
+                
                 
                 
                 
@@ -52,30 +55,26 @@ $footer_content=$footer_content[0];
 <script>
     const base_url = "<?= base_url() ?>";
 function modal(id)  
-{     alert(1);
+{  
     var URL=base_url+"/home/content_inspection";
- alert(2);
     $.ajax({
         type:'post',
         url:URL,
         data:{id:id},
         success: function(result){
-            alert(3);
             if (result) {
-               alert(5);
                 var rs=JSON.parse(result);
              
                 $('#contenido').html(rs.content);
                 $('#inspeccion').modal('show');
-              alert(6); 
+              
             }
-                 alert(7); 
         }
-             alert(8); 
+            
 
 
     });
- alert(9); 
+ 
 
 }
 </script>

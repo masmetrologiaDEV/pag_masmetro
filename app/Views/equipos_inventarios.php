@@ -1,9 +1,6 @@
 <?php
 $inventory=$inventory[0];
 ?>
-<?php
-$footer_content=$footer_content[0];
-?>
 
 <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
@@ -12,20 +9,24 @@ $footer_content=$footer_content[0];
                 </div>
                 <div class="row g-5">
 
-                <?php foreach ($inventory_content as $index => $elem): ?>
+               <?php foreach ($inventory_content as $index => $elem): ?>
                 <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
-                    <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-                        <div class="">
-                            <img src=<?= 'data:image/bmp;base64,' . base64_encode($elem->img); ?> alt="<?= esc($elem->title) ?>" class="img-fluid me-4" style="width: 200px; height: auto;">
+                    <div class="service-item bg-white rounded shadow-sm p-4 text-center h-100 d-flex flex-column justify-content-between position-relative">
+                        <img src="<?= 'data:image/bmp;base64,' . base64_encode($elem->img); ?>" 
+                             alt="<?= esc($elem->title) ?>" 
+                             class="img-fluid mx-auto mb-3" 
+                             style="max-width: 150px; height: auto;">
+
+                        <div>
+                            <h5 class="fw-bold text-dark mb-2"><?= esc($elem->title) ?></h5>
                         </div>
-                        
-                        <h4 class="mb-3"><?= esc($elem->title) ?></h4>
-                       <a class="btn" onclick='modal(<?=$elem->id?>)'>
-                             <img src=<?= 'data:image/bmp;base64,' . base64_encode($footer_content->img); ?> alt="<?= esc($footer_content->img) ?>" class="img-fluid me-4" style="width: 200px; height: auto;">
+
+                         <a class="btn" onclick='modal(<?=$elem->id?>)'>
+                             <img src=<?= 'data:image/bmp;base64,' . base64_encode($elem->icon); ?> alt="<?= esc($elem->icon) ?>" class="img-fluid me-4" style="width: 200px; height: auto;">
                         </a>
                     </div>
                 </div>
-                <?php endforeach; ?>
+            <?php endforeach; ?>
                 
                 
                 
