@@ -102,7 +102,7 @@ function modal_pr(id)
     <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top"><i class="bi bi-arrow-up"></i></a>
 
     <a href="https://www.whatsapp.com/" target="_blank" class="text-decoration-none content-w" aria-label="Ir al sitio oficial de WhatsApp">
-    <i class="fab fa-whatsapp fa-2x" style="color: #25D366;"></i>
+    <i class="fab fa-whatsapp fa-2x" style="color:rgb(255, 255, 255);"></i>
 </a>
 
    

@@ -72,17 +72,20 @@ $item=$contenido[0];
                <source src="<?= base_url('template/videos/MAS Cobertura H.mov') ?>" type="video/mp4">
             </video>
             <!-- Carrusel encima del video -->
-         <div id="header-carousel" class="carousel slide h-100" data-bs-ride="carousel">
+            <div id="header-carousel" class="carousel slide h-100" data-bs-ride="carousel">
                    <div class="carousel-inner h-100 d-flex align-items-center justify-content-start" style="padding-left: 200px;">
                   <?php foreach ($header_content as $index => $elem): ?>
                      <div class="carousel-item <?= $index === 0 ? 'active' : '' ?>">
-                           <div class="rounded p-4 d-flex align-items-center shadow" style="max-width: 500px; background-color: rgba(255,255,255,0.2);">
-                              <img src=<?= 'data:image/bmp;base64,' . base64_encode($elem->img); ?> alt="<?= esc($elem->title) ?>" class="img-fluid me-4" style="width: 200px; height: auto;">
-                              <div>
-                                 <h3 class="fw-bold text-light"><?= esc($elem->title) ?></h3>
-                                 <p class="mb-0 text-white"><?= esc($elem->content) ?></p>
-                              </div>
-                           </div>
+                           <div class="rounded p-4 shadow d-flex flex-column align-items-center text-center" style="max-width: 300px; background-color: rgba(255,255,255,0.2);">
+    <img src="<?= 'data:image/bmp;base64,' . base64_encode($elem->img); ?>" 
+         alt="<?= esc($elem->title) ?>" 
+         class="img-fluid mb-3" 
+         style="width: 100%; max-height: 200px; object-fit: contain;">
+    
+    <h4 class="fw-bold text-light"><?= esc($elem->title) ?></h4>
+    <p class="mb-0 text-white small"><?= esc($elem->content) ?></p>
+</div>
+
                      </div>
                   <?php endforeach; ?>
             </div>

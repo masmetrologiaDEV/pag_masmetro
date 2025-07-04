@@ -79,9 +79,10 @@ h6,
 
 .content-w {
     position: fixed;
+    background-color: #25D366;
     left: 25px;
-    bottom: 25px;
-    z-index: 9999;
+    bottom: 40px;
+    z-index: 9;
     padding: 12px;
     border-radius: 50%;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
@@ -96,6 +97,7 @@ h6,
     font-weight: 600;
     transition: .5s;
 }
+
 
 .btn-primary,
 .btn-secondary {
@@ -360,6 +362,11 @@ h6,
     bottom: -24px;
     opacity: 1;
 }
+.btn:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
 
 
 /*** Testimonial ***/
