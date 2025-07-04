@@ -24,8 +24,8 @@ $inspection=$inspection[0];
                         <div>
                             <h5 class="fw-bold text-dark mb-2"><?= esc($elem->title) ?></h5>
                         </div>
-
-                         <a class="btn" onclick='modal(<?=$elem->id?>)'>
+                        
+                        <a class="btn" onclick='modal(<?=$elem->id?>)'>
                              <img src=<?= 'data:image/bmp;base64,' . base64_encode($elem->icon); ?> alt="<?= esc($elem->icon) ?>" class="img-fluid me-4" style="width: 200px; height: auto;">
                         </a>
                     </div>
