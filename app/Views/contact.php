@@ -1,6 +1,9 @@
 <?php
 $footer_content=$footer_content[1];
 ?>
+<?php
+$contact=$contact[0];
+?>
 <!-- Contact Start -->
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
@@ -48,21 +51,7 @@ $footer_content=$footer_content[1];
                             </div>
                         </div>
                         <div class="mt-4 text-center">
-                            <h6 class="text-primary fw-bold mb-3">Síguenos en nuestras redes</h6>
-                            <div class="d-flex justify-content-center gap-4">
-                                <a href="https://facebook.com/" target="_blank" class="text-decoration-none">
-                                    <i class="fab fa-facebook fa-2x" style="color: #1877F2;"></i>
-                                </a>
-                                <a href="https://twitter.com/" target="_blank" class="text-decoration-none">
-                                    <i class="fab fa-x-twitter  fa-2x" style="color:rgb(0, 0, 0);"></i>
-                                </a>
-                                <a href="https://instagram.com/" target="_blank" class="text-decoration-none">
-                                    <i class="fab fa-instagram fa-2x" style="color: #E1306C;"></i>
-                                </a>
-                                <a href="https://youtube.com/" target="_blank" class="text-decoration-none">
-                                    <i class="fab fa-youtube fa-2x" style="color: #FF0000;"></i>
-                                </a>
-                            </div>
+                        <img src=<?= 'data:image/bmp;base64,' . base64_encode($contact->img); ?> alt="<?= esc($contact->img) ?>" class="img-fluid me-4" style="width: 400px; height: 100px;">
                         </div>
 
                 </div>
@@ -76,14 +65,14 @@ $footer_content=$footer_content[1];
             </iframe>
 
                     <!-- Carrusel de testimonios debajo del mapa -->
-                    <div class="mt-4 wow fadeInUp" data-wow-delay="0.3s">
+            <div class="mt-4 wow fadeInUp" data-wow-delay="0.3s">
                <div class="section-title text-center position-relative ative pb-2 mb-3 mx-auto" style="max-width: 600px;">
                   <h6 class="mb-0 text-primary fw-bold">Atención a sus preguntas</h6>
                </div>
                <div class="owl-carousel testimonial-carousel sync-carousel sync2">
                   <?php foreach ($contact_content as $index => $elem): ?>
                   <div class="testimonial-item bg-light my-2" data-iframe="<?= esc($elem->slug) ?>">
-                     <div class="d-flex align-items-center border-bottom pt-4 pb-4 px-6">
+                     <div class="d-flex align-items-center border-bottom pt-4 pb-2 px-6">
                         <img src=<?= 'data:image/bmp;base64,' . base64_encode($footer_content->img); ?> alt="<?= esc($footer_content->img) ?>" class="img-fluid me-4" style="width: 50px; height: 50px;">
                         <div class="ps-3">
                            <h6 class="text-primary mb-1"> <?= esc($elem->title) ?> </h6>
