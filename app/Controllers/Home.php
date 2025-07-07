@@ -220,11 +220,13 @@ class Home extends BaseController
 
 	public function correo_contacto()
 {
+	
     helper(['form', 'url']);
 
     $datos = [
         'name' => $this->request->getPost('name'),
         'email' => $this->request->getPost('email'),
+		'phone' => $this->request->getPost('phone'),
         'subject' => $this->request->getPost('subject'),
         'message' => $this->request->getPost('message')
     ];

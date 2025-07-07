@@ -90,6 +90,17 @@ h6,
     align-items: center;
     justify-content: center;
 }
+/* CONTACTO - NUMERO DE TELEFONO*/
+/* Asegura que el input tenga suficiente padding a la izquierda */
+.iti input.telefono-input {
+  padding-left: 80px !important; /* puedes ajustar el valor si aún se solapa */
+}
+
+/* Opcional: ajusta el ancho del contenedor del prefijo si se ve raro */
+.iti {
+  width: 100%;
+}
+
 
 /*** Button ***/
 .btn {

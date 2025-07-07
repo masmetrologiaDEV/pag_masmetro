@@ -21,6 +21,9 @@ $contact=$contact[0];
                             <div class="col-md-6">
                                 <input type="email" name="email" class="form-control border-0 bg-light px-4" placeholder="<?= lang('Validation.email') ?>" style="height: 55px;">
                             </div>
+                            <div class="col-md-12">
+                                <input id="telefono" type="tel" name="phone" class="form-control border-0 bg-light px-4 telefono-input" placeholder="<?= lang('Validation.phone') ?>" style="height: 55px;">
+                            </div>
                             <div class="col-12">
                                 <input type="text" name="subject" class="form-control border-0 bg-light px-4" placeholder="<?= lang('Validation.subject') ?>" style="height: 55px;">
                             </div>
@@ -36,16 +39,16 @@ $contact=$contact[0];
                         <div class="mt-4 text-center">
                             <h6 class="text-primary fw-bold mb-3">Síguenos en nuestras redes</h6>
                             <div class="d-flex justify-content-center gap-4">
-                                <a href="https://facebook.com/" target="_blank" class="text-decoration-none">
+                                <a href="https://www.facebook.com/masmetrologia" target="_blank" class="text-decoration-none">
                                     <i class="fab fa-facebook fa-2x" style="color: #1877F2;"></i>
                                 </a>
-                                <a href="https://twitter.com/" target="_blank" class="text-decoration-none">
+                                <a href="https://x.com/Masmetrologia" target="_blank" class="text-decoration-none">
                                     <i class="fab fa-x-twitter  fa-2x" style="color:rgb(0, 0, 0);"></i>
                                 </a>
-                                <a href="https://instagram.com/" target="_blank" class="text-decoration-none">
+                                <a href="https://www.instagram.com/masmetrologia/" target="_blank" class="text-decoration-none">
                                     <i class="fab fa-instagram fa-2x" style="color: #E1306C;"></i>
                                 </a>
-                                <a href="https://youtube.com/" target="_blank" class="text-decoration-none">
+                                <a href="https://www.youtube.com/@masmetrologia" target="_blank" class="text-decoration-none">
                                     <i class="fab fa-youtube fa-2x" style="color: #FF0000;"></i>
                                 </a>
                             </div>
@@ -116,3 +119,23 @@ $contact=$contact[0];
        });
    });
 </script>
+
+
+
+<!-- NUMERO DE TELEFONO - FORMULARIO -->
+<!-- CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.min.css"/>
+
+<!-- JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"></script>
+
+<script>
+  const input = document.querySelector("#telefono");
+  const iti = window.intlTelInput(input, {
+    initialCountry: "mx", // México por defecto
+    separateDialCode: false, // Muestra la lada separada
+    preferredCountries: ["mx", "us", "es"] // Opcional: países favoritos
+  });
+</script>
+
