@@ -77,14 +77,15 @@ $item=$contenido[0];
                   <?php foreach ($header_content as $index => $elem): ?>
                      <div class="carousel-item <?= $index === 0 ? 'active' : '' ?>">
                            <div class="rounded p-4 shadow d-flex flex-column align-items-center text-center" style="max-width: 300px; background-color: rgba(255,255,255,0.2);">
-    <img src="<?= 'data:image/bmp;base64,' . base64_encode($elem->img); ?>" 
-         alt="<?= esc($elem->title) ?>" 
-         class="img-fluid mb-3" 
-         style="width: 100%; max-height: 200px; object-fit: contain;">
-    
-    <h4 class="fw-bold text-light"><?= esc($elem->title) ?></h4>
-    <p class="mb-0 text-white small"><?= esc($elem->content) ?></p>
-</div>
+                              <img src="<?= 'data:image/bmp;base64,' . base64_encode($elem->img); ?>" 
+                                 alt="<?= esc($elem->title) ?>" 
+                                 class="img-fluid mb-3" 
+                                 style="width: 100%; max-height: 200px; object-fit: contain;">
+                              <a href="<?=base_url('home/'.$elem->slug)?>" target="" rel="noopener">
+                              <h4 class="fw-bold text-light"><?= esc($elem->title) ?></h4>
+                              </a>
+                              <p class="mb-0 text-white small"><?= esc($elem->content) ?></p>
+                           </div>
 
                      </div>
                   <?php endforeach; ?>
