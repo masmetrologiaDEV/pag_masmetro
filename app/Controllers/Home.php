@@ -138,6 +138,41 @@ class Home extends BaseController
 		return view('header', $data) . view('contact', $data).view('footer');
 
 	}
+	public function blog()
+	{ 
+		$idioma = 'es'; // o detecta desde URL, sesión, etc.
+        $model = new ContenidoModel();
+
+        $data['contenido'] = $model->getContenidoPublicado($idioma, 'header');
+        $data['header_content'] = $model->getContenidoPublicado($idioma, 'services_content');
+ 		$data['blog_content'] = $model->getContenidoPublicado($idioma, 'blog_content');
+		$data['footer_content'] = $model->getContenidoPublicado($idioma, 'footer_content');
+		$data['footer_logo'] = $model->getContenidoPublicado($idioma, 'footer_logo');
+		$data['privacy_content'] = $model->getContenidoPublicado($idioma, 'privacy_content');
+
+
+		return view('header', $data) . view('blog', $data).view('footer');
+	}
+
+	public function blog_details($id)
+	{ 
+		$idioma = 'es'; // o detecta desde URL, sesión, etc.
+        $model = new ContenidoModel();
+
+        $data['contenido'] = $model->getContenidoPublicado($idioma, 'header');
+        $data['header_content'] = $model->getContenidoPublicado($idioma, 'services_content');
+
+		$data['footer_content'] = $model->getContenidoPublicado($idioma, 'footer_content');
+		$data['footer_logo'] = $model->getContenidoPublicado($idioma, 'footer_logo');
+		$data['privacy_content'] = $model->getContenidoPublicado($idioma, 'privacy_content');
+		
+	$data['blog_details'] = $model->consultar("SELECT * FROM page_content WHERE id = $id", true);	
+
+		return view('header', $data) . view('blog_details', $data).view('footer');
+	}
+
+
+	
 	public function content_calibration(){
 		$model = new ContenidoModel();
 		$id = $this->request->getPost('id');
