@@ -59,6 +59,8 @@ $item=$contenido[0];
                      </div>
                   </div>
                   <a href="<?= base_url('home/acreditacion/') ?>" class="nav-item nav-link <?= uri_string() == 'home/acreditacion' ? 'active' : '' ?>">Acreditación</a>
+                  <a href="<?= base_url('home/blog/') ?>" class="nav-item nav-link <?= uri_string() == 'home/blog' ? 'active' : '' ?>">Blog</a>
+                  <a href="<?= base_url('home/blog_details/') ?>" class="nav-item nav-link <?= uri_string() == 'home/blog_details' ? 'active' : '' ?>">Blog Detalles</a>
                   <a href="<?= base_url('home/about/') ?>" class="nav-item nav-link <?= uri_string() == 'home/about' ? 'active' : '' ?>">Nosotros</a>
                   <a href="<?= base_url('home/contact/') ?>" class="nav-item nav-link <?= uri_string() == 'home/contact' ? 'active' : '' ?>">Contacto</a>
 
