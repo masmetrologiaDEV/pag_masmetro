@@ -171,6 +171,23 @@ class Home extends BaseController
 		return view('header', $data) . view('blog_details', $data).view('footer');
 	}
 
+	
+   public function buscar()
+{
+    $keyword = $this->request->getGet('q');
+    $model = new \App\Models\ContenidoModel();
+    $resultados = [];
+
+    if ($keyword) {
+        $resultados = $model->buscarPorPalabraClave($keyword);
+    }
+
+    return view('buscar_resultados', [  // 👈 este nombre debe coincidir con tu archivo
+        'resultados' => $resultados,
+        'keyword' => $keyword
+    ]);
+}
+
 
 	
 	public function content_calibration(){

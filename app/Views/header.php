@@ -66,6 +66,17 @@ $item=$contenido[0];
 
                   
                </div>
+               <form class="d-flex ms-3 align-items-center" role="search" action="<?= base_url('buscar') ?>" method="get">
+                  <input class="form-control form-control-sm me-2 bg-dark text-white border-light" 
+                        type="search" 
+                        name="q" 
+                        placeholder="Buscar..." 
+                        aria-label="Buscar">
+                  <button class="btn btn-sm btn-outline-light" type="submit">
+                     <i class="fa fa-search"></i>
+                  </button>
+               </form>
+
             </div>
          </nav>
          <div class="position-relative" style="height: 80vh; overflow: hidden;">

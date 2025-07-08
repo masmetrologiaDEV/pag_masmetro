@@ -49,3 +49,6 @@ if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php'))
 {
 	require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
 }
+
+/* BUSCADOR */
+$routes->get('buscar', 'Home::buscar');
