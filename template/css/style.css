@@ -627,19 +627,3 @@ h6,
     .aviso-contenido li {
       margin-bottom: 0.5rem;
     }
- .bg-purple {
-    background-color: #8e44ad;
-  }
-  .text-purple {
-    color: #8e44ad;
-  }
-  .btn-purple {
-    background-color: #8e44ad;
-    color: white;
-    transition: all 0.3s ease;
-  }
-  .btn-purple:hover {
-    background-color: #732d91;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-  }

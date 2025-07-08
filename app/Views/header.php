@@ -69,7 +69,7 @@ $item=$contenido[0];
          <div class="position-relative" style="height: 80vh; overflow: hidden;">
             <!-- Video de fondo -->
             <video autoplay muted loop playsinline class="position-absolute top-50 start-50 translate-middle object-fit-contain z-n1">
-               <source src="<?= base_url('template/videos/MAS Cobertura H.mov') ?>" type="video/mp4">
+               <source src="<?= base_url('template/videos/'.$video_header) ?>" type="video/mp4">
             </video>
             <!-- Carrusel encima del video -->
             <div id="header-carousel" class="carousel slide h-100" data-bs-ride="carousel">

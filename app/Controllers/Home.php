@@ -20,7 +20,7 @@ class Home extends BaseController
 		$data['footer_content'] = $model->getContenidoPublicado($idioma, 'footer_content');
 		$data['footer_logo'] = $model->getContenidoPublicado($idioma, 'footer_logo');
 		$data['privacy_content'] = $model->getContenidoPublicado($idioma, 'privacy_content');
-
+		$data['video_header'] = 'MAS Cobertura H.mov';
 
 		return view('header', $data) . view('inicio', $data).view('footer');
 	}
@@ -51,6 +51,7 @@ class Home extends BaseController
 		$data['footer_content'] = $model->getContenidoPublicado($idioma, 'footer_content');
 		$data['footer_logo'] = $model->getContenidoPublicado($idioma, 'footer_logo');
 		$data['privacy_content'] = $model->getContenidoPublicado($idioma, 'privacy_content');
+		$data['video_header'] = 'MAS Precisión.mov';
 
 		return view('header', $data) . view('lab_calibracion', $data).view('footer');
 

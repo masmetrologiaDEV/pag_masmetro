@@ -9,7 +9,6 @@ class Admin extends BaseController
 	
 	public function index()
 	{ 
-		//echo site_url('home/services');die();
 		$idioma = 'es'; // o detecta desde URL, sesión, etc.
         $model = new ContenidoModel();
 
@@ -20,7 +19,11 @@ class Admin extends BaseController
 		$data['footer_logo'] = $model->getContenidoPublicado($idioma, 'footer_logo');
 		$data['privacy_content'] = $model->getContenidoPublicado($idioma, 'privacy_content');
 
-
 		return view('header', $data) . view('login').view('footer');
+	}
+	public function autenticar(){
+		 $login = new AdminModel();
+
+
 	}
 }
