@@ -72,7 +72,7 @@ $item=$contenido[0];
                         name="q" 
                         placeholder="Buscar..." 
                         aria-label="Buscar">
-                  <button class="btn btn-sm btn-outline-light" type="submit">
+                  <button class="btn btn-sm btn-outline-light bg-dark" type="submit">
                      <i class="fa fa-search"></i>
                   </button>
                </form>
