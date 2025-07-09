@@ -20,10 +20,10 @@ $info=$acreditacion_info[0];
             <div class="d-flex align-items-center border-bottom pt-5 pb-4 px-5" style="min-height: 100px;">
                 
                 <!-- CONTENEDOR DEL LOGO CON ANCHO FIJO -->
-                <div style="flex: 0 0 80px; max-width: 80px;">
+                <div style="flex: 0 0 100px; max-width: 120px;">
                     <img src="<?= 'data:image/bmp;base64,' . base64_encode($info->img); ?>"
                          alt="<?= esc($info->title) ?>"
-                         class="img-fluid" style="width: 60px; height: 60px; object-fit: contain;">
+                         class="img-fluid" style="width: 100px; height: 120px; object-fit: contain;">
                 </div>
                 
                 <!-- CONTENEDOR DEL TEXTO -->
