@@ -2,6 +2,8 @@
 use App\Models\ContenidoModel; // <--- ESTA LÍNEA ES CLAVE
 $lang = \Config\Services::language();
 use App\Libraries\Correo;
+use App\Models\CommentModel;
+use App\Models\ReplyModel;
 
 
 class Home extends BaseController
@@ -61,13 +63,14 @@ class Home extends BaseController
 		$model = new ContenidoModel();
 		$idioma = 'es'; // o detecta desde URL, sesión, etc.
 
-        $data['contenido'] = $model->getContenidoPublicado($idioma, 'header');
+		$data['contenido'] = $model->getContenidoPublicado($idioma, 'header');
         $data['header_content'] = $model->getContenidoPublicado($idioma, 'services_content');
 	 	$data['inspection'] = $model->getContenidoPublicado($idioma, 'inspection');
 		$data['inspection_content'] = $model->getContenidoPublicado($idioma, 'inspection_content');
 		$data['footer_content'] = $model->getContenidoPublicado($idioma, 'footer_content');
 		$data['footer_logo'] = $model->getContenidoPublicado($idioma, 'footer_logo');
 		$data['privacy_content'] = $model->getContenidoPublicado($idioma, 'privacy_content');
+		$data['video_header'] = 'MAS Clase Mundial H.mov';
 
 		return view('header', $data) . view('inspeccion_dimensional', $data).view('footer');
 
@@ -84,14 +87,31 @@ class Home extends BaseController
 		$data['footer_content'] = $model->getContenidoPublicado($idioma, 'footer_content');
 		$data['footer_logo'] = $model->getContenidoPublicado($idioma, 'footer_logo');
 		$data['privacy_content'] = $model->getContenidoPublicado($idioma, 'privacy_content');
+		$data['video_header'] = 'MAS Ciencia Aplicada H.mov';
 
 		return view('header', $data) . view('equipos_inventarios', $data).view('footer');
+
+	}
+	public function cross_section(){
+		$model = new ContenidoModel();
+		$idioma = 'es'; // o detecta desde URL, sesión, etc.
+
+		$data['contenido'] = $model->getContenidoPublicado($idioma, 'header');
+        $data['header_content'] = $model->getContenidoPublicado($idioma, 'services_content');
+		$data['cross'] = $model->getContenidoPublicado($idioma, 'cross');
+		
+		$data['cross_content'] = $model->getContenidoPublicado($idioma, 'cross_content');
+		$data['footer_content'] = $model->getContenidoPublicado($idioma, 'footer_content');
+		$data['footer_logo'] = $model->getContenidoPublicado($idioma, 'footer_logo');
+		$data['privacy_content'] = $model->getContenidoPublicado($idioma, 'privacy_content');
+		$data['video_header'] = 'MAS Ciencia Aplicada H.mov';
+
+		return view('header', $data) . view('cross_section', $data).view('footer');
 
 	}
 	public function acreditacion(){
 		$idioma = 'es'; // o detecta desde URL, sesión, etc.
         $model = new ContenidoModel();
-
 
         $data['contenido'] = $model->getContenidoPublicado($idioma, 'header');
         $data['header_content'] = $model->getContenidoPublicado($idioma, 'services_content');
@@ -101,6 +121,7 @@ class Home extends BaseController
 		$data['footer_content'] = $model->getContenidoPublicado($idioma, 'footer_content');
 		$data['footer_logo'] = $model->getContenidoPublicado($idioma, 'footer_logo');
 		$data['privacy_content'] = $model->getContenidoPublicado($idioma, 'privacy_content');
+		$data['video_header'] = 'MAS Trazabilidad H.mov';
 
 
 		return view('header', $data) . view('acreditacion').view('footer');
@@ -119,6 +140,7 @@ class Home extends BaseController
 		$data['footer_content'] = $model->getContenidoPublicado($idioma, 'footer_content');
 		$data['footer_logo'] = $model->getContenidoPublicado($idioma, 'footer_logo');
 		$data['privacy_content'] = $model->getContenidoPublicado($idioma, 'privacy_content');
+		$data['video_header'] = 'MAS Cobertura H.mov';
 
 		return view('header', $data) . view('about', $data).view('footer');
 
@@ -128,7 +150,6 @@ class Home extends BaseController
         $model = new ContenidoModel();
 		\Config\Services::language()->setLocale($idioma);
 
-
         $data['contenido'] = $model->getContenidoPublicado($idioma, 'header');
         $data['header_content'] = $model->getContenidoPublicado($idioma, 'services_content');
 		$data['contact'] = $model->getContenidoPublicado($idioma, 'contact');		
@@ -136,6 +157,7 @@ class Home extends BaseController
 		$data['footer_content'] = $model->getContenidoPublicado($idioma, 'footer_content');
 		$data['footer_logo'] = $model->getContenidoPublicado($idioma, 'footer_logo');
 		$data['privacy_content'] = $model->getContenidoPublicado($idioma, 'privacy_content');
+		$data['video_header'] = 'MAS Concepto 40 1080.mov';
 
 		return view('header', $data) . view('contact', $data).view('footer');
 
@@ -151,6 +173,7 @@ class Home extends BaseController
 		$data['footer_content'] = $model->getContenidoPublicado($idioma, 'footer_content');
 		$data['footer_logo'] = $model->getContenidoPublicado($idioma, 'footer_logo');
 		$data['privacy_content'] = $model->getContenidoPublicado($idioma, 'privacy_content');
+		$data['video_header'] = 'MAS Cobertura H.mov';
 
 
 		return view('header', $data) . view('blog', $data).view('footer');
@@ -160,6 +183,7 @@ class Home extends BaseController
 	{ 
 		$idioma = 'es'; // o detecta desde URL, sesión, etc.
         $model = new ContenidoModel();
+		\Config\Services::language()->setLocale($idioma);
 
         $data['contenido'] = $model->getContenidoPublicado($idioma, 'header');
         $data['header_content'] = $model->getContenidoPublicado($idioma, 'services_content');
@@ -167,11 +191,42 @@ class Home extends BaseController
 		$data['footer_content'] = $model->getContenidoPublicado($idioma, 'footer_content');
 		$data['footer_logo'] = $model->getContenidoPublicado($idioma, 'footer_logo');
 		$data['privacy_content'] = $model->getContenidoPublicado($idioma, 'privacy_content');
-		
+				$data['video_header'] = 'MAS Cobertura H.mov';
+
 	$data['blog_details'] = $model->consultar("SELECT * FROM page_content WHERE id = $id", true);	
 
 		return view('header', $data) . view('blog_details', $data).view('footer');
 	}
+
+	public function buscar()
+{
+    $keyword = $this->request->getGet('q');
+    $model = new \App\Models\ContenidoModel();
+
+    // Idioma y contenido general del sitio
+    $idioma = 'es';
+    $data['contenido'] = $model->getContenidoPublicado($idioma, 'header');
+    $data['header_content'] = $model->getContenidoPublicado($idioma, 'services_content');
+    $data['footer_content'] = $model->getContenidoPublicado($idioma, 'footer_content');
+    $data['footer_logo'] = $model->getContenidoPublicado($idioma, 'footer_logo');
+		$data['privacy_content'] = $model->getContenidoPublicado($idioma, 'privacy_content');
+    $data['video_header'] = 'MAS Cobertura H.mov';
+
+    // Resultados de búsqueda
+    $data['keyword'] = $keyword;
+    $data['resultados'] = [];
+
+    if ($keyword) {
+        $data['resultados'] = $model->buscarPorPalabraClave($keyword);
+		//echo var_dump($data['resultados']);die();
+    }
+
+    // Retorna toda la vista compuesta (header + contenido + footer)
+    return view('header', $data)
+         . view('buscar_resultados', $data)
+         . view('footer', $data);
+}
+
 
 
 	
@@ -213,6 +268,17 @@ class Home extends BaseController
 		}
 	}
 	public function content_privacy(){
+		$model = new ContenidoModel();
+		$id = $this->request->getPost('id');
+		$query = "SELECT content from page_content where id=". $id;
+		
+		$res = $model->consultar($query, true);	
+
+		if ($res) {
+			echo json_encode($res);
+		}
+	}
+	public function content_cross(){
 		$model = new ContenidoModel();
 		$id = $this->request->getPost('id');
 		$query = "SELECT content from page_content where id=". $id;

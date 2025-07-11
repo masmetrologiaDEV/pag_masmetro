@@ -8,6 +8,10 @@ class ContenidoModel extends Model
 {
     protected $db;
 
+    protected $table = 'page_content'; // 👈 Necesario para que funcione findAll(), like(), etc.
+    protected $primaryKey = 'id';       // Ajusta si tu clave primaria tiene otro nombre
+    protected $allowedFields = ['title', 'intro_text', 'content']; // o los campos que uses
+
     public function __construct()
     {
         parent::__construct();
@@ -85,6 +89,15 @@ public function consultar(string $query, bool $row = false, bool $array = true)
     } else {
         return false;
     }
+}
+
+
+public function buscarPorPalabraClave($palabraClave)
+{
+    return $this->like('title', $palabraClave)
+                ->orLike('intro_text', $palabraClave)
+                ->orLike('content', $palabraClave)
+                ->findAll();
 }
 
 

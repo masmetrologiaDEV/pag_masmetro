@@ -31,7 +31,7 @@ $contact=$contact[0];
                                 <textarea name="message" class="form-control border-0 bg-light px-4 py-3" rows="4" placeholder="<?= lang('Validation.message') ?>"></textarea>
                             </div>
                             <div class="col-12">
-                                <button class="btn btn-primary w-100 py-3" type="submit">Enviar mensaje</button>
+                                <button class="btn btn-primary w-100 py-3" type="submit" placeholder="<?= lang('Validation.submit') ?>" ></button>
                             </div>
                         </div> 
                     </form>
