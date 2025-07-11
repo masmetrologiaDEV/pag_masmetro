@@ -64,22 +64,29 @@ class ContenidoModel extends Model
 
 public function consultar(string $query, bool $row = false, bool $array = true)
 {
-   
     $res = $this->db->query($query);
 
-    if ($res->getResult() > 0) {
+    $resultados = $res->getResult();
+
+    if ($resultados && count($resultados) > 0) {
         if ($array) {
             if ($row) {
-                return $res->getRowArray(); // retorna un solo resultado como array
+                return $res->getRowArray();
             } else {
-                return $res->getResultArray(); // retorna todos los resultados como array
+                return $res->getResultArray();
             }
         } else {
-            return $res; // devuelve el objeto completo
+            if ($row) {
+                return $res->getRow();
+            } else {
+                return $res->getResult();
+            }
         }
     } else {
         return false;
     }
 }
+
+
 
 }

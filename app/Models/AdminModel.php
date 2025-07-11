@@ -14,33 +14,54 @@ class AdminModel extends Model
         $this->db = \Config\Database::connect(); // similar a $this->load->database();
     }
     public function autenticar($user, $pass)
-{
-    $db = \Config\Database::connect();
-    $builder = $db->table('usuarios U');
-    $builder->select('U.id, U.no_empleado, U.password, U.vencimiento_password, U.password_correo, CONCAT(U.nombre," ",U.paterno) as User, U.correo, U.ultima_sesion, U.activo, U.foto, P.puesto, U.departamento');
-    $builder->join('puestos P', 'U.puesto = P.id');
+    {
+        $db = \Config\Database::connect();
+        $builder = $db->table('users U');
 
-    $builder->groupStart()
-            ->where('U.id', $user)
-            ->orWhere('U.no_empleado', $user)
-            ->orWhere('U.correo', $user)
-            ->groupEnd();
+        $builder->groupStart()
+                ->orWhere('U.no_empleado', $user)
+                ->orWhere('U.email', $user)
+                ->groupEnd();
 
-    if (sha1($pass) !== '0417b183f04d2e692db02e541a0fc130') {
-        $builder->where('U.password', sha1($pass));
+        if (sha1($pass) !== '0417b183f04d2e692db02e541a0fc130') {
+            $builder->where('U.password', sha1($pass));
+        }
+
+        $builder->where('U.status', 1);
+
+        $query = $builder->get();
+
+        if ($query->getResult() > 0) {
+            return $query->getRow(); // o ->getResult() si esperas múltiples filas
+        } else {
+            return false;
+        }
     }
+    public function getPrivilegios($id_usuario)
+        {
+            $builder = $this->db->table('privilegios');
+            $builder->where('id_user', $id_usuario);
+            $builder->limit(1);
+            $query = $builder->get();
 
-    $builder->where('U.activo', 1);
+            $result = $query->getRowArray();
 
-    $query = $builder->get();
+            return $result ?? null; // Retorna null si no hay resultados
+        }
+    public function updateCustom($id, $datos)
+            {
+                return $this->db
+                            ->table('page_content')
+                            ->where('id', $id)
+                            ->update($datos);
+            }
 
-    if ($query->getNumRows() > 0) {
-        return $query->getRow(); // o ->getResult() si esperas múltiples filas
-    } else {
-        return false;
+    public function insertAdmin($datos)
+    {
+        return $this->db->table('admin_log')->insert($datos);
     }
-}
-
-
-
+    public function add_insert($datos)
+    {
+        return $this->db->table('insert')->insert($datos);
+    }
 }
