@@ -49,15 +49,17 @@ $item=$contenido[0];
 
                <div class="nav-item dropdown">
                <a href="<?= base_url('home/services') ?>" class="nav-link dropdown-toggle 
-               <?= in_array(uri_string(), ['home/services', 'home/lab_calibracion', 'home/inspeccion_dimensional', 'home/equipos_inventarios']) ? 'active' : '' ?>">Servicios
+               <?= in_array(uri_string(), ['home/services', 'home/lab_calibracion', 'home/inspeccion_dimensional', 'home/equipos_inventarios', 'home/cross_section']) ? 'active' : '' ?>">Servicios
                </a>
 
                <div class="dropdown-menu m-0">
                         <a href="<?= base_url('home/lab_calibracion/')?>" class="dropdown-item <?= uri_string() == 'home/lab_calibracion' ? 'active' : '' ?>">Laboratorio de Calibración</a>
                         <a href="<?= base_url('home/inspeccion_dimensional/')?>" class="dropdown-item <?= uri_string() == 'home/inspeccion_dimensional' ? 'active' : '' ?>">Inspección Dimensional</a>
                         <a href="<?= base_url('home/equipos_inventarios/')?>" class="dropdown-item <?= uri_string() == 'home/equipos_inventarios' ? 'active' : '' ?>">Equipos para Inventarios</a>
+                        <a href="<?= base_url('home/cross_section/')?>" class="dropdown-item <?= uri_string() == 'home/cross_section' ? 'active' : '' ?>">Cross Section</a>
+
                      </div>
-                  </div>
+               </div>
                   <a href="<?= base_url('home/acreditacion/') ?>" class="nav-item nav-link <?= uri_string() == 'home/acreditacion' ? 'active' : '' ?>">Acreditación</a>
                   <a href="<?= base_url('home/blog/') ?>" class="nav-item nav-link <?= uri_string() == 'home/blog' ? 'active' : '' ?>">Blog</a>
                   <a href="<?= base_url('home/about/') ?>" class="nav-item nav-link <?= uri_string() == 'home/about' ? 'active' : '' ?>">Nosotros</a>
@@ -65,16 +67,24 @@ $item=$contenido[0];
 
                   
                </div>
-               <form class="d-flex ms-3 align-items-center" role="search" action="<?= base_url('buscar') ?>" method="get">
-                  <input class="form-control form-control-sm me-2 bg-dark text-white border-light" 
-                        type="search" 
-                        name="q" 
-                        placeholder="Buscar..." 
-                        aria-label="Buscar">
-                  <button class="btn btn-sm btn-outline-light bg-dark" type="submit">
-                     <i class="fa fa-search"></i>
-                  </button>
-               </form>
+                     <form class="d-flex ms-3 align-items-center" role="search" action="<?= base_url('buscar') ?>" method="get" style="max-width: 250px;">
+                        <input
+                           class="form-control form-control-sm me-2 bg-transparent border border-light text-light"
+                           type="search"
+                           name="q"
+                           placeholder="Buscar..."
+                           aria-label="Buscar"
+                           style="min-width: 0;"
+                        >
+                        <button class="btn btn-sm d-flex justify-content-center align-items-center p-0"
+                              type="submit"
+                              style="width:34px;height:34px;border-radius:4px;">
+                        <i id="searchIcon" class="fa fa-search text-light"></i>
+                        </button>
+
+                        </form>
+
+
 
             </div>
          </nav>

@@ -17,13 +17,23 @@
 
 
     // Sticky Navbar
+
     $(window).scroll(function () {
+    if ($(this).scrollTop() > 45) {
+        $('.navbar').addClass('sticky-top shadow-sm');
+        $('#searchIcon').removeClass('text-light').addClass('text-dark');   // <-- aquí
+    } else {
+        $('.navbar').removeClass('sticky-top shadow-sm');
+        $('#searchIcon').removeClass('text-dark').addClass('text-light');   // <-- y aquí
+    }
+});
+    /*$(window).scroll(function () {
         if ($(this).scrollTop() > 45) {
             $('.navbar').addClass('sticky-top shadow-sm');
         } else {
             $('.navbar').removeClass('sticky-top shadow-sm');
         }
-    });
+    });*/
     
     // Dropdown on mouse hover
     const $dropdown = $(".dropdown");
