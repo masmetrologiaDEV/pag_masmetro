@@ -98,7 +98,7 @@ class Home extends BaseController
 
 		$data['contenido'] = $model->getContenidoPublicado($idioma, 'header');
         $data['header_content'] = $model->getContenidoPublicado($idioma, 'services_content');
-		$data['cross'] = $model->getContenidoPublicado($idioma, 'cross');
+		$data['cross'] = $model->getContenidoPublicado($idioma, 'services_content');
 		
 		$data['cross_content'] = $model->getContenidoPublicado($idioma, 'cross_content');
 		$data['footer_content'] = $model->getContenidoPublicado($idioma, 'footer_content');

@@ -31,6 +31,34 @@ class Admin extends BaseController
 
         return view("header", $data) . view("login") . view("footer");
     }
+
+    public function panel()
+    {
+        $idioma = "es"; // o detecta desde URL, sesión, etc.
+        $model = new ContenidoModel();
+        $user = new AdminModel();
+        $data["video_header"] = "MAS Precisión.mov";
+        $data["contenido"] = $model->getContenidoPublicado($idioma, "header");
+        $data["header_content"] = $model->getContenidoPublicado(
+            $idioma,
+            "services_content"
+        );
+        $data["footer_content"] = $model->getContenidoPublicado(
+            $idioma,
+            "footer_content"
+        );
+        $data["footer_logo"] = $model->getContenidoPublicado(
+            $idioma,
+            "footer_logo"
+        );
+        $data["privacy_content"] = $model->getContenidoPublicado(
+            $idioma,
+            "privacy_content"
+        );
+         $data["users"] = $user->getUsers();
+        return view("header", $data) . view("panel", $data) . view("footer");
+    }
+
     public function autenticar()
     {
         $login = new AdminModel();
@@ -49,12 +77,15 @@ class Admin extends BaseController
                 "fullname" => $res->fullname,
                 "foto" => $res->profile_image,
                 "activo" => $res->status,
+                "rol" => $res->rol,
             ]);
 
             $privilegios = $login->getPrivilegios($res->id);
             $session->set("privilegios", $privilegios);
 
-            return redirect()->route("/"); // 🚨 Asegúrate que /dashboard exista y no redirija de nuevo
+            return redirect()->to(base_url("admin/panel"));
+
+            // 🚨 Asegúrate que /dashboard exista y no redirija de nuevo
         } else {
             return redirect()->route("admin");
         }
@@ -63,7 +94,7 @@ class Admin extends BaseController
     public function logout()
     {
         session()->destroy();
-        return redirect()->to("admin");
+        return redirect()->route("/");
     }
 
     public function edit($id)
@@ -228,47 +259,47 @@ class Admin extends BaseController
     }
 
     public function add_insert()
-{
-    helper(['form', 'url']);
+    {
+        helper(["form", "url"]);
 
-    $logModel = new \App\Models\AdminModel(); // Asegúrate de tener este modelo
+        $logModel = new \App\Models\AdminModel(); // Asegúrate de tener este modelo
 
-    // Datos del contenido
-    $data = [
-        'title'         => $this->request->getPost('title'),
-        'slug'          => $this->request->getPost('slug'),
-        'category'      => $this->request->getPost('category'),
-        'intro_text'    => $this->request->getPost('intro_text'),
-        'content'       => $this->request->getPost('content'),
-        'tags'          => $this->request->getPost('tags'),
-        'is_published'  => $this->request->getPost('is_published') ? 1 : 0,
-        'language'      => $this->request->getPost('language'),
-        'date'          => date('Y-m-d H:i:s'),
-        'last_modified' => date('Y-m-d H:i:s'),
-        'user'          => session('user_id') ?? 1, // Ajusta si usas sesiones
-    ];
+        // Datos del contenido
+        $data = [
+            "title" => $this->request->getPost("title"),
+            "slug" => $this->request->getPost("slug"),
+            "category" => $this->request->getPost("category"),
+            "intro_text" => $this->request->getPost("intro_text"),
+            "content" => $this->request->getPost("content"),
+            "tags" => $this->request->getPost("tags"),
+            "is_published" => $this->request->getPost("is_published") ? 1 : 0,
+            "language" => $this->request->getPost("language"),
+            "date" => date("Y-m-d H:i:s"),
+            "last_modified" => date("Y-m-d H:i:s"),
+            "user" => session("user_id") ?? 1, // Ajusta si usas sesiones
+        ];
 
-    // Imagen
-    $img = $this->request->getFile('foto');
-    if ($img && $img->isValid() && !$img->hasMoved()) {
-        $data['img'] = file_get_contents($img->getTempName());
-    }
+        // Imagen
+        $img = $this->request->getFile("foto");
+        if ($img && $img->isValid() && !$img->hasMoved()) {
+            $data["img"] = file_get_contents($img->getTempName());
+        }
 
-    // Icono
-    $icon = $this->request->getFile('icon');
-    if ($icon && $icon->isValid() && !$icon->hasMoved()) {
-        $data['icon'] = file_get_contents($icon->getTempName());
-    }
+        // Icono
+        $icon = $this->request->getFile("icon");
+        if ($icon && $icon->isValid() && !$icon->hasMoved()) {
+            $data["icon"] = file_get_contents($icon->getTempName());
+        }
 
-    // Archivos
-    $file = $this->request->getFile('files');
-    if ($file && $file->isValid() && !$file->hasMoved()) {
-        $data['files'] = file_get_contents($file->getTempName());
-    }
+        // Archivos
+        $file = $this->request->getFile("files");
+        if ($file && $file->isValid() && !$file->hasMoved()) {
+            $data["files"] = file_get_contents($file->getTempName());
+        }
 
-    // Insertar contenido
-    $idInsertado = $logModel->insert($data);
-$logData = [
+        // Insertar contenido
+        $idInsertado = $logModel->add_insert($data);
+        $logData = [
             "idPag" => $idInsertado,
             "category" => $data["category"] ?? null,
             "intro_text" => $data["intro_text"] ?? null,
@@ -288,7 +319,97 @@ $logData = [
 
         $logModel->insertAdmin($logData);
 
-    return redirect()->to(base_url('admin'))->with('success', 'Contenido agregado y registrado en log.');
-}
+        return redirect()
+            ->to(base_url("admin"))
+            ->with("success", "Contenido agregado y registrado en log.");
+    }
 
+    function crear()
+    {
+        helper(["form", "url"]);
+
+        $model = new \App\Models\AdminModel();
+        $user = [
+            "fullname" => $this->request->getPost("nombre"),
+            "no_empleado" => $this->request->getPost("no_empleado"),
+            "email" => $this->request->getPost("email"),
+            "password" => sha1($this->request->getPost("email")),
+            "rol" => $this->request->getPost("rol"),
+            "status" => 1,
+        ];
+        $model->insertar($user, "users");
+        return redirect()->to(base_url("admin/panel"));
+    }
+    public function cambiar_foto()
+    {
+        helper(["form", "url"]);
+        $model = new \App\Models\AdminModel();
+
+        $img = $this->request->getFile("foto");
+        $userId = session()->id;
+
+        if ($img && $img->isValid() && !$img->hasMoved()) {
+            $contenido = file_get_contents($img->getTempName());
+
+            if ($contenido !== false) {
+                $data["profile_image"] = $contenido;
+                $ok = $model->actualizar($userId, $data, "users");
+
+                if ($ok) {
+                    // 🔁 ACTUALIZAMOS LA FOTO EN LA SESIÓN
+                    $db = \Config\Database::connect();
+                    $nuevo = $db
+                        ->table("users")
+                        ->select("profile_image")
+                        ->where("id", $userId)
+                        ->get()
+                        ->getRow();
+
+                    if ($nuevo) {
+                        session()->set("foto", $nuevo->profile_image);
+                    }
+                }
+            }
+        }
+
+        return redirect()->to(base_url("admin/panel"));
+    }
+
+    function cambiar_rol()
+    {
+        $model = new \App\Models\AdminModel();
+        $rol = $this->request->getPost("rol");
+        $userId = $this->request->getPost("user_id");
+
+        $data = ['rol' => $rol];
+
+        $model->actualizar($userId, $data, "users");
+
+        return redirect()->to(base_url("admin/panel"));
+    }
+    function eliminar_usuario()
+    {
+        $model = new \App\Models\AdminModel();
+
+        $userId = $this->request->getPost("user_id");
+
+        $data = ['status' => 0];
+
+        $model->actualizar($userId, $data, "users");
+
+        return redirect()->to(base_url("admin/panel"));
+    }
+    function cambiar_contrasena()
+    {
+        $model = new \App\Models\AdminModel();
+        
+        $userId = session()->id;
+
+        $data = ["password" => sha1($this->request->getPost("password_nueva"))];
+
+
+        $model->actualizar($userId, $data, "users");
+
+        return redirect()->to(base_url("admin/panel"));
+    }
 }

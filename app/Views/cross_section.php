@@ -1,6 +1,6 @@
 
 <?php
-$cross=$cross[0];
+$cross=$cross[3];
 ?>
 <!-- Service Start -->
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
