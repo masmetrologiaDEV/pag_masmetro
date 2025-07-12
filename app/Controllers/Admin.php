@@ -34,6 +34,8 @@ class Admin extends BaseController
 
     public function panel()
     {
+        if (session()->has('id')) {
+
         $idioma = "es"; // o detecta desde URL, sesión, etc.
         $model = new ContenidoModel();
         $user = new AdminModel();
@@ -57,6 +59,9 @@ class Admin extends BaseController
         );
          $data["users"] = $user->getUsers();
         return view("header", $data) . view("panel", $data) . view("footer");
+    }else{
+        return redirect()->to(base_url("/"));
+    }
     }
 
     public function autenticar()
@@ -87,14 +92,14 @@ class Admin extends BaseController
 
             // 🚨 Asegúrate que /dashboard exista y no redirija de nuevo
         } else {
-            return redirect()->route("admin");
+            return redirect()->to(base_url("admin/"));
         }
     }
 
     public function logout()
     {
         session()->destroy();
-        return redirect()->route("/");
+        return redirect()->to(base_url("admin/"));
     }
 
     public function edit($id)
