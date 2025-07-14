@@ -180,23 +180,32 @@ class Home extends BaseController
 	}
 
 	public function blog_details($id)
-	{ 
-		$idioma = 'es'; // o detecta desde URL, sesión, etc.
-        $model = new ContenidoModel();
-		\Config\Services::language()->setLocale($idioma);
+{ 
+    $idioma = 'es';
+    $model = new ContenidoModel();
+    \Config\Services::language()->setLocale($idioma);
 
-        $data['contenido'] = $model->getContenidoPublicado($idioma, 'header');
-        $data['header_content'] = $model->getContenidoPublicado($idioma, 'services_content');
+    $data['contenido'] = $model->getContenidoPublicado($idioma, 'header');
+    $data['header_content'] = $model->getContenidoPublicado($idioma, 'services_content');
+    $data['footer_content'] = $model->getContenidoPublicado($idioma, 'footer_content');
+    $data['footer_logo'] = $model->getContenidoPublicado($idioma, 'footer_logo');
+    $data['privacy_content'] = $model->getContenidoPublicado($idioma, 'privacy_content');
+    $data['video_header'] = 'MAS Cobertura H.mov';
 
-		$data['footer_content'] = $model->getContenidoPublicado($idioma, 'footer_content');
-		$data['footer_logo'] = $model->getContenidoPublicado($idioma, 'footer_logo');
-		$data['privacy_content'] = $model->getContenidoPublicado($idioma, 'privacy_content');
-				$data['video_header'] = 'MAS Cobertura H.mov';
+    // Post actual
+    $data['blog_details'] = $model->consultar("SELECT * FROM page_content WHERE id = $id", true);
 
-	$data['blog_details'] = $model->consultar("SELECT * FROM page_content WHERE id = $id", true);	
+    // Últimos 3 blogs distintos del actual
+	$data['recent_posts'] = $model->consultar("
+        SELECT * FROM page_content 
+        WHERE category = 'blog' AND is_published = 1 AND id != $id 
+        ORDER BY date DESC 
+        LIMIT 3
+    ");
 
-		return view('header', $data) . view('blog_details', $data).view('footer');
-	}
+    return view('header', $data) . view('blog_details', $data) . view('footer');
+}
+
 
 	public function buscar()
 {

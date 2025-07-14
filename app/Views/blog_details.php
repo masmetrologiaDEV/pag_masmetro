@@ -135,28 +135,27 @@ document.addEventListener("DOMContentLoaded", function() {
     
                 <!-- Sidebar Start -->
                 <div class="col-lg-4">
-                    <!-- Recent Post Start -->
-                    <div class="mb-5 wow slideInUp" data-wow-delay="0.1s">
-                        <div class="section-title section-title-sm position-relative pb-3 mb-4">
-                            <h3 class="mb-0">Recent Post</h3>
-                        </div>
-                        <div class="d-flex rounded overflow-hidden mb-3">
-                            <img class="img-fluid" src="img/blog-1.jpg" style="width: 100px; height: 100px; object-fit: cover;" alt="">
-                            <a href="" class="h5 fw-semi-bold d-flex align-items-center bg-light px-3 mb-0">Lorem ipsum dolor sit amet adipis elit
-                            </a>
-                        </div>
-                        <div class="d-flex rounded overflow-hidden mb-3">
-                            <img class="img-fluid" src="img/blog-2.jpg" style="width: 100px; height: 100px; object-fit: cover;" alt="">
-                            <a href="" class="h5 fw-semi-bold d-flex align-items-center bg-light px-3 mb-0">Lorem ipsum dolor sit amet adipis elit
-                            </a>
-                        </div>
-                        <div class="d-flex rounded overflow-hidden mb-3">
-                            <img class="img-fluid" src="img/blog-3.jpg" style="width: 100px; height: 100px; object-fit: cover;" alt="">
-                            <a href="" class="h5 fw-semi-bold d-flex align-items-center bg-light px-3 mb-0">Lorem ipsum dolor sit amet adipis elit
-                            </a>
-                        </div>
-                       
-                    </div>
+                   <!-- Recent Post Start -->
+<div class="mb-5 wow slideInUp" data-wow-delay="0.1s">
+    <div class="section-title section-title-sm position-relative pb-3 mb-4">
+        <h3 class="mb-0">Recent Post</h3>
+    </div>
+
+    <?php foreach ($recent_posts as $post): ?>
+        <div class="d-flex rounded overflow-hidden mb-3">
+            <img class="img-fluid" 
+                 src="<?= 'data:image/bmp;base64,' . base64_encode($post['img']) ?>" 
+                 alt="<?= esc($post['title']) ?>" 
+                 style="width: 100px; height: 100px; object-fit: cover;">
+
+            <a href="<?= base_url('home/' . $post['slug'] . '/' . $post['id']) ?>" 
+               class="h6 fw-semi-bold d-flex align-items-center bg-light px-3 mb-0">
+                <?= esc($post['title']) ?>
+            </a>
+        </div>
+    <?php endforeach; ?>
+</div>
+
                     <!-- Recent Post End -->
     
                     <!-- Image Start -->

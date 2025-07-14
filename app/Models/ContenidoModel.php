@@ -100,6 +100,10 @@ public function buscarPorPalabraClave($palabraClave)
                 ->findAll();
 }
 
+public function getLastPosts($limit = 3)
+{
+    return $this->orderBy('date', 'DESC')->findAll($limit);
+}
 
 
 }
