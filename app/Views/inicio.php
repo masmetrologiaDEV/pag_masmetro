@@ -29,12 +29,15 @@
                <div class="col-sm-6 wow zoomIn" data-wow-delay="0.2s">
                   <?php
                      $mision=$home_content[1];
-                     if (session()->has('id')): ?>
+                     if (session()->has('id')): 
+                        if (session()->rol=='admin'): 
+                        ?>
                   <a href="<?= base_url('admin/admin/' . $mision->id); ?>">
                   <button type="button" class="btn btn-success btn-sm">
                   <i class="fa fa-eye"></i> Admin
                   </button>
                   </a>
+                    <?php endif; ?>
                   <a href="<?= base_url('admin/edit/' . $mision->id); ?>">
                   <button type="button" class="btn btn-warning btn-sm">
                   <i class="fa fa-pencil"></i> Editar

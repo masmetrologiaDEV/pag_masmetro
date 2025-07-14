@@ -99,22 +99,25 @@ $item=$contenido[0];
                   <?php foreach ($header_content as $index => $elem): ?>
 
                      <div class="carousel-item <?= $index === 0 ? 'active' : '' ?>">
-                      <?php   if (session()->has('id')): ?>
+                      <?php   if (session()->has('id')): 
+                      if (session()->rol=='admin'): ?>
+                      <a href="<?= base_url('admin/add/' . $elem->category); ?>">
+                  <button type="button" class="btn btn-danger btn-sm">
+                  <i class="fa fa-plus"></i> Agregar
+                  </button>
+                  </a>
                   <a href="<?= base_url('admin/admin/' . $elem->id); ?>">
                   <button type="button" class="btn btn-success btn-sm">
                   <i class="fa fa-eye"></i> Admin
                   </button>
                   </a>
+                  <?php endif; ?>
                   <a href="<?= base_url('admin/edit/' . $elem->id); ?>">
                   <button type="button" class="btn btn-warning btn-sm">
                   <i class="fa fa-pencil"></i> Editar
                   </button>
                   </a>
-                  <a href="<?= base_url('admin/add/' . $elem->category); ?>">
-                  <button type="button" class="btn btn-danger btn-sm">
-                  <i class="fa fa-plus"></i> Agregar
-                  </button>
-                  </a>
+                  
                   <?php endif; ?>
                            <div class="rounded p-4 shadow d-flex flex-column align-items-center text-center" style="max-width: 300px; background-color: rgba(255,255,255,0.2);">
                               <img src="<?= 'data:image/bmp;base64,' . base64_encode($elem->img); ?>" 
