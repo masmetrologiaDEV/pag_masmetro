@@ -31,7 +31,7 @@ $contact=$contact[0];
                                 <textarea name="message" class="form-control border-0 bg-light px-4 py-3" rows="4" placeholder="<?= lang('Validation.message') ?>"></textarea>
                             </div>
                             <div class="col-12">
-                                <button class="btn btn-primary w-100 py-3" type="submit" placeholder="<?= lang('Validation.submit') ?>" ></button>
+                                <button class="btn btn-primary w-100 py-3" type="submit" placeholder="<?= lang('Validation.submit') ?>" >Enviar mensaje</button>
                             </div>
                         </div> 
                     </form>
@@ -75,12 +75,20 @@ $contact=$contact[0];
                <div class="owl-carousel testimonial-carousel sync-carousel sync2">
                   <?php foreach ($contact_content as $index => $elem): ?>
                   <div class="testimonial-item bg-light my-2" data-iframe="<?= esc($elem->slug) ?>">
-                     <div class="d-flex align-items-center border-bottom pt-4 pb-2 px-6">
-                        <img src=<?= 'data:image/bmp;base64,' . base64_encode($footer_content->img); ?> alt="<?= esc($footer_content->img) ?>" class="img-fluid me-4" style="width: 50px; height: 50px;">
-                        <div class="ps-3">
-                           <h6 class="text-primary mb-1"> <?= esc($elem->title) ?> </h6>
-                        </div>
-                     </div>
+                      <!-- Encabezado: Imagen + Título -->
+            <div class="d-flex align-items-center gap-3 px-4 pt-4 pb-2 border-bottom">
+                <div style="flex-shrink: 0;">
+                    <img src="<?= 'data:image/bmp;base64,' . base64_encode($footer_content->img); ?>"
+                         alt="<?= esc($footer_content->img) ?>"
+                         class="img-fluid"
+                         style="width: 40px; height: 40px; object-fit: contain;">
+                </div>
+                <div class="flex-grow-1">
+                    <h6 class="text-primary mb-0" style="font-size: 14px; line-height: 1.3;">
+                        <?= esc($elem->title) ?>
+                    </h6>
+                </div>
+            </div>
                      <div class="pt-4 pb-4 px-4 small">
                         <small class="text-uppercase"><?= esc($elem->content) ?></small>
                      </div>

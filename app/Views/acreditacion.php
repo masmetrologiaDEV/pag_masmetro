@@ -6,12 +6,36 @@ $acreditacion=$acreditacion[0];
 $info=$acreditacion_info[0];
 ?>
 
+<?php
+   $item=$footer_content[0];
+   ?>
 <!-- Testimonial Start -->
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="section-title text-center position-relative pb-3 mb-5 mx-auto">
-                <h1 class="mb-0"><?= $acreditacion->title?></h1>
-            </div>
+        <div class="container py-2">
+
+
+            <div class="section-title text-center position-relative pb-3 mb-5 mx-auto"
+     style="display: flex; flex-direction: column; align-items: center;">
+    
+    <h1 class="mb-4"><?= $acreditacion->title ?></h1>
+
+    <div style="width: 300px;">
+        <img src="<?= 'data:image/bmp;base64,' . base64_encode($info->img); ?>"
+             alt="<?= esc($info->title) ?>"
+             class="img-fluid"
+             style="width: 100%; height: 100%; object-fit: contain;">
+    </div>
+</div>
+<?php if (session()->has('id') && session()->rol == 'admin'): ?>
+    <div class="text-center mb-4" style="margin-top: -10px;">
+        <a href="<?= base_url('admin/add/' . $acreditacion->category); ?>" title="Agregar nuevo contenido">
+            <button type="button" class="btn btn-danger btn-sm">
+                <i class="fa fa-plus"></i> Agregar
+            </button>
+        </a>
+    </div>
+<?php endif; ?>
+
 
            
             <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.6s">
@@ -19,13 +43,10 @@ $info=$acreditacion_info[0];
         <div class="testimonial-item bg-light my-4" style="height: 280px;">
             <div class="d-flex align-items-center border-bottom pt-5 pb-4 px-5" style="min-height: 100px;">
                 
-                <!-- CONTENEDOR DEL LOGO CON ANCHO FIJO -->
-                <div style="flex: 0 0 100px; max-width: 120px;">
-                    <img src="<?= 'data:image/bmp;base64,' . base64_encode($info->img); ?>"
-                         alt="<?= esc($info->title) ?>"
-                         class="img-fluid" style="width: 100px; height: 120px; object-fit: contain;">
-                </div>
                 
+                <div class="row text-center justify-content-center" data-wow-delay="0.2s">
+            <img src=<?= 'data:image/bmp;base64,' . base64_encode($item->img); ?> alt="<?= esc($item->title) ?>" class="img-fluid rounded" style="width: 70px; height: 50px;">
+         </div>
                 <!-- CONTENEDOR DEL TEXTO -->
                 <div class="ps-4" style="flex: 1;">
                     <h5 class="text-primary mb-0"
@@ -44,6 +65,26 @@ $info=$acreditacion_info[0];
                     <span>Descargar PDF</span>
                     <img style="width: 25px; height: 25px;" src="<?= base_url('template/images/files/pdf.png') ?>" alt="PDF">
                 </a>
+                  <!-- Botones de acción solo para usuarios con sesión -->
+                <?php if (session()->has('id')): ?>
+                    <div class="mt-3 d-flex justify-content-center gap-2 flex-wrap">
+                        <?php if (session()->rol === 'admin'): ?>
+                            <a href="<?= base_url('admin/admin/' . $elem->id); ?>" title="Administrar este servicio">
+                                <button type="button" class="btn btn-success btn-sm">
+                                    <i class="fa fa-eye"></i> Admin
+                                </button>
+                            </a>
+                        <?php endif; ?>
+
+                        <?php if (in_array(session()->rol, ['admin', 'editor'])): ?>
+                            <a href="<?= base_url('admin/edit/' . $elem->id); ?>" title="Editar este servicio">
+                                <button type="button" class="btn btn-warning btn-sm">
+                                    <i class="fa fa-pencil"></i> Editar
+                                </button>
+                            </a>
+                        <?php endif; ?>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     <?php endforeach; ?>
@@ -52,6 +93,7 @@ $info=$acreditacion_info[0];
 
 
                         <div class="text-center mt-4 wow fadeInUp" data-wow-delay="1.2s" data-wow-duration="1s">
+                            
                            <h3 class="fw-bold text-primary"><?= $info->title?></h3>
                            <p class="mb-0 text-black">
                             <?= $info->content?>

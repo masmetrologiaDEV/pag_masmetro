@@ -101,11 +101,7 @@ $item=$contenido[0];
                      <div class="carousel-item <?= $index === 0 ? 'active' : '' ?>">
                       <?php   if (session()->has('id')): 
                       if (session()->rol=='admin'): ?>
-                      <a href="<?= base_url('admin/add/' . $elem->category); ?>">
-                  <button type="button" class="btn btn-danger btn-sm">
-                  <i class="fa fa-plus"></i> Agregar
-                  </button>
-                  </a>
+                      
                   <a href="<?= base_url('admin/admin/' . $elem->id); ?>">
                   <button type="button" class="btn btn-success btn-sm">
                   <i class="fa fa-eye"></i> Admin

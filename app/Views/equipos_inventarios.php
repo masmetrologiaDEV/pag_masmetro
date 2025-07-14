@@ -7,6 +7,16 @@ $inventory=$inventory[0];
             <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
                 <h1 class="mb-0"><?= $inventory->title?></h1>
                 </div>
+            <?php if (session()->has('id') && session()->rol == 'admin'): ?>
+                <div class="text-center mb-4" style="margin-top: -10px;">
+                <a href="<?= base_url('admin/add/' . $inventory->category); ?>" title="Agregar nuevo contenido">
+                    <button type="button" class="btn btn-danger btn-sm">
+                        <i class="fa fa-plus"></i> Agregar
+                    </button>
+                </a>
+                </div>
+             <?php endif; ?>        
+
                 <div class="row g-5">
 
                <?php foreach ($inventory_content as $index => $elem): ?>
@@ -24,6 +34,27 @@ $inventory=$inventory[0];
                          <a class="btn" onclick='modal(<?=$elem->id?>)'>
                              <img src=<?= 'data:image/bmp;base64,' . base64_encode($elem->icon); ?> alt="<?= esc($elem->icon) ?>" class="img-fluid me-4" style="width: 200px; height: auto;">
                         </a>
+                <!-- Botones de acción solo para usuarios con sesión -->
+
+                <?php if (session()->has('id')): ?>
+                    <div class="mt-3 d-flex justify-content-center gap-2 flex-wrap">
+                        <?php if (session()->rol === 'admin'): ?>
+                            <a href="<?= base_url('admin/admin/' . $elem->id); ?>" title="Administrar este servicio">
+                                <button type="button" class="btn btn-success btn-sm">
+                                    <i class="fa fa-eye"></i> Admin
+                                </button>
+                            </a>
+                        <?php endif; ?>
+
+                        <?php if (in_array(session()->rol, ['admin', 'editor'])): ?>
+                            <a href="<?= base_url('admin/edit/' . $elem->id); ?>" title="Editar este servicio">
+                                <button type="button" class="btn btn-warning btn-sm">
+                                    <i class="fa fa-pencil"></i> Editar
+                                </button>
+                            </a>
+                        <?php endif; ?>
+                    </div>
+                <?php endif; ?>
                     </div>
                 </div>
             <?php endforeach; ?>

@@ -37,18 +37,22 @@
             <div class="d-flex align-items-center justify-content-center" style="height: 75px;">
                <p class="mb-0"><a class=" btn text-white border-bottom" onclick='modal_pr(<?=$privacy->id?>)'>&copy;2025 MAS Metrología | Aviso de Privacidad</a>
                 <?php if (session()->has('id')): ?>
-                    <a href="<?= base_url('admin/logout') ?>">
+                    <a href="<?= base_url('admin/logout') ?>" title="Log Out">
                         <i class="fa-solid fa-arrow-right-from-bracket" style="transform: scaleX(-1);"></i> 
+                    </a>
+                     <a href="<?= base_url('admin/panel') ?>" title="Panel">
+                        <i class="fa-solid fa-user" style="transform: scaleX(-1);"></i> 
                     </a>
                     <?php
                 else:
                     ?>
-                    <a href="<?= base_url('admin/') ?>">
+                    <a href="<?= base_url('admin/') ?>" title="Sign in">
                         <i class="fa-solid fa-right-to-bracket"></i>
                     </a>
                     <?php
                 endif;
                     ?>
+                   
                 </p>
             </div>
          </div>
