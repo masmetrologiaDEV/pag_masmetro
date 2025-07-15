@@ -1,46 +1,61 @@
 <?php
 namespace App\Controllers;
 
-/**
- * Class BaseController
- *
- * BaseController provides a convenient place for loading components
- * and performing functions that are needed by all your controllers.
- * Extend this class in any new controllers:
- *     class Home extends BaseController
- *
- * For security be sure to declare any new methods as protected or private.
- *
- * @package CodeIgniter
- */
-
 use CodeIgniter\Controller;
+use CodeIgniter\HTTP\RequestInterface;
+use CodeIgniter\HTTP\ResponseInterface;
+use Psr\Log\LoggerInterface;
 
 class BaseController extends Controller
 {
+    /**
+     * Idioma actual disponible para todos los controladores y vistas.
+     * Ej.: $this->lang o en la vista: service('request')->getLocale()
+     */
+    protected string $lang = 'es';
 
-	/**
-	 * An array of helpers to be loaded automatically upon
-	 * class instantiation. These helpers will be available
-	 * to all other controllers that extend BaseController.
-	 *
-	 * @var array
-	 */
-	protected $helpers = [];
+    /**
+     * Si quieres cargar helpers globales, agrégalos aquí, p. ej. ['url', 'html']
+     */
+    protected $helpers = [];
 
-	/**
-	 * Constructor.
-	 */
-	public function initController(\CodeIgniter\HTTP\RequestInterface $request, \CodeIgniter\HTTP\ResponseInterface $response, \Psr\Log\LoggerInterface $logger)
-	{
-		// Do Not Edit This Line
-		parent::initController($request, $response, $logger);
+    /**
+     * Lista de idiomas permitidos
+     */
+    private array $supportedLocales = ['es', 'en'];
 
-		//--------------------------------------------------------------------
-		// Preload any models, libraries, etc, here.
-		//--------------------------------------------------------------------
-		// E.g.:
-		// $this->session = \Config\Services::session();
-	}
+    /**
+     * Constructor “extendido”.
+     */
+    public function initController(
+        RequestInterface  $request,
+        ResponseInterface $response,
+        LoggerInterface   $logger
+    )
+    {
+        parent::initController($request, $response, $logger);
 
+        /* --------------------------------------------------------
+         | 1) Detectar idioma desde la URL (?lang=es)              |
+         |    Si no viene o no está soportado, usar 'es'.          |
+         |-------------------------------------------------------- */
+        $incoming = $request->getGet('lang');          // ?lang=es
+        $lang     = in_array($incoming, $this->supportedLocales, true)
+                    ? $incoming
+                    : 'es';
+
+        /* --------------------------------------------------------
+         | 2) Fijar el locale para todo el ciclo de vida           |
+         |-------------------------------------------------------- */
+        service('request')->setLocale($lang);
+        $this->lang = $lang;                            // disponible en $this
+
+        /* --------------------------------------------------------
+         | 3) (Opcional) Carga automática de archivos de idioma    |
+         |    Si repartes textos en varios grupos, quítalo o       |
+         |    cambia 'App' por el nombre de tu grupo.             |
+         |-------------------------------------------------------- */
+        // helper('language');                          // si no estaba cargado
+        // lang('App', [], $lang);                      // precarga grupo
+    }
 }

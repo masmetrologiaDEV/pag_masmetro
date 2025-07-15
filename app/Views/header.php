@@ -1,6 +1,6 @@
 <?php
-$item=$contenido[0];
-?>
+   $item=$contenido[0];
+   ?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -25,8 +25,7 @@ $item=$contenido[0];
       <link href="<?= base_url('template/css/bootstrap.min.css')?>" rel="stylesheet">
       <!-- Template Stylesheet -->
       <link href="<?= base_url('template/css/style.css')?>" rel="stylesheet">
-       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
    </head>
    <body>
       <!-- Spinner Start -->
@@ -46,45 +45,55 @@ $item=$contenido[0];
             <div class="collapse navbar-collapse" id="navbarCollapse">
                <div class="navbar-nav ms-auto py-0">
                   <a href="<?= base_url('/') ?>" class="nav-item nav-link <?= uri_string() == '/' ? 'active' : '' ?>">Inicio</a>
-
-               <div class="nav-item dropdown">
-               <a href="<?= base_url('home/services') ?>" class="nav-link dropdown-toggle 
-               <?= in_array(uri_string(), ['home/services', 'home/lab_calibracion', 'home/inspeccion_dimensional', 'home/equipos_inventarios', 'home/cross_section']) ? 'active' : '' ?>">Servicios
-               </a>
-
-               <div class="dropdown-menu m-0">
+                  <div class="nav-item dropdown">
+                     <a href="<?= base_url('home/services') ?>" class="nav-link dropdown-toggle 
+                        <?= in_array(uri_string(), ['home/services', 'home/lab_calibracion', 'home/inspeccion_dimensional', 'home/equipos_inventarios', 'home/cross_section']) ? 'active' : '' ?>">Servicios
+                     </a>
+                     <div class="dropdown-menu m-0">
                         <a href="<?= base_url('home/lab_calibracion/')?>" class="dropdown-item <?= uri_string() == 'home/lab_calibracion' ? 'active' : '' ?>">Laboratorio de Calibración</a>
                         <a href="<?= base_url('home/inspeccion_dimensional/')?>" class="dropdown-item <?= uri_string() == 'home/inspeccion_dimensional' ? 'active' : '' ?>">Inspección Dimensional</a>
                         <a href="<?= base_url('home/equipos_inventarios/')?>" class="dropdown-item <?= uri_string() == 'home/equipos_inventarios' ? 'active' : '' ?>">Equipos para Inventarios</a>
                         <a href="<?= base_url('home/cross_section/')?>" class="dropdown-item <?= uri_string() == 'home/cross_section' ? 'active' : '' ?>">Cross Section</a>
-
                      </div>
-               </div>
+                  </div>
                   <a href="<?= base_url('home/acreditacion/') ?>" class="nav-item nav-link <?= uri_string() == 'home/acreditacion' ? 'active' : '' ?>">Acreditación</a>
                   <a href="<?= base_url('home/blog/') ?>" class="nav-item nav-link <?= uri_string() == 'home/blog' ? 'active' : '' ?>">Blog</a>
                   <a href="<?= base_url('home/about/') ?>" class="nav-item nav-link <?= uri_string() == 'home/about' ? 'active' : '' ?>">Nosotros</a>
                   <a href="<?= base_url('home/contact/') ?>" class="nav-item nav-link <?= uri_string() == 'home/contact' ? 'active' : '' ?>">Contacto</a>
-
-                  
                </div>
-                     <form class="d-flex ms-3 align-items-center" role="search" action="<?= base_url('buscar') ?>" method="get" style="max-width: 250px;">
-                        <input
-                           class="form-control form-control-sm me-2 bg-transparent border border-light text-light"
-                           type="search"
-                           name="q"
-                           placeholder="Buscar..."
-                           aria-label="Buscar"
-                           style="min-width: 0;"
-                        >
-                        <button class="btn btn-sm d-flex justify-content-center align-items-center p-0"
-                              type="submit"
-                              style="width:34px;height:34px;border-radius:4px;">
-                        <i id="searchIcon" class="fa fa-search text-light"></i>
-                        </button>
+               <form class="d-flex ms-3 align-items-center" role="search" action="<?= base_url('buscar') ?>" method="get" style="max-width: 250px;">
+                  <input
+                     class="form-control form-control-sm me-2 bg-transparent border border-light text-light"
+                     type="search"
+                     name="q"
+                     placeholder="Buscar..."
+                     aria-label="Buscar"
+                     style="min-width: 0;"
+                     >
+                  <button class="btn btn-sm d-flex justify-content-center align-items-center p-0"
+                     type="submit"
+                     style="width:34px;height:34px;border-radius:4px;">
+                  <i id="searchIcon" class="fa fa-search text-light"></i>
+                  </button>
+               </form>
+               <form class="ms-3 d-flex align-items-center" method="get" action="<?= current_url() ?>">
+  <select name="lang" class="form-select form-select-sm bg-transparent border border-light text-light"
+          onchange="this.form.submit()" style="width: 130px; cursor: pointer;">
+    <option value="es" <?= service('request')->getLocale() === 'es' ? 'selected' : '' ?>>
+      🇲🇽 ESP MX
+    </option>
+    <option value="en" <?= service('request')->getLocale() === 'en' ? 'selected' : '' ?>>
+      🇺🇸 ENG
+    </option>
+  </select>
 
-                        </form>
-
-
+  <!-- Mantener otros parámetros GET -->
+  <?php foreach ($_GET as $key => $value): ?>
+    <?php if ($key !== 'lang'): ?>
+      <input type="hidden" name="<?= esc($key) ?>" value="<?= esc($value) ?>">
+    <?php endif; ?>
+  <?php endforeach; ?>
+</form>
 
             </div>
          </nav>
@@ -95,40 +104,36 @@ $item=$contenido[0];
             </video>
             <!-- Carrusel encima del video -->
             <div id="header-carousel" class="carousel slide h-100" data-bs-ride="carousel">
-                   <div class="carousel-inner h-100 d-flex align-items-center justify-content-start" style="padding-left: 200px;">
+               <div class="carousel-inner h-100 d-flex align-items-center justify-content-start" style="padding-left: 200px;">
                   <?php foreach ($header_content as $index => $elem): ?>
-
-                     <div class="carousel-item <?= $index === 0 ? 'active' : '' ?>">
-                      <?php   if (session()->has('id')): 
-                      if (session()->rol=='admin'): ?>
-                      
-                  <a href="<?= base_url('admin/admin/' . $elem->id); ?>">
-                  <button type="button" class="btn btn-success btn-sm">
-                  <i class="fa fa-eye"></i> Admin
-                  </button>
-                  </a>
-                  <?php endif; ?>
-                  <a href="<?= base_url('admin/edit/' . $elem->id); ?>">
-                  <button type="button" class="btn btn-warning btn-sm">
-                  <i class="fa fa-pencil"></i> Editar
-                  </button>
-                  </a>
-                  
-                  <?php endif; ?>
-                           <div class="rounded p-4 shadow d-flex flex-column align-items-center text-center" style="max-width: 300px; background-color: rgba(255,255,255,0.2);">
-                              <img src="<?= 'data:image/bmp;base64,' . base64_encode($elem->img); ?>" 
-                                 alt="<?= esc($elem->title) ?>" 
-                                 class="img-fluid mb-3" 
-                                 style="width: 100%; max-height: 200px; object-fit: contain;">
-                              <a href="<?=base_url('home/'.$elem->slug)?>" target="" rel="noopener">
-                              <h4 class="fw-bold text-light"><?= esc($elem->title) ?></h4>
-                              </a>
-                              <p class="mb-0 text-white small"><?= esc($elem->content) ?></p>
-                           </div>
-
+                  <div class="carousel-item <?= $index === 0 ? 'active' : '' ?>">
+                     <?php   if (session()->has('id')): 
+                        if (session()->rol=='admin'): ?>
+                     <a href="<?= base_url('admin/admin/' . $elem->id); ?>">
+                     <button type="button" class="btn btn-success btn-sm">
+                     <i class="fa fa-eye"></i> Admin
+                     </button>
+                     </a>
+                     <?php endif; ?>
+                     <a href="<?= base_url('admin/edit/' . $elem->id); ?>">
+                     <button type="button" class="btn btn-warning btn-sm">
+                     <i class="fa fa-pencil"></i> Editar
+                     </button>
+                     </a>
+                     <?php endif; ?>
+                     <div class="rounded p-4 shadow d-flex flex-column align-items-center text-center" style="max-width: 300px; background-color: rgba(255,255,255,0.2);">
+                        <img src="<?= 'data:image/bmp;base64,' . base64_encode($elem->img); ?>" 
+                           alt="<?= esc($elem->title) ?>" 
+                           class="img-fluid mb-3" 
+                           style="width: 100%; max-height: 200px; object-fit: contain;">
+                        <a href="<?=base_url('home/'.$elem->slug)?>" target="" rel="noopener">
+                           <h4 class="fw-bold text-light"><?= esc($elem->title) ?></h4>
+                        </a>
+                        <p class="mb-0 text-white small"><?= esc($elem->content) ?></p>
                      </div>
+                  </div>
                   <?php endforeach; ?>
-            </div>
+               </div>
                <!-- Controles del carrusel -->
                <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
                <span class="carousel-control-prev-icon"></span>

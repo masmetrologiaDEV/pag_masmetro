@@ -12,9 +12,8 @@ class Home extends BaseController
 	public function index()
 	{ 
 		//echo site_url('home/services');die();
-		$idioma = 'es'; // o detecta desde URL, sesión, etc.
+		$idioma = service('request')->getLocale(); // o detecta desde URL, sesión, etc.
         $model = new ContenidoModel();
-
 
         $data['contenido'] = $model->getContenidoPublicado($idioma, 'header');
         $data['header_content'] = $model->getContenidoPublicado($idioma, 'services_content');
