@@ -1,22 +1,49 @@
 
 <?php
-$calibration=$calibration[0];
+$calibracion=$calibration[0];
+?>
+<?php 
+$firstCategory = isset($calibration_content[0]->category) ? $calibration_content[0]->category : null;
 ?>
 <!-- Service Start -->
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-                <h1 class="mb-0"><?= $calibration->title?></h1>
+
+              <?php
+               $item = $calibration[0];
+               $rol = session()->get('rol');
+               if (session()->has('id')): 
+            ?>
+               <?php if ($rol === 'admin'): ?>
+                  <a href="<?= base_url('admin/admin/' . $item->id); ?>">
+                     <button type="button" class="btn btn-success btn-sm">
+                        <i class="fa fa-eye"></i> Admin
+                     </button>
+                  </a>
+               <?php endif; ?>
+
+               <?php if ($rol === 'admin' || $rol === 'editor'): ?>
+                  <a href="<?= base_url('admin/edit/' . $item->id); ?>">
+                     <button type="button" class="btn btn-warning btn-sm">
+                        <i class="fa fa-pencil"></i> Editar
+                     </button>
+                  </a>
+               <?php endif; ?>
+            <?php endif; ?>
+
+                <h1 class="mb-0"><?= $calibracion->title?></h1>
                 </div>
-                <?php if (session()->has('id') && session()->rol == 'admin'): ?>
+
+<?php if (session()->has('id') && session()->rol == 'admin'): ?>
     <div class="text-center mb-4" style="margin-top: -10px;">
-                <a href="<?= base_url('admin/add/' . $calibration->category); ?>" title="Agregar nuevo contenido">
-                    <button type="button" class="btn btn-danger btn-sm">
-                        <i class="fa fa-plus"></i> Agregar
-                    </button>
-                </a>
-        </div>
-             <?php endif; ?>
+        <a href="<?= base_url('admin/add/' . $firstCategory); ?>" title="Agregar nuevo contenido">
+            <button type="button" class="btn btn-danger btn-sm">
+                <i class="fa fa-plus"></i> Agregar
+            </button>
+        </a>
+    </div>
+<?php endif; ?>
 
                 <div class="row g-5">
                  <?php foreach ($calibration_content as $index => $elem): ?>

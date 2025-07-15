@@ -28,7 +28,7 @@
     <div class="section-title section-title-sm position-relative pb-3 mb-4">
         <h3 class="mb-0">Deja un comentario</h3>
     </div>
-    <form id="formComentario">
+    <form id="formComentario" method="POST" action="<?= base_url('home/save_comments') ?>" enctype="multipart/form-data">
         <div class="row g-3">
             <div class="col-12 col-sm-6">
                 <input name="name" type="text" class="form-control bg-white border-0" placeholder="<?= lang('Validation.namePlaceholder') ?>" required>
@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("formComentario").addEventListener("submit", function(e) {
         e.preventDefault();
         const form = new FormData(this);
-        fetch("<?= base_url('comentario/guardar') ?>", {
+        fetch("<?= base_url('home/guardar') ?>", {
             method: "POST",
             body: form
         })
@@ -141,7 +141,9 @@ document.addEventListener("DOMContentLoaded", function() {
         <h3 class="mb-0">Recent Post</h3>
     </div>
 
-    <?php foreach ($recent_posts as $post): ?>
+    <?php
+    if ($recent_posts):
+    foreach ($recent_posts as $post): ?>
         <div class="d-flex rounded overflow-hidden mb-3">
             <img class="img-fluid" 
                  src="<?= 'data:image/bmp;base64,' . base64_encode($post['img']) ?>" 
@@ -153,7 +155,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 <?= esc($post['title']) ?>
             </a>
         </div>
-    <?php endforeach; ?>
+    <?php endforeach; 
+    endif;?>
 </div>
 
                     <!-- Recent Post End -->

@@ -1,16 +1,50 @@
+
 <?php
-$footer_content=$footer_content[1];
+$contact_info=$contact[0];
 ?>
-<?php
-$contact=$contact[0];
+
+<?php 
+$firstCategory = isset($contact_content[0]->category) ? $contact_content[0]->category : null;
 ?>
 <!-- Contact Start -->
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-                <h5 class="fw-bold text-primary text-uppercase">Contactanos</h5>
-                
+            <?php
+               $item = $contact[0];
+               $rol = session()->get('rol');
+               if (session()->has('id')): 
+            ?>
+               <?php if ($rol === 'admin'): ?>
+                  <a href="<?= base_url('admin/admin/' . $item->id); ?>">
+                     <button type="button" class="btn btn-success btn-sm">
+                        <i class="fa fa-eye"></i> Admin
+                     </button>
+                  </a>
+               <?php endif; ?>
+
+               <?php if ($rol === 'admin' || $rol === 'editor'): ?>
+                  <a href="<?= base_url('admin/edit/' . $item->id); ?>">
+                     <button type="button" class="btn btn-warning btn-sm">
+                        <i class="fa fa-pencil"></i> Editar
+                     </button>
+                  </a>
+               <?php endif; ?>
+            <?php endif; ?>
+
+                <h5 class="fw-bold text-primary text-uppercase"><?= $contact_info->title ?></h5>
             </div>
+
+            <?php if (session()->has('id') && session()->rol == 'admin'): ?>
+                <div class="text-center mb-4" style="margin-top: -10px;">
+                    <a href="<?= base_url('admin/add/' . $firstCategory); ?>" title="Agregar nuevo contenido">
+                        <button type="button" class="btn btn-danger btn-sm">
+                            <i class="fa fa-plus"></i> Agregar
+                        </button>
+                    </a>
+                </div>
+            <?php endif; ?>
+
             <div class="row g-5">
                 <div class="col-lg-6 wow slideInUp" data-wow-delay="0.3s">
                     <form method="POST" action=<?= base_url('home/correo_contacto')?> novalidate>
@@ -37,7 +71,7 @@ $contact=$contact[0];
                     </form>
                     <!-- Redes sociales debajo del formulario -->
                         <div class="mt-4 text-center">
-                            <h6 class="text-primary fw-bold mb-3">Síguenos en nuestras redes</h6>
+                            <h6 class="text-primary fw-bold mb-3"><?= $contact_info->content ?></h6>
                             <div class="d-flex justify-content-center gap-4">
                                 <a href="https://www.facebook.com/masmetrologia" target="_blank" class="text-decoration-none">
                                     <i class="fab fa-facebook fa-2x" style="color: #1877F2;"></i>
@@ -54,7 +88,7 @@ $contact=$contact[0];
                             </div>
                         </div>
                         <div class="mt-4 text-center">
-                        <img src=<?= 'data:image/bmp;base64,' . base64_encode($contact->img); ?> alt="<?= esc($contact->img) ?>" class="img-fluid me-4" style="width: 400px; height: 100px;">
+                        <img src=<?= 'data:image/bmp;base64,' . base64_encode($contact_info->img); ?> alt="<?= esc($contact_info->img) ?>" class="img-fluid me-4" style="width: 400px; height: 100px;">
                         </div>
 
                 </div>
@@ -70,16 +104,17 @@ $contact=$contact[0];
                     <!-- Carrusel de testimonios debajo del mapa -->
             <div class="mt-4 wow fadeInUp" data-wow-delay="0.3s">
                <div class="section-title text-center position-relative ative pb-2 mb-3 mx-auto" style="max-width: 600px;">
-                  <h6 class="mb-0 text-primary fw-bold">Atención a sus preguntas</h6>
+                  <h6 class="mb-0 text-primary fw-bold"><?= $contact_info->intro_text ?></h6>
                </div>
                <div class="owl-carousel testimonial-carousel sync-carousel sync2">
-                  <?php foreach ($contact_content as $index => $elem): ?>
-                  <div class="testimonial-item bg-light my-2" data-iframe="<?= esc($elem->slug) ?>">
-                      <!-- Encabezado: Imagen + Título -->
+    <?php foreach ($contact_content as $index => $elem): ?>
+        <div class="testimonial-item bg-light my-2" data-iframe="<?= esc($elem->slug) ?>">
+
+            <!-- Encabezado: Imagen + Título -->
             <div class="d-flex align-items-center gap-3 px-4 pt-4 pb-2 border-bottom">
                 <div style="flex-shrink: 0;">
-                    <img src="<?= 'data:image/bmp;base64,' . base64_encode($footer_content->img); ?>"
-                         alt="<?= esc($footer_content->img) ?>"
+                    <img src="<?= 'data:image/bmp;base64,' . base64_encode($elem->img); ?>"
+                         alt="<?= esc($elem->img) ?>"
                          class="img-fluid"
                          style="width: 40px; height: 40px; object-fit: contain;">
                 </div>
@@ -89,15 +124,43 @@ $contact=$contact[0];
                     </h6>
                 </div>
             </div>
-                     <div class="pt-4 pb-4 px-4 small">
-                        <small class="text-uppercase"><?= esc($elem->content) ?></small>
-                     </div>
-                     <div class="pt-4 pb-4 px-4 small">
-                        <small class="text-uppercase"><?= esc($elem->tags) ?></small>
-                     </div>
-                  </div>
-                  <?php endforeach; ?>
-               </div>
+
+            <!-- Contenido -->
+            <div class="pt-4 pb-2 px-4 small">
+                <small class="text-uppercase"><?= esc($elem->content) ?></small>
+            </div>
+
+            <div class="pb-2 px-4 small">
+                <small class="text-uppercase"><?= esc($elem->tags) ?></small>
+            </div>
+
+            <!-- Botones de acción -->
+            <?php if (session()->has('id')): ?>
+                <div class="px-4 pb-3">
+                    <div class="d-flex justify-content-center">
+                        <?php if (session()->rol === 'admin'): ?>
+                            <a href="<?= base_url('admin/admin/' . $elem->id); ?>" title="Administrar">
+                                <button type="button" class="btn btn-success btn-sm">
+                                    <i class="fa fa-eye"></i> Admin
+                                </button>
+                            </a>
+                        <?php endif; ?>
+
+                        <?php if (in_array(session()->rol, ['admin', 'editor'])): ?>
+                            <a href="<?= base_url('admin/edit/' . $elem->id); ?>" title="Editar">
+                                <button type="button" class="btn btn-warning btn-sm">
+                                    <i class="fa fa-pencil"></i> Editar
+                                </button>
+                            </a>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            <?php endif; ?>
+
+        </div>
+    <?php endforeach; ?>
+</div>
+
             </div>
                 </div>   
             </div>                            

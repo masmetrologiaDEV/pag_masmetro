@@ -97,7 +97,7 @@ class Home extends BaseController
 
 		$data['contenido'] = $model->getContenidoPublicado($idioma, 'header');
         $data['header_content'] = $model->getContenidoPublicado($idioma, 'services_content');
-		$data['cross'] = $model->getContenidoPublicado($idioma, 'services_content');
+		$data['cross'] = $model->getContenidoPublicado($idioma, 'cross');
 		
 		$data['cross_content'] = $model->getContenidoPublicado($idioma, 'cross_content');
 		$data['footer_content'] = $model->getContenidoPublicado($idioma, 'footer_content');
@@ -168,6 +168,7 @@ class Home extends BaseController
 
         $data['contenido'] = $model->getContenidoPublicado($idioma, 'header');
         $data['header_content'] = $model->getContenidoPublicado($idioma, 'services_content');
+		$data['blog'] = $model->getContenidoPublicado($idioma, 'blog');		
  		$data['blog_content'] = $model->getContenidoPublicado($idioma, 'blog_content');
 		$data['footer_content'] = $model->getContenidoPublicado($idioma, 'footer_content');
 		$data['footer_logo'] = $model->getContenidoPublicado($idioma, 'footer_logo');
@@ -195,12 +196,14 @@ class Home extends BaseController
     $data['blog_details'] = $model->consultar("SELECT * FROM page_content WHERE id = $id", true);
 
     // Últimos 3 blogs distintos del actual
-	$data['recent_posts'] = $model->consultar("
+	$query = "
         SELECT * FROM page_content 
-        WHERE category = 'blog' AND is_published = 1 AND id != $id 
+        WHERE category = 'blog_content' AND is_published = 1 AND id != $id 
         ORDER BY date DESC 
         LIMIT 3
-    ");
+    ";
+	//echo $query;die();
+	$data['recent_posts'] = $model->consultar($query);
 
     return view('header', $data) . view('blog_details', $data) . view('footer');
 }
@@ -237,7 +240,6 @@ class Home extends BaseController
 
 
 
-	
 	public function content_calibration(){
 		$model = new ContenidoModel();
 		$id = $this->request->getPost('id');
@@ -253,6 +255,7 @@ class Home extends BaseController
 		}
 
 	}
+	
 	public function content_inspection(){
 		$model = new ContenidoModel();
 		$id = $this->request->getPost('id');
@@ -351,6 +354,9 @@ class Home extends BaseController
      
 		return redirect()->to(base_url('home/'));
     }
+}
+public function save_comments(){
+	
 }
 
 }

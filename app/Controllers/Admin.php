@@ -104,6 +104,9 @@ class Admin extends BaseController
 
     public function edit($id)
     {
+
+         if (session()->has('id')) {
+
         $idioma = "es"; // o detecta desde URL, sesión, etc.
         $model = new ContenidoModel();
         $data["video_header"] = "MAS Precisión.mov";
@@ -133,9 +136,16 @@ class Admin extends BaseController
             view("edit", ["data" => (object) $dato]) .
             view("footer");
     }
+    else{
+        return redirect()->to(base_url("/"));
+    }
+    }
 
     public function admin($id)
     {
+         if (session()->has('id')) {
+
+
         $idioma = "es"; // o detecta desde URL, sesión, etc.
         $model = new ContenidoModel();
         $data["video_header"] = "MAS Precisión.mov";
@@ -164,9 +174,14 @@ class Admin extends BaseController
             view("admin", ["datos" => $datos]) .
             view("footer");
     }
+    else{
+        return redirect()->to(base_url("/"));
+    }
+    }
 
     public function add($category)
     {
+        if (session()->has('id')) {
         $idioma = "es"; // o detecta desde URL, sesión, etc.
         $model = new ContenidoModel();
         $data["video_header"] = "MAS Precisión.mov";
@@ -191,6 +206,10 @@ class Admin extends BaseController
         return view("header", $data) .
             view("add", ["data" => $category]) .
             view("footer");
+    }
+     else{
+        return redirect()->to(base_url("/"));
+    }
     }
 
     public function update()

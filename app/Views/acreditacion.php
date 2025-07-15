@@ -1,41 +1,67 @@
 <?php
-$acreditacion=$acreditacion[0];
+$acreditacion_head=$acreditacion[0];
 ?>
 
 <?php
 $info=$acreditacion_info[0];
 ?>
 
-<?php
-   $item=$footer_content[0];
-   ?>
+<?php 
+$firstCategory = isset($acreditacion_content[0]->category) ? $acreditacion_content[0]->category : null;
+?>
+
 <!-- Testimonial Start -->
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-2">
 
 
             <div class="section-title text-center position-relative pb-3 mb-5 mx-auto"
-     style="display: flex; flex-direction: column; align-items: center;">
-    
-    <h1 class="mb-4"><?= $acreditacion->title ?></h1>
+            style="display: flex; flex-direction: column; align-items: center;">
 
-    <div style="width: 300px;">
-        <img src="<?= 'data:image/bmp;base64,' . base64_encode($info->img); ?>"
-             alt="<?= esc($info->title) ?>"
-             class="img-fluid"
-             style="width: 100%; height: 100%; object-fit: contain;">
-    </div>
-</div>
+                <?php
+                    $item = $acreditacion[0];
+                    $rol = session()->get('rol');
+                    if (session()->has('id')): 
+                    ?>
+                    <div class="d-flex justify-content-center gap-2 mb-2">
+                        <?php if ($rol === 'admin'): ?>
+                            <a href="<?= base_url('admin/admin/' . $item->id); ?>">
+                                <button type="button" class="btn btn-success btn-sm">
+                                <i class="fa fa-eye"></i> Admin
+                                </button>
+                            </a>
+                        <?php endif; ?>
+
+                        <?php if ($rol === 'admin' || $rol === 'editor'): ?>
+                            <a href="<?= base_url('admin/edit/' . $item->id); ?>">
+                                <button type="button" class="btn btn-warning btn-sm">
+                                <i class="fa fa-pencil"></i> Editar
+                                </button>
+                            </a>
+                        <?php endif; ?>
+                    </div>
+                <?php endif; ?>
+
+            
+            <h1 class="mb-4"><?= $acreditacion_head->title ?></h1>
+
+            <div style="width: 300px;">
+                <img src="<?= 'data:image/bmp;base64,' . base64_encode($acreditacion_head->img); ?>"
+                    alt="<?= esc($acreditacion_head->title) ?>"
+                    class="img-fluid"
+                    style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+            </div>
+
 <?php if (session()->has('id') && session()->rol == 'admin'): ?>
     <div class="text-center mb-4" style="margin-top: -10px;">
-        <a href="<?= base_url('admin/add/' . $acreditacion->category); ?>" title="Agregar nuevo contenido">
+        <a href="<?= base_url('admin/add/' . $firstCategory); ?>" title="Agregar nuevo contenido">
             <button type="button" class="btn btn-danger btn-sm">
                 <i class="fa fa-plus"></i> Agregar
             </button>
         </a>
     </div>
 <?php endif; ?>
-
 
            
             <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.6s">
@@ -45,7 +71,7 @@ $info=$acreditacion_info[0];
                 
                 
                 <div class="row text-center justify-content-center" data-wow-delay="0.2s">
-            <img src=<?= 'data:image/bmp;base64,' . base64_encode($item->img); ?> alt="<?= esc($item->title) ?>" class="img-fluid rounded" style="width: 70px; height: 50px;">
+            <img src=<?= 'data:image/bmp;base64,' . base64_encode($elem->img); ?> alt="<?= esc($elem->title) ?>" class="img-fluid rounded" style="width: 70px; height: 50px;">
          </div>
                 <!-- CONTENEDOR DEL TEXTO -->
                 <div class="ps-4" style="flex: 1;">
@@ -93,6 +119,30 @@ $info=$acreditacion_info[0];
 
 
                         <div class="text-center mt-4 wow fadeInUp" data-wow-delay="1.2s" data-wow-duration="1s">
+
+                        <?php
+                    $item = $acreditacion_info[0];
+                    $rol = session()->get('rol');
+                    if (session()->has('id')): 
+                    ?>
+                    <div class="d-flex justify-content-center gap-2 mb-2">
+                        <?php if ($rol === 'admin'): ?>
+                            <a href="<?= base_url('admin/admin/' . $item->id); ?>">
+                                <button type="button" class="btn btn-success btn-sm">
+                                <i class="fa fa-eye"></i> Admin
+                                </button>
+                            </a>
+                        <?php endif; ?>
+
+                        <?php if ($rol === 'admin' || $rol === 'editor'): ?>
+                            <a href="<?= base_url('admin/edit/' . $item->id); ?>">
+                                <button type="button" class="btn btn-warning btn-sm">
+                                <i class="fa fa-pencil"></i> Editar
+                                </button>
+                            </a>
+                        <?php endif; ?>
+                    </div>
+                <?php endif; ?>
                             
                            <h3 class="fw-bold text-primary"><?= $info->title?></h3>
                            <p class="mb-0 text-black">

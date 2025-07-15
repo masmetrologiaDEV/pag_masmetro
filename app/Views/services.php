@@ -2,23 +2,52 @@
 $service = $services[0];
 ?>
 
+<?php 
+$firstCategory = isset($header_content[0]->category) ? $header_content[0]->category : null;
+?>
+
+
 <!-- Service Start -->
 <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
     <div class="container py-5">
        <div class="section-title text-center position-relative pb-3 mb-3 mx-auto" style="max-width: 600px;">
+
+            <?php
+               $item = $services[0];
+               $rol = session()->get('rol');
+               if (session()->has('id')): 
+            ?>
+               <?php if ($rol === 'admin'): ?>
+                  <a href="<?= base_url('admin/admin/' . $item->id); ?>">
+                     <button type="button" class="btn btn-success btn-sm">
+                        <i class="fa fa-eye"></i> Admin
+                     </button>
+                  </a>
+               <?php endif; ?>
+
+               <?php if ($rol === 'admin' || $rol === 'editor'): ?>
+                  <a href="<?= base_url('admin/edit/' . $item->id); ?>">
+                     <button type="button" class="btn btn-warning btn-sm">
+                        <i class="fa fa-pencil"></i> Editar
+                     </button>
+                  </a>
+               <?php endif; ?>
+            <?php endif; ?>
+
     <h5 class="fw-bold text-primary text-uppercase"><?= $service->title ?></h5>
     <h1 class="mb-0"><?= $service->intro_text ?></h1>
 </div>
 
 <?php if (session()->has('id') && session()->rol == 'admin'): ?>
     <div class="text-center mb-4" style="margin-top: -10px;">
-        <a href="<?= base_url('admin/add/' . $service->category); ?>" title="Agregar nuevo contenido">
+        <a href="<?= base_url('admin/add/' . $firstCategory); ?>" title="Agregar nuevo contenido">
             <button type="button" class="btn btn-danger btn-sm">
                 <i class="fa fa-plus"></i> Agregar
             </button>
         </a>
     </div>
 <?php endif; ?>
+
 
         
 <div class="row g-4">
