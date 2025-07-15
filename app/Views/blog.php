@@ -14,7 +14,6 @@
                                 <img src=<?= 'data:image/bmp;base64,' . base64_encode($elem->img); ?> alt="<?= esc($elem->title) ?>" class="img-fluid w-100">
 
                                     
-                                <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="">Web Design</a>
                                 </div>
 
                                 <div class="p-4">
@@ -24,7 +23,7 @@
                                     </div>
                                     <h4 class="mb-3"><?= esc($elem->title) ?></h4>
                                     <p><?= esc($elem->content) ?></p>
-                                    <a href="<?=base_url('home/'.$elem->slug.'/'.$elem->id)?>" class="text-uppercase" rel="noopener"> Read More <i class="bi bi-arrow-right"></i> </a>
+                                    <a href="<?=base_url('home/'.$elem->slug.'/'.$elem->id)?>" class="text-uppercase" rel="noopener"> Más <i class="bi bi-arrow-right"></i> </a>
                                     
                                 </div>
                             </div>
