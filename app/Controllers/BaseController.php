@@ -12,7 +12,7 @@ class BaseController extends Controller
      * Idioma actual disponible para todos los controladores y vistas.
      * Ej.: $this->lang o en la vista: service('request')->getLocale()
      */
-    protected string $lang = 'es';
+    protected  $lang = 'es';
 
     /**
      * Si quieres cargar helpers globales, agrégalos aquí, p. ej. ['url', 'html']
@@ -22,7 +22,7 @@ class BaseController extends Controller
     /**
      * Lista de idiomas permitidos
      */
-    private array $supportedLocales = ['es', 'en'];
+    private  $supportedLocales = ['es', 'en'];
 
     /**
      * Constructor “extendido”.
