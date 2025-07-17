@@ -188,6 +188,8 @@ class Home extends BaseController
     $data['contenido'] = $model->getContenidoPublicado($idioma, 'header');
     $data['header_content'] = $model->getContenidoPublicado($idioma, 'services_content');
     $data['footer_content'] = $model->getContenidoPublicado($idioma, 'footer_content');
+    $data['blog_content'] = $model->getContenidoPublicado($idioma, 'blog_content');
+
     $data['footer_logo'] = $model->getContenidoPublicado($idioma, 'footer_logo');
     $data['privacy_content'] = $model->getContenidoPublicado($idioma, 'privacy_content');
     $data['video_header'] = 'MAS Cobertura H.mov';
@@ -204,6 +206,7 @@ class Home extends BaseController
     ";
 	//echo $query;die();
 	$data['recent_posts'] = $model->consultar($query);
+	
 
     return view('header', $data) . view('blog_details', $data) . view('footer');
 }
@@ -356,7 +359,18 @@ class Home extends BaseController
     }
 }
 public function save_comments(){
-	
+		$model = new ContenidoModel();
+		$id_blog =$this->request->getPost('id_blog');
+
+	 $datos = [
+        'nombre' => $this->request->getPost('name'),
+        'correo' => $this->request->getPost('correo'),
+		'comentario' => $this->request->getPost('comentario'),
+        'id_blog' => $id_blog
+    ];
+	$model->insertTable('comments', $datos);
+	return redirect()->to(base_url('home/blog_details/'.$id_blog));
 }
+
 
 }

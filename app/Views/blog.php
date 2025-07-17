@@ -49,54 +49,49 @@ $firstCategory = isset($blog_content[0]->category) ? $blog_content[0]->category 
 
 
 <!-- Blog list Start -->
- <?php foreach ($blog_content as $index => $elem): ?>
-                <div class="col-lg-12">
-                     
-                    <div class="row g-5">
-                   
-                        <div class="col-md-4 wow slideInUp" data-wow-delay="0.1s">
-                            <div class="blog-item bg-light rounded overflow-hidden">
-                                <div class="blog-img position-relative overflow-hidden">
-                                <img src=<?= 'data:image/bmp;base64,' . base64_encode($elem->img); ?> alt="<?= esc($elem->title) ?>" class="img-fluid w-100">
+<div class="col-lg-12">
+    <div class="row g-5">
+        <?php foreach ($blog_content as $index => $elem): ?>
+            <div class="col-md-4 d-flex">
+                <div class="blog-item bg-light rounded overflow-hidden">
+                    <div class="blog-img position-relative overflow-hidden">
+                        <img src=<?= 'data:image/bmp;base64,' . base64_encode($elem->img); ?> alt="<?= esc($elem->title) ?>" class="img-fluid w-100">
+                    </div>
 
-                                    
-                                </div>
+                    <div class="p-4 pt-3">
+                        <div class="d-flex mb-3">
+                            <small class="me-3"><i class="far fa-user text-primary me-2"></i><?= esc($elem->intro_text) ?></small>
+                            <small><i class="far fa-calendar-alt text-primary me-2"></i><?= esc($elem->date) ?></small>
+                        </div>
+                        <h4 class="mb-3"><?= esc($elem->title) ?></h4>
+                        <p><?= esc($elem->content) ?></p>
+                        <a href="<?= base_url('home/' . $elem->slug . '/' . $elem->id) ?>" class="text-uppercase" rel="noopener"> Más <i class="bi bi-arrow-right"></i> </a>
 
-                                <div class="p-4">
-                                    <div class="d-flex mb-3">
-                                        <small class="me-3"><i class="far fa-user text-primary me-2"></i><?= esc($elem->intro_text) ?></small>
-                                        <small><i class="far fa-calendar-alt text-primary me-2"></i><?= esc($elem->date) ?></small>
-                                    </div>
-                                    <h4 class="mb-3"><?= esc($elem->title) ?></h4>
-                                    <p><?= esc($elem->content) ?></p>
-                                    <a href="<?=base_url('home/'.$elem->slug.'/'.$elem->id)?>" class="text-uppercase" rel="noopener"> Más <i class="bi bi-arrow-right"></i> </a>
-                                    
-                                    <!-- Botones de acción solo para usuarios con sesión -->
-                <?php if (session()->has('id')): ?>
-                    <div class="mt-3 d-flex justify-content-center gap-2 flex-wrap">
-                        <?php if (session()->rol === 'admin'): ?>
-                            <a href="<?= base_url('admin/admin/' . $elem->id); ?>" title="Administrar este servicio">
-                                <button type="button" class="btn btn-success btn-sm">
-                                    <i class="fa fa-eye"></i> Admin
-                                </button>
-                            </a>
-                        <?php endif; ?>
+                        <?php if (session()->has('id')): ?>
+                            <div class="mt-3 d-flex justify-content-center gap-2 flex-wrap">
+                                <?php if (session()->rol === 'admin'): ?>
+                                    <a href="<?= base_url('admin/admin/' . $elem->id); ?>" title="Administrar este servicio">
+                                        <button type="button" class="btn btn-success btn-sm">
+                                            <i class="fa fa-eye"></i> Admin
+                                        </button>
+                                    </a>
+                                <?php endif; ?>
 
-                        <?php if (in_array(session()->rol, ['admin', 'editor'])): ?>
-                            <a href="<?= base_url('admin/edit/' . $elem->id); ?>" title="Editar este servicio">
-                                <button type="button" class="btn btn-warning btn-sm">
-                                    <i class="fa fa-pencil"></i> Editar
-                                </button>
-                            </a>
+                                <?php if (in_array(session()->rol, ['admin', 'editor'])): ?>
+                                    <a href="<?= base_url('admin/edit/' . $elem->id); ?>" title="Editar este servicio">
+                                        <button type="button" class="btn btn-warning btn-sm">
+                                            <i class="fa fa-pencil"></i> Editar
+                                        </button>
+                                    </a>
+                                <?php endif; ?>
+                            </div>
                         <?php endif; ?>
                     </div>
-                <?php endif; ?>
-
-                                </div>
-                            </div>
-                        </div>   
-                    </div> 
                 </div>
-                   <?php endforeach; ?>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>
+
             </div>
         </div>

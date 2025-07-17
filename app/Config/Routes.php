@@ -52,9 +52,3 @@ if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php'))
 
 /* BUSCADOR */
 $routes->get('buscar', 'Home::buscar');
-
-
-/* BLOG */
-$routes->post('comentario/guardar', 'ComentarioController::guardarComentario');
-$routes->post('comentario/responder', 'ComentarioController::guardarRespuesta');
-$routes->get('comentario/lista', 'ComentarioController::obtenerComentarios');

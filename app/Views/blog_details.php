@@ -1,176 +1,235 @@
 <?php
-
-//echo var_dump($blog_details);die();
-?>
+   //echo var_dump($blog_details);die();
+   ?>
 <!-- Blog Start -->
-    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-8">
-                    <!-- Blog Detail Start -->
-                    <div class="mb-5">
-                        <img class="img-fluid w-100 rounded mb-5" src="img/blog-1.jpg" alt="">
-                        <h1 class="mb-4"><?= esc($blog_details['title'])?></h1>
-                        <p><?= esc($blog_details['content'])?></p>
-                    </div>
-                    <!-- Blog Detail End -->
-    
-                    <!-- COMENTARIOS -->
-<div class="mb-5">
-    <div class="section-title section-title-sm position-relative pb-3 mb-4">
-        <h3 class="mb-0">Comentarios</h3>
-    </div>
-    <div id="comentarios-container"></div>
+<div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+   <div class="container py-5">
+      <div class="row g-5">
+         <div class="col-lg-8">
+            <!-- Blog Detail Start -->
+            <div class="mb-5">
+
+
+            <?php
+               $item = $blog_content[0];
+               $rol = session()->get('rol');
+               if (session()->has('id')): 
+            ?>
+               <?php if ($rol === 'admin'): ?>
+                  <a href="<?= base_url('admin/admin/' . $item->id); ?>">
+                     <button type="button" class="btn btn-success btn-sm">
+                        <i class="fa fa-eye"></i> Admin
+                     </button>
+                  </a>
+               <?php endif; ?>
+
+               <?php if ($rol === 'admin' || $rol === 'editor'): ?>
+                  <a href="<?= base_url('admin/edit/' . $item->id); ?>">
+                     <button type="button" class="btn btn-warning btn-sm">
+                        <i class="fa fa-pencil"></i> Editar
+                     </button>
+                  </a>
+               <?php endif; ?>
+            <?php endif; ?>
+
+            <?php if (!empty($blog_details['img'])): ?>
+        <img 
+            src="data:image/jpeg;base64,<?= base64_encode($blog_details['img']) ?>" 
+            alt="<?= esc($blog_details['title']) ?>" 
+            class="img-fluid rounded mb-3"
+        >
+    <?php endif; ?>
+               <h1 class="mb-4"><?= esc($blog_details['title'])?></h1>
+               <p><?= esc($blog_details['content'])?></p>
+
+               
+            </div>
+            <!-- Blog Detail End -->
+
+
+            <!-- COMENTARIOS -->
+            <div class="mb-5">
+               <div class="section-title section-title-sm position-relative pb-3 mb-4">
+                  <h3 class="mb-0" id="count_comments">Comments</h3>
+               </div>
+               <div id='comments_container'></div>
+            </div>
+            <!-- Comment List End -->
+
+            <!-- FORMULARIO DE COMENTARIO -->
+            <div class="bg-light rounded p-5">
+               <div class="section-title section-title-sm position-relative pb-3 mb-4">
+                  <h3 class="mb-0">Deja un comentario</h3>
+               </div>
+               <form id="" method="POST" action="<?= base_url('home/save_comments') ?>" enctype="multipart/form-data">
+                  <div class="row g-3">
+                     <div class="col-12 col-sm-6">
+                        <input name="id_blog" type="hidden" class="form-control bg-white border-0" value="<?=$blog_details['id']?>">
+                        <input name="name" type="text" class="form-control bg-white border-0" placeholder="<?= lang('Validation.namePlaceholder') ?>" required>
+                     </div>
+                     <div class="col-12 col-sm-6">
+                        <input name="correo" type="email" class="form-control bg-white border-0" placeholder="<?= lang('Validation.emailPlaceholder') ?>" required>
+                     </div>
+                     <div class="col-12">
+                        <textarea name="comentario" class="form-control bg-white border-0" rows="5" placeholder="<?= lang('Validation.comment') ?>" required></textarea>
+                     </div>
+                     <div class="col-12">
+                        <button class="btn btn-primary w-100 py-3" type="submit">Enviar comentario</button>
+                     </div>
+                  </div>
+               </form>
+            </div>
+         </div>
+         <!-- Sidebar Start -->
+         <div class="col-lg-4">
+            <!-- Recent Post Start -->
+            <div class="mb-5 wow slideInUp" data-wow-delay="0.1s">
+               <div class="section-title section-title-sm position-relative pb-3 mb-4">
+                  <h3 class="mb-0">Recent Post</h3>
+               </div>
+               <?php
+                  if ($recent_posts):
+                  foreach ($recent_posts as $post): ?>
+               <div class="d-flex rounded overflow-hidden mb-3">
+                  <img class="img-fluid" 
+                     src="<?= 'data:image/bmp;base64,' . base64_encode($post['img']) ?>" 
+                     alt="<?= esc($post['title']) ?>" 
+                     style="width: 100px; height: 100px; object-fit: cover;">
+                  <a href="<?= base_url('home/' . $post['slug'] . '/' . $post['id']) ?>" 
+                     class="h6 fw-semi-bold d-flex align-items-center bg-light px-3 mb-0">
+                  <?= esc($post['title']) ?>
+                  </a>
+               </div>
+               <?php endforeach; 
+                  endif;?>
+            </div>
+            <!-- Recent Post End -->
+            <!-- Image Start -->
+            <div class="mb-5 wow slideInUp" data-wow-delay="0.1s">
+               <img src="img/blog-1.jpg" alt="" class="img-fluid rounded">
+            </div>
+            <!-- Image End -->
+         </div>
+         <!-- Sidebar End -->
+      </div>
+   </div>
 </div>
 
-<!-- FORMULARIO DE COMENTARIO -->
-<div class="bg-light rounded p-5">
-    <div class="section-title section-title-sm position-relative pb-3 mb-4">
-        <h3 class="mb-0">Deja un comentario</h3>
-    </div>
-    <form id="formComentario" method="POST" action="<?= base_url('home/save_comments') ?>" enctype="multipart/form-data">
-        <div class="row g-3">
-            <div class="col-12 col-sm-6">
-                <input name="name" type="text" class="form-control bg-white border-0" placeholder="<?= lang('Validation.namePlaceholder') ?>" required>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!-- Blog End -->
+ <script>
+const base_url = "<?= base_url() ?>";
+var id_blog=<?= $blog_details['id']?>;
+function get_comments()  
+{  
+    var URL=base_url+"/ComentarioController/obtenerComentarios";
+    $.ajax({
+        type:'post',
+        url:URL,
+        data:{id_blog:id_blog},
+        success: function(result){
+            if (result) {
+                var rs=JSON.parse(result);
+                let content = $("#comments_container");
+                $('#count_comments').text(rs.length + (rs.length == 1 ? " Comment" : " Comments"));
+                rs.forEach(rs => {
+                    let html = `
+    <div class="pt-3 border-top">
+        <div class="ps-1">
+            <h6 class="mb-1 fw-bold">
+                ${rs.nombre}
+<small class="d-block">
+    <a href="mailto:${rs.correo}" class="text-primary fw-semibold">${rs.correo}</a> – 
+    <span class="text-muted">${rs.fecha}</span>
+</small>
+            </h6>
+            <p class="mb-2">${rs.comentario}</p>
+
+            <button class="btn btn-outline-secondary btn-sm mb-2" onclick="ReplyBox(${rs.id})">
+                <i class="bi bi-reply"></i> Responder
+            </button>
+
+            <!-- Caja de respuesta -->
+            <div class="reply-box mt-2" id="reply-box-${rs.id}" style="display:none;">
+                <textarea id="reply-text-${rs.id}" class="form-control mb-2" rows="2" placeholder="Escribe una respuesta..." required></textarea>
+                <button class="btn btn-sm btn-primary" onclick="save_reply(${rs.id})">Enviar</button>
             </div>
-            <div class="col-12 col-sm-6">
-                <input name="correo" type="email" class="form-control bg-white border-0" placeholder="<?= lang('Validation.emailPlaceholder') ?>" required>
-            </div>
-            <div class="col-12">
-                <textarea name="comentario" class="form-control bg-white border-0" rows="5" placeholder="<?= lang('Validation.comment') ?>" required></textarea>
-            </div>
-            <div class="col-12">
-                <button class="btn btn-primary w-100 py-3" type="submit">Enviar comentario</button>
-            </div>
+
+            <!-- Contenedor de respuestas -->
+            <div id="replies-${rs.id}" class="mt-3 ms-3 border-start ps-3"></div>
         </div>
-    </form>
-</div>
+    </div>
+`;
 
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    const contenedor = document.getElementById('comentarios-container');
+                        content.append(html);
+                        
+                        //Obtener respuestas después de mostrar el comentario
+                        get_replies(rs.id);
+                })
+              
+            }
+        }
+    });
+}
 
-    // Cargar comentarios y respuestas
-    function cargarComentarios() {
-        fetch("<?= base_url('comentario/lista') ?>")
-        .then(res => res.json())
-        .then(comentarios => {
-            contenedor.innerHTML = '';
-            comentarios.forEach(c => {
-                const div = document.createElement('div');
-                div.classList.add('mb-4');
-                div.innerHTML = `
+function ReplyBox(commentId) {
+    const replyBox = document.getElementById('reply-box-' + commentId);
+    replyBox.style.display = replyBox.style.display === 'none' ? 'block' : 'none';
+}
+
+function save_reply(commentId){
+    const replyText = document.getElementById('reply-text-' + commentId).value;
+
+    if (!replyText.trim()) {
+    alert("Escribe una respuesta válida");
+    return;
+}
+
+    $.ajax({
+        type: 'POST',
+        url: base_url + "/ComentarioController/guardarRespuesta",
+        data: {
+            id_comment: commentId,
+            reply: replyText
+        },
+        success: function(response) {
+            document.getElementById('reply-text-' + commentId).value = '';
+            document.getElementById('reply-box-' + commentId).style.display = 'none';
+            get_replies(commentId);
+        },
+        error: function() {
+            alert("Error al guardar respuesta");
+        }
+    });    
+}
+
+function get_replies(commentId) {
+    $.ajax({
+        type: 'POST',
+        url: base_url + '/ComentarioController/obtenerRespuestas',
+        data: { id_comment: commentId },
+        success: function (response) {
+            const container = document.getElementById('replies-' + commentId);
+            container.innerHTML = ''; // limpiar por si ya había respuestas
+
+            response.forEach(reply => {
+                const html = `
                     <div class="d-flex mb-2">
-                        <img src="<?= base_url('img/user.jpg') ?>" class="img-fluid rounded" style="width: 45px; height: 45px;">
-                        <div class="ps-3">
-                            <h6><b>${c.nombre}</b> (<a href="mailto:${c.correo}">${c.correo}</a>) <small><i>${c.fecha}</i></small></h6>
-                            <p>${c.comentario}</p>
-                            <button class="btn btn-sm btn-light btnResponder" data-id="${c.id}">Responder</button>
+                        <img src="img/user.jpg" class="img-fluid rounded" style="width: 30px; height: 30px;">
+                        <div class="ps-2">
+                            <h6><small><i>${reply.fecha || ''}</i></small></h6>
+                            <p class="mb-0">${reply.reply}</p>
                         </div>
                     </div>
-                    <div class="ms-5 mt-2">
-                        ${(c.replies || []).map(r => `
-                            <div class="mb-2 border-start ps-3">
-                                <p class="mb-1">${r.reply}</p>
-                                <small class="text-muted">${r.fecha}</small>
-                            </div>
-                        `).join('')}
-                    </div>
-                    <div class="responder-form mt-2 ms-5" id="respuesta-${c.id}" style="display:none;">
-                        <textarea class="form-control mb-2" rows="2" placeholder="Tu respuesta..."></textarea>
-                        <button class="btn btn-sm btn-primary btnEnviarRespuesta" data-id="${c.id}">Enviar respuesta</button>
-                    </div>
                 `;
-                contenedor.appendChild(div);
+                container.innerHTML += html;
             });
-        });
-    }
-
-    cargarComentarios();
-
-    // Enviar comentario
-    document.getElementById("formComentario").addEventListener("submit", function(e) {
-        e.preventDefault();
-        const form = new FormData(this);
-        fetch("<?= base_url('home/guardar') ?>", {
-            method: "POST",
-            body: form
-        })
-        .then(res => res.json())
-        .then(() => {
-            this.reset();
-            cargarComentarios();
-        });
-    });
-
-    // Delegación para mostrar el formulario de respuesta
-    contenedor.addEventListener("click", function(e) {
-        if (e.target.classList.contains("btnResponder")) {
-            const id = e.target.getAttribute("data-id");
-            const form = document.getElementById(`respuesta-${id}`);
-            form.style.display = (form.style.display === 'none') ? 'block' : 'none';
-        }
-
-        // Enviar respuesta
-        if (e.target.classList.contains("btnEnviarRespuesta")) {
-            const id = e.target.getAttribute("data-id");
-            const textarea = document.querySelector(`#respuesta-${id} textarea`);
-            const texto = textarea.value.trim();
-            if (texto === '') return;
-            fetch("<?= base_url('comentario/responder') ?>", {
-                method: "POST",
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: `id_comment=${id}&reply=${encodeURIComponent(texto)}`
-            }).then(res => res.json())
-              .then(() => {
-                  textarea.value = '';
-                  cargarComentarios();
-              });
         }
     });
+}
+
+
+$(document).ready(function() {
+    get_comments();
 });
 </script>
-
-                </div>
-    
-                <!-- Sidebar Start -->
-                <div class="col-lg-4">
-                   <!-- Recent Post Start -->
-<div class="mb-5 wow slideInUp" data-wow-delay="0.1s">
-    <div class="section-title section-title-sm position-relative pb-3 mb-4">
-        <h3 class="mb-0">Recent Post</h3>
-    </div>
-
-    <?php
-    if ($recent_posts):
-    foreach ($recent_posts as $post): ?>
-        <div class="d-flex rounded overflow-hidden mb-3">
-            <img class="img-fluid" 
-                 src="<?= 'data:image/bmp;base64,' . base64_encode($post['img']) ?>" 
-                 alt="<?= esc($post['title']) ?>" 
-                 style="width: 100px; height: 100px; object-fit: cover;">
-
-            <a href="<?= base_url('home/' . $post['slug'] . '/' . $post['id']) ?>" 
-               class="h6 fw-semi-bold d-flex align-items-center bg-light px-3 mb-0">
-                <?= esc($post['title']) ?>
-            </a>
-        </div>
-    <?php endforeach; 
-    endif;?>
-</div>
-
-                    <!-- Recent Post End -->
-    
-                    <!-- Image Start -->
-                    <div class="mb-5 wow slideInUp" data-wow-delay="0.1s">
-                        <img src="img/blog-1.jpg" alt="" class="img-fluid rounded">
-                    </div>
-                    <!-- Image End -->
-    
-                   
-                </div>
-                <!-- Sidebar End -->
-            </div>
-        </div>
-    </div>
-    <!-- Blog End -->

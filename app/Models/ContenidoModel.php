@@ -104,6 +104,9 @@ public function getLastPosts($limit = 3)
 {
     return $this->orderBy('date', 'DESC')->findAll($limit);
 }
-
+ public function insertTable($table,$datos)
+    {
+        return $this->db->table($table)->insert($datos);
+    }
 
 }
