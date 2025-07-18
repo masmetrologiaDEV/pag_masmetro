@@ -26,12 +26,11 @@ class Directorio extends BaseController
  $idioma = "es";
     // Obtener el registro que tenga el archivo, por ejemplo por slug
     $registro = $model->getBySlug($slug, $idioma);
-
     if (!$registro || empty($registro->files)) {
         throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound('Archivo no encontrado');
     }
 
-echo var_dump($registro);die();
+
     // Asumiendo que $registro->file contiene el blob (binario)
     $fileData = $registro->files;
 
