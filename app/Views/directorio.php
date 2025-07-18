@@ -43,7 +43,8 @@ $firstCategory = isset($directorio_content[0]->category) ? $directorio_content[0
         <?php endif; ?>
 
         <div class="row g-4 justify-content-center">
-            <?php foreach ($directorio_content as $index => $elem): ?>
+            <?php foreach ($directorio_content as $index => $elem): 
+                ?>
             <div class="col-sm-10 col-md-6 col-lg-4 d-flex justify-content-center">
                 <div class="bg-white rounded shadow-sm p-3 text-center" >
                     <div class="image-area">
@@ -53,7 +54,11 @@ $firstCategory = isset($directorio_content[0]->category) ? $directorio_content[0
     <h4><?= esc($elem->title) ?></h4>
     <label><?= esc($elem->intro_text) ?></label>
 </div>
-                            <?=($elem->tags) ?>
+                            <?php
+    $vcard_link = base_url('directorio/descargar-vcard/' . $elem->slug);
+    echo str_replace('{vcard_link}', $vcard_link, $elem->tags);
+?>
+
                         </div>
                     </div>
                 </div>

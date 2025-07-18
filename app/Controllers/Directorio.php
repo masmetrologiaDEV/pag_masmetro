@@ -21,23 +21,21 @@ class Directorio extends BaseController
         return view("header", $data) . view("directorio_user", $data) . view("footer");
     }
     public function descargarVCard($slug)
-{
-    $model = new ContenidoModel();
- $idioma = "es";
-    // Obtener el registro que tenga el archivo, por ejemplo por slug
-    $registro = $model->getBySlug($slug, $idioma);
-    if (!$registro || empty($registro->files)) {
-        throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound('Archivo no encontrado');
-    }
+	{
+	    $model = new ContenidoModel();
+	 	$idioma = "es";
+	    // Obtener el registro que tenga el archivo, por ejemplo por slug
+	    $registro = $model->getBySlug($slug, $idioma);
+	    if (!$registro || empty($registro->files)) {
+	        throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound('Archivo no encontrado');
+	    }
+	    // Asumiendo que $registro->file contiene el blob (binario)
+	    $fileData = $registro->files;
 
+	    // Si tienes también el nombre del archivo en BD, úsalo, si no usa uno por defecto
+	    $fileName = $slug.".vcf";
 
-    // Asumiendo que $registro->file contiene el blob (binario)
-    $fileData = $registro->files;
-
-    // Si tienes también el nombre del archivo en BD, úsalo, si no usa uno por defecto
-    $fileName = "contacto.vcf";
-
-    return $this->response->download($fileName, $fileData, true);
-}
+	    return $this->response->download($fileName, $fileData, true);
+	}
 
 }
