@@ -134,7 +134,6 @@ class Home extends BaseController
         $data['contenido'] = $model->getContenidoPublicado($idioma, 'header');
         $data['header_content'] = $model->getContenidoPublicado($idioma, 'services_content');
 		$data['about'] = $model->getContenidoPublicado($idioma, 'about');
-		
 		$data['about_content'] = $model->getContenidoPublicado($idioma, 'about_content');
 		$data['footer_content'] = $model->getContenidoPublicado($idioma, 'footer_content');
 		$data['footer_logo'] = $model->getContenidoPublicado($idioma, 'footer_logo');
@@ -144,6 +143,26 @@ class Home extends BaseController
 		return view('header', $data) . view('about', $data).view('footer');
 
 	}
+
+	public function directorio(){
+		$idioma = 'es'; // o detecta desde URL, sesión, etc.
+        $model = new ContenidoModel();
+
+
+        $data['contenido'] = $model->getContenidoPublicado($idioma, 'header');
+        $data['header_content'] = $model->getContenidoPublicado($idioma, 'services_content');
+		$data['directorio'] = $model->getContenidoPublicado($idioma, 'directorio');
+		
+		$data['directorio_content'] = $model->getContenidoPublicado($idioma, 'directorio_content');
+		$data['footer_content'] = $model->getContenidoPublicado($idioma, 'footer_content');
+		$data['footer_logo'] = $model->getContenidoPublicado($idioma, 'footer_logo');
+		$data['privacy_content'] = $model->getContenidoPublicado($idioma, 'privacy_content');
+		$data['video_header'] = 'MAS Cobertura H.mov';
+
+		return view('header', $data) . view('directorio', $data).view('footer');
+
+	}
+
 	public function contact(){
 		$idioma = 'es'; // o detecta desde URL, sesión, etc.
         $model = new ContenidoModel();

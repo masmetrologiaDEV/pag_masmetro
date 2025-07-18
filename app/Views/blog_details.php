@@ -11,7 +11,8 @@
 
 
             <?php
-               $item = $blog_content[0];
+            $item = (object) $blog_details;
+
                $rol = session()->get('rol');
                if (session()->has('id')): 
             ?>
@@ -31,6 +32,8 @@
                   </a>
                <?php endif; ?>
             <?php endif; ?>
+
+            
 
             <?php if (!empty($blog_details['img'])): ?>
         <img 

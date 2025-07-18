@@ -58,7 +58,19 @@
                   </div>
                   <a href="<?= base_url('home/acreditacion/') ?>" class="nav-item nav-link <?= uri_string() == 'home/acreditacion' ? 'active' : '' ?>">Acreditación</a>
                   <a href="<?= base_url('home/blog/') ?>" class="nav-item nav-link <?= uri_string() == 'home/blog' ? 'active' : '' ?>">Blog</a>
-                  <a href="<?= base_url('home/about/') ?>" class="nav-item nav-link <?= uri_string() == 'home/about' ? 'active' : '' ?>">Nosotros</a>
+
+
+
+                  <div class="nav-item dropdown">
+                     <a href="<?= base_url('home/about') ?>" class="nav-link dropdown-toggle 
+                        <?= in_array(uri_string(), ['home/about', 'home/directorio']) ? 'active' : '' ?>">Nosotros
+                     </a>
+                     <div class="dropdown-menu m-0">
+                        <a href="<?= base_url('home/directorio/')?>" class="dropdown-item <?= uri_string() == 'home/directorio' ? 'active' : '' ?>">Directorio</a>
+                     </div>
+                  </div>
+
+
                   <a href="<?= base_url('home/contact/') ?>" class="nav-item nav-link <?= uri_string() == 'home/contact' ? 'active' : '' ?>">Contacto</a>
                </div>
                <form class="d-flex ms-3 align-items-center" role="search" action="<?= base_url('buscar') ?>" method="get" style="max-width: 250px;">
