@@ -33,8 +33,8 @@ class ContenidoModel extends Model
 
     public function getBySlug($slug, $lang = 'es')
     {
-        $builder = $this->db->table('contenido');
-        $builder->where('slugÍndice', $slug);
+        $builder = $this->db->table('page_content');
+        $builder->where('slug', $slug);
         $builder->where('language', $lang);
         $builder->where('is_published', 1);
 
