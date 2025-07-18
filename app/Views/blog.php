@@ -19,7 +19,7 @@ $firstCategory = isset($blog_content[0]->category) ? $blog_content[0]->category 
             ?>
                <?php if ($rol === 'admin'): ?>
                   <a href="<?= base_url('admin/admin/' . $item->id); ?>">
-                     <button type="button" class="btn btn-success btn-sm">
+                     <button type="button" class="btn btn-success btn-sm" title="Administrar">
                         <i class="fa fa-eye"></i> Admin
                      </button>
                   </a>
@@ -27,7 +27,7 @@ $firstCategory = isset($blog_content[0]->category) ? $blog_content[0]->category 
 
                <?php if ($rol === 'admin' || $rol === 'editor'): ?>
                   <a href="<?= base_url('admin/edit/' . $item->id); ?>">
-                     <button type="button" class="btn btn-warning btn-sm">
+                     <button type="button" class="btn btn-warning btn-sm" title="Editar">
                         <i class="fa fa-pencil"></i> Editar
                      </button>
                   </a>
