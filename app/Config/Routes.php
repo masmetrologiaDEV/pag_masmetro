@@ -52,3 +52,6 @@ if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php'))
 
 /* BUSCADOR */
 $routes->get('buscar', 'Home::buscar');
+$routes->get('directorio/(:segment)', 'Directorio::index/$1');
+$routes->get('directorio/descargar-vcard/(:segment)', 'Directorio::descargarVCard/$1');
+
