@@ -40,7 +40,7 @@ class ContenidoModel extends Model
 
         $query = $builder->get(1);
 
-        return $query->getRowArray(); // o getRow()
+        return $query->getRow();
     }
 
     public function insertContenido($data)
