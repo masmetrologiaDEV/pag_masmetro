@@ -218,7 +218,6 @@ function get_replies(commentId) {
             response.forEach(reply => {
                 const html = `
                     <div class="d-flex mb-2">
-                        <img src="img/user.jpg" class="img-fluid rounded" style="width: 30px; height: 30px;">
                         <div class="ps-2">
                             <h6><small><i>${reply.fecha || ''}</i></small></h6>
                             <p class="mb-0">${reply.reply}</p>

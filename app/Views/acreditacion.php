@@ -11,8 +11,8 @@ $firstCategory = isset($acreditacion_content[0]->category) ? $acreditacion_conte
 ?>
 
 <!-- Testimonial Start -->
-    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container py-2">
+    <div class="container-fluid py-3 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container py-3">
 
 
             <div class="section-title text-center position-relative pb-3 mb-5 mx-auto"

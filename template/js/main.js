@@ -22,9 +22,15 @@
     if ($(this).scrollTop() > 45) {
         $('.navbar').addClass('sticky-top shadow-sm');
         $('#searchIcon').removeClass('text-light').addClass('text-dark');   // <-- aquí
+        $('#searchInput')
+            .removeClass('bg-transparent border-light text-light')
+            .addClass('bg-white border-dark text-dark');
     } else {
         $('.navbar').removeClass('sticky-top shadow-sm');
         $('#searchIcon').removeClass('text-dark').addClass('text-light');   // <-- y aquí
+        $('#searchInput')
+            .removeClass('bg-white border-dark text-dark')
+            .addClass('bg-transparent border-light text-light');
     }
 });
     /*$(window).scroll(function () {

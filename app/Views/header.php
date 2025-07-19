@@ -26,6 +26,7 @@
       <!-- Template Stylesheet -->
       <link href="<?= base_url('template/css/style.css')?>" rel="stylesheet">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+      
    </head>
    <body>
       <!-- Spinner Start -->
@@ -35,7 +36,8 @@
       <!-- Spinner End -->
       <!-- Navbar & Carousel Start -->
       <div class="container-fluid position-relative p-0">
-         <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
+         <nav class="navbar navbar-expand-lg navbar-dark px-5 custom-navbar">
+
             <a href="<?= base_url('/') ?>" class="navbar-brand p-0">
             <img class="w-100" src="<?= base_url('template/img/header.png')?>" alt="Image">
             </a>
@@ -47,7 +49,7 @@
                   <a href="<?= base_url('/') ?>" class="nav-item nav-link <?= uri_string() == '/' ? 'active' : '' ?>">Inicio</a>
                   <div class="nav-item dropdown">
                      <a href="<?= base_url('home/services') ?>" class="nav-link dropdown-toggle 
-                        <?= in_array(uri_string(), ['home/services', 'home/lab_calibracion', 'home/inspeccion_dimensional', 'home/equipos_inventarios', 'home/cross_section']) ? 'active' : '' ?>">Servicios
+                        <?= in_array(uri_string(), ['home/services', 'home/lab_calibracion', 'home/inspeccion_dimensional', 'home/equipos_inventarios', 'home/cross_section']) ? 'active' : '' ?>" data-bs-toggle="dropdown">Servicios
                      </a>
                      <div class="dropdown-menu m-0">
                         <a href="<?= base_url('home/lab_calibracion/')?>" class="dropdown-item <?= uri_string() == 'home/lab_calibracion' ? 'active' : '' ?>">Laboratorio de Calibración</a>
@@ -62,10 +64,11 @@
 
 
                   <div class="nav-item dropdown">
-                     <a href="<?= base_url('home/about') ?>" class="nav-link dropdown-toggle 
-                        <?= in_array(uri_string(), ['home/about', 'home/directorio']) ? 'active' : '' ?>">Nosotros
+                     <a class="nav-link dropdown-toggle 
+                        <?= in_array(uri_string(), ['home/about', 'home/directorio']) ? 'active' : '' ?>" data-bs-toggle="dropdown">Nosotros
                      </a>
                      <div class="dropdown-menu m-0">
+                        <a href="<?= base_url('home/about/')?>" class="dropdown-item <?= uri_string() == 'home/directorio' ? 'active' : '' ?>">Staff</a>
                         <a href="<?= base_url('home/directorio/')?>" class="dropdown-item <?= uri_string() == 'home/directorio' ? 'active' : '' ?>">Directorio</a>
                      </div>
                   </div>
@@ -75,6 +78,7 @@
                </div>
                <form class="d-flex ms-3 align-items-center" role="search" action="<?= base_url('buscar') ?>" method="get" style="max-width: 250px;">
                   <input
+                     id="searchInput"
                      class="form-control form-control-sm me-2 bg-transparent border border-light text-light"
                      type="search"
                      name="q"
@@ -88,7 +92,7 @@
                   <i id="searchIcon" class="fa fa-search text-light"></i>
                   </button>
                </form>
-               <form class="ms-3 d-flex align-items-center" method="get" action="<?= current_url() ?>">
+             <!--  <form class="ms-3 d-flex align-items-center" method="get" action="<?= current_url() ?>">
   <select name="lang" class="form-select form-select-sm bg-transparent border border-light text-light"
           onchange="this.form.submit()" style="width: 130px; cursor: pointer;">
     <option value="es" <?= service('request')->getLocale() === 'es' ? 'selected' : '' ?>>
@@ -99,13 +103,12 @@
     </option>
   </select>
 
-  <!-- Mantener otros parámetros GET -->
   <?php foreach ($_GET as $key => $value): ?>
     <?php if ($key !== 'lang'): ?>
       <input type="hidden" name="<?= esc($key) ?>" value="<?= esc($value) ?>">
     <?php endif; ?>
   <?php endforeach; ?>
-</form>
+</form>-->
 
             </div>
          </nav>

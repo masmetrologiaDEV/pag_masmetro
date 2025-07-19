@@ -21,7 +21,7 @@ class Home extends BaseController
 		$data['footer_content'] = $model->getContenidoPublicado($idioma, 'footer_content');
 		$data['footer_logo'] = $model->getContenidoPublicado($idioma, 'footer_logo');
 		$data['privacy_content'] = $model->getContenidoPublicado($idioma, 'privacy_content');
-		$data['video_header'] = 'MAS Cobertura H.mov';
+		$data['video_header'] = 'Aliado Preciso 130 seg 1080.mp4';
 
 		return view('header', $data) . view('inicio', $data).view('footer');
 	}

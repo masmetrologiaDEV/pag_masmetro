@@ -442,7 +442,7 @@ h6,
     height: 100%;
     top: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.6); /* fondo oscuro translúcido */
+    background: rgba(0, 0, 0, 0.7); /* fondo oscuro translúcido */
     align-items: center;
     justify-content: center;
     opacity: 0;
@@ -478,7 +478,7 @@ h6,
 }
 
 .team-item:hover .team-social {
-    background: rgba(9, 30, 62, .7);
+    background: rgba(9, 30, 62, .8);
 }
 
 .team-item:hover .team-social a.btn:first-child {
@@ -763,3 +763,15 @@ h6,
           border-radius: 0;
         }
       }
+
+.custom-navbar {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  min-height: 90px;
+
+}
+@media (min-width: 768px) {
+  .custom-navbar {
+    height: 50px;
+  }
+}

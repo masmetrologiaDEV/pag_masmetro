@@ -7,8 +7,8 @@ $contact_info=$contact[0];
 $firstCategory = isset($contact_content[0]->category) ? $contact_content[0]->category : null;
 ?>
 <!-- Contact Start -->
-    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container py-5">
+    <div class="container-fluid py-3 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container py-3">
             <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
             <?php
                $item = $contact[0];
@@ -32,7 +32,7 @@ $firstCategory = isset($contact_content[0]->category) ? $contact_content[0]->cat
                <?php endif; ?>
             <?php endif; ?>
 
-                <h5 class="fw-bold text-primary text-uppercase"><?= $contact_info->title ?></h5>
+                <h1 class="fw-bold text-uppercase"><?= $contact_info->title ?></h1>
             </div>
 
             
