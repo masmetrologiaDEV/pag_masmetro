@@ -83,6 +83,7 @@
                </form>
             </div>
          </div>
+
          <!-- Sidebar Start -->
          <div class="col-lg-4">
             <!-- Recent Post Start -->
@@ -93,16 +94,19 @@
                <?php
                   if ($recent_posts):
                   foreach ($recent_posts as $post): ?>
-               <div class="d-flex rounded overflow-hidden mb-3">
-                  <img class="img-fluid" 
-                     src="<?= 'data:image/bmp;base64,' . base64_encode($post['img']) ?>" 
-                     alt="<?= esc($post['title']) ?>" 
-                     style="width: 100px; height: 100px; object-fit: cover;">
-                  <a href="<?= base_url('home/' . $post['slug'] . '/' . $post['id']) ?>" 
-                     class="h6 fw-semi-bold d-flex align-items-center bg-light px-3 mb-0">
-                  <?= esc($post['title']) ?>
-                  </a>
-               </div>
+               <div class="d-flex rounded overflow-hidden mb-3 bg-light" style="height: 100px;">
+    <div style="width: 100px; height: 100px; flex-shrink: 0;">
+        <img class="img-fluid h-100 w-100" 
+             src="<?= 'data:image/bmp;base64,' . base64_encode($post['img']) ?>" 
+             alt="<?= esc($post['title']) ?>" 
+             style="object-fit: cover;">
+    </div>
+    <a href="<?= base_url('home/' . $post['slug'] . '/' . $post['id']) ?>" 
+       class="h6 fw-semi-bold d-flex align-items-center px-3 mb-0 w-100">
+       <?= esc($post['title']) ?>
+    </a>
+</div>
+
                <?php endforeach; 
                   endif;?>
             </div>

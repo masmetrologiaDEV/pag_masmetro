@@ -230,6 +230,32 @@ class Home extends BaseController
     return view('header', $data) . view('blog_details', $data) . view('footer');
 }
 
+public function certificados()
+{
+    $model = new ContenidoModel();
+    $idioma = 'es';
+
+    $data['contenido'] = $model->getContenidoPublicado($idioma, 'header');
+    $data['header_content'] = $model->getContenidoPublicado($idioma, 'services_content');
+
+    // Portada de certificados
+    $portadaArray = $model->getContenidoPublicado($idioma, 'certificados');
+    $data['portada_certificado'] = !empty($portadaArray) ? $portadaArray[0] : null;
+
+    // Cargar certificados disponibles (aunque solo haya uno)
+    $data['certificados'] = $model->getContenidoPublicado($idioma, 'certificados_content');
+
+    $data['footer_content'] = $model->getContenidoPublicado($idioma, 'footer_content');
+    $data['footer_logo'] = $model->getContenidoPublicado($idioma, 'footer_logo');
+    $data['privacy_content'] = $model->getContenidoPublicado($idioma, 'privacy_content');
+    $data['video_header'] = 'MAS Cobertura H.mov';
+
+    return view('header', $data)
+         . view('certificados', $data)
+         . view('footer');
+}
+
+
 
 	public function buscar()
 {

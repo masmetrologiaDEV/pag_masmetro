@@ -55,3 +55,4 @@ $routes->get('buscar', 'Home::buscar');
 $routes->get('directorio/(:segment)', 'Directorio::index/$1');
 $routes->get('directorio/descargar-vcard/(:segment)', 'Directorio::descargarVCard/$1');
 
+$routes->get('reconocimientos/(:segment)', 'Reconocimientos::index/$1');

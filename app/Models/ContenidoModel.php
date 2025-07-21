@@ -109,4 +109,14 @@ public function getLastPosts($limit = 3)
         return $this->db->table($table)->insert($datos);
     }
 
+    
+ public function getContenidoPorSlug($slug, $categoria)
+{
+    return $this->where('slug', $slug)
+                ->where('category', $categoria)
+                ->where('is_published', 1)
+                ->first();
+}
+
+
 }
