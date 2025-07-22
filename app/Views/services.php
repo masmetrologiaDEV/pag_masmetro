@@ -57,7 +57,7 @@ $firstCategory = isset($header_content[0]->category) ? $header_content[0]->categ
                 <img src="<?= 'data:image/bmp;base64,' . base64_encode($elem->img); ?>" 
                      alt="<?= esc($elem->title) ?>" 
                      class="img-fluid mx-auto mb-3" 
-                     style="max-width: 150px; height: auto;">
+                     style="max-width: 240px; height: auto;">
 
                 <div>
                     <h5 class="fw-bold text-dark mb-2"><?= esc($elem->title) ?></h5>

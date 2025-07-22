@@ -52,7 +52,7 @@
                   <a href="<?= base_url('/') ?>" class="nav-item nav-link <?= uri_string() == '/' ? 'active' : '' ?>"> <?= lang('Validation.home')?> </a>
                   <div class="nav-item dropdown">
                      <a href="<?= base_url('home/services/') ?>" class="nav-link dropdown-toggle 
-                        <?= in_array(uri_string(), ['home/services', 'home/lab_calibracion', 'home/inspeccion_dimensional', 'home/equipos_inventarios', 'home/cross_section']) ? 'active' : '' ?>" data-bs-toggle="dropdown"> <?= lang('Validation.services')?> 
+                        <?= in_array(uri_string(), ['home/services', 'home/lab_calibracion', 'home/inspeccion_dimensional', 'home/equipos_inventarios', 'home/cross_section']) ? 'active' : '' ?>"> <?= lang('Validation.services')?> 
                      </a>
                      <div class="dropdown-menu m-0">
                         <a href="<?= base_url('home/lab_calibracion/')?>" class="dropdown-item <?= uri_string() == 'home/lab_calibracion' ? 'active' : '' ?>"> <?= lang('Validation.calibration')?> </a>
