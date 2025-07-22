@@ -57,7 +57,7 @@ $firstCategory = isset($contact_content[0]->category) ? $contact_content[0]->cat
                                 <textarea name="message" class="form-control border-0 bg-light px-4 py-3" rows="4" placeholder="<?= lang('Validation.message') ?>" required></textarea>
                             </div>
                             <div class="col-12">
-                                <button class="btn btn-primary w-100 py-3" type="submit" placeholder="<?= lang('Validation.submit') ?>"required >Enviar mensaje</button>
+                                <button class="btn btn-primary w-100 py-3" type="submit" placeholder="<?= lang('Validation.submit') ?>"required ><?= lang('Validation.message') ?></button>
                             </div>
                         </div> 
                     </form>

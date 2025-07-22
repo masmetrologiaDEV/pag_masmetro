@@ -1,3 +1,26 @@
+ <?php
+            $item = (object) $portada_certificado;
+
+               $rol = session()->get('rol');
+               if (session()->has('id')): 
+            ?>
+               <?php if ($rol === 'admin'): ?>
+                  <a href="<?= base_url('admin/admin/' . $item->id); ?>">
+                     <button type="button" class="btn btn-success btn-sm">
+                        <i class="fa fa-eye"></i> Admin - Portada
+                     </button>
+                  </a>
+               <?php endif; ?>
+
+               <?php if ($rol === 'admin' || $rol === 'editor'): ?>
+                  <a href="<?= base_url('admin/edit/' . $item->id); ?>">
+                     <button type="button" class="btn btn-warning btn-sm">
+                        <i class="fa fa-pencil"></i> Editar - Portada
+                     </button>
+                  </a>
+               <?php endif; ?>
+            <?php endif; ?>
+
 
 <?php if (isset($portada_certificado)): ?>
 <div id="bienvenida" class="modal-full">
@@ -8,6 +31,31 @@
 </div>
 <?php endif; ?>
 
+
+ <?php
+            $item = (object) $certificado;
+
+               $rol = session()->get('rol');
+               if (session()->has('id')): 
+            ?>
+               <?php if ($rol === 'admin'): ?>
+                  <a href="<?= base_url('admin/admin/' . $item->id); ?>">
+                     <button type="button" class="btn btn-success btn-sm">
+                        <i class="fa fa-eye"></i> Admin
+                     </button>
+                  </a>
+               <?php endif; ?>
+
+               <?php if ($rol === 'admin' || $rol === 'editor'): ?>
+                  <a href="<?= base_url('admin/edit/' . $item->id); ?>">
+                     <button type="button" class="btn btn-warning btn-sm">
+                        <i class="fa fa-pencil"></i> Editar
+                     </button>
+                  </a>
+               <?php endif; ?>
+            <?php endif; ?>
+
+
 <div id="contenidoCertificado" style="display: none;">
     <div class="container text-center py-5">
 
@@ -17,10 +65,6 @@
        style="max-width: 500px; cursor: zoom-in;"
        alt="<?= esc($certificado['title']) ?>">
 </a>
-
-
-
-
         <h2><?= esc($certificado['title']) ?></h2>
         <p><?= esc($certificado['content']) ?></p>
     </div>

@@ -32,6 +32,9 @@
           <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalAgregar">
             Agregar Usuario
           </button>
+          <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalAgregarReconocimiento">
+      Agregar Reconocimiento
+    </button>
         <?php endif; ?>
       </div>
     </div>
@@ -127,6 +130,60 @@
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-success">Crear Usuario</button>
+        </div>
+
+        <button class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#modalAgregarReconocimiento">
+        + Reconocimiento
+    </button>
+        
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Modal: Agregar Reconocimiento -->
+<div class="modal fade" id="modalAgregarReconocimiento" tabindex="-1" aria-labelledby="modalAgregarReconocimientoLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <form action="<?= base_url('admin/add_insert_rec') ?>" method="post" enctype="multipart/form-data">
+      <div class="modal-content">
+        <div class="modal-header bg-secondary text-white">
+          <h5 class="modal-title" id="modalAgregarReconocimientoLabel">Agregar Reconocimiento</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+
+        <div class="modal-body">
+          <!-- Título -->
+          <div class="mb-3">
+            <label for="title" class="form-label">Título</label>
+            <input type="text" class="form-control" id="title" name="title" required>
+          </div>
+
+          <!-- Slug -->
+          <div class="mb-3">
+            <label for="slug" class="form-label">Slug</label>
+            <input type="text" class="form-control" id="slug" name="slug">
+          </div>
+
+          <!-- Contenido -->
+          <div class="mb-3">
+            <label for="content" class="form-label">Contenido</label>
+            <textarea class="form-control" id="content" name="content" rows="4"></textarea>
+          </div>
+
+          <!-- Imagen -->
+          <div class="mb-3">
+            <label for="foto" class="form-label">Imagen</label>
+            <input type="file" class="form-control" id="foto" name="foto" accept="image/*">
+          </div>
+
+          <!-- Campos ocultos -->
+          <input type="hidden" name="category" value="certificados_content">
+          <input type="hidden" name="language" value="es">
+          <input type="hidden" name="is_published" value="1">
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-secondary">Guardar</button>
         </div>
       </div>
     </form>

@@ -348,6 +348,60 @@ class Admin extends BaseController
             ->with("success", "Contenido agregado y registrado en log.");
     }
 
+    public function add_insert_rec()
+    {
+        helper(["form", "url"]);
+
+        $logModel = new \App\Models\AdminModel(); // Asegúrate de tener este modelo
+
+        // Datos del contenido
+        $data = [
+            "title" => $this->request->getPost("title"),
+            "slug" => $this->request->getPost("slug"),
+            "category" => $this->request->getPost("category"),
+            "content" => $this->request->getPost("content"),
+            "is_published" => $this->request->getPost("is_published") ? 1 : 0,
+            "user" => session("user_id") ?? 1, // Ajusta si usas sesiones
+        ];
+
+        // Imagen
+        $img = $this->request->getFile("foto");
+        if ($img && $img->isValid() && !$img->hasMoved()) {
+            $data["img"] = file_get_contents($img->getTempName());
+        }
+
+        
+        // Archivos
+        $file = $this->request->getFile("files");
+        if ($file && $file->isValid() && !$file->hasMoved()) {
+            $data["files"] = file_get_contents($file->getTempName());
+        }
+
+        // Insertar contenido
+        $idInsertado = $logModel->add_insert($data);
+        $logData = [
+            "idPag" => $idInsertado,
+            "category" => $data["category"] ?? null,
+            "content" => $data["content"] ?? null,
+            "img" => $data["img"] ?? null,
+            "files" => $data["files"] ?? null,
+            "title" => $data["title"] ?? null,
+            "slug" => $data["slug"] ?? null,
+            "is_published" => $data["is_published"] ?? 0,
+
+            "user" => session("id"), // o $this->session->id
+        ];
+
+        $logModel->insertAdmin($logData);
+
+        return redirect()
+            ->to(base_url("admin"))
+            ->with("success", "Contenido agregado y registrado en log.");
+    }
+
+
+
+    
     function crear()
     {
         helper(["form", "url"]);

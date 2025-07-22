@@ -12,4 +12,31 @@ return [
     'phone' => '    Phone number',
     'submit' => 'Submit',
 
+
+    /* HEADER */
+    'home' => 'Home',
+    'services' => 'Services',
+    'calibration' => 'Calibration Laboratory',
+    'dimensional' => 'Dimensional Inspection',
+    'inventory' => 'Inventory Equipment',
+    'test' => 'Reliability Tests',
+    'accreditation' => 'Accreditation',
+    'blog' => 'Blog',
+    'about' => 'About',
+    'staff' => 'Staff',
+    'directory' => 'Directory',
+    'contact' => 'Contact',
+    'search' => 'Search..',
+
+
+
+
+
+
+
+
+
+
+
+
 ];

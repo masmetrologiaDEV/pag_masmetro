@@ -49,35 +49,35 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                <div class="navbar-nav ms-auto py-0">
-                  <a href="<?= base_url('/') ?>" class="nav-item nav-link <?= uri_string() == '/' ? 'active' : '' ?>">Inicio</a>
+                  <a href="<?= base_url('/') ?>" class="nav-item nav-link <?= uri_string() == '/' ? 'active' : '' ?>"> <?= lang('Validation.home')?> </a>
                   <div class="nav-item dropdown">
-                     <a href="<?= base_url('home/services') ?>" class="nav-link dropdown-toggle 
-                        <?= in_array(uri_string(), ['home/services', 'home/lab_calibracion', 'home/inspeccion_dimensional', 'home/equipos_inventarios', 'home/cross_section']) ? 'active' : '' ?>" data-bs-toggle="dropdown">Servicios
+                     <a href="<?= base_url('home/services/') ?>" class="nav-link dropdown-toggle 
+                        <?= in_array(uri_string(), ['home/services', 'home/lab_calibracion', 'home/inspeccion_dimensional', 'home/equipos_inventarios', 'home/cross_section']) ? 'active' : '' ?>" data-bs-toggle="dropdown"> <?= lang('Validation.services')?> 
                      </a>
                      <div class="dropdown-menu m-0">
-                        <a href="<?= base_url('home/lab_calibracion/')?>" class="dropdown-item <?= uri_string() == 'home/lab_calibracion' ? 'active' : '' ?>">Laboratorio de Calibración</a>
-                        <a href="<?= base_url('home/inspeccion_dimensional/')?>" class="dropdown-item <?= uri_string() == 'home/inspeccion_dimensional' ? 'active' : '' ?>">Inspección Dimensional</a>
-                        <a href="<?= base_url('home/equipos_inventarios/')?>" class="dropdown-item <?= uri_string() == 'home/equipos_inventarios' ? 'active' : '' ?>">Equipos para Inventarios</a>
-                        <a href="<?= base_url('home/cross_section/')?>" class="dropdown-item <?= uri_string() == 'home/cross_section' ? 'active' : '' ?>">Cross Section</a>
+                        <a href="<?= base_url('home/lab_calibracion/')?>" class="dropdown-item <?= uri_string() == 'home/lab_calibracion' ? 'active' : '' ?>"> <?= lang('Validation.calibration')?> </a>
+                        <a href="<?= base_url('home/inspeccion_dimensional/')?>" class="dropdown-item <?= uri_string() == 'home/inspeccion_dimensional' ? 'active' : '' ?>"> <?= lang('Validation.dimensional')?> </a>
+                        <a href="<?= base_url('home/equipos_inventarios/')?>" class="dropdown-item <?= uri_string() == 'home/equipos_inventarios' ? 'active' : '' ?>"> <?= lang('Validation.inventory')?> </a>
+                        <a href="<?= base_url('home/cross_section/')?>" class="dropdown-item <?= uri_string() == 'home/cross_section' ? 'active' : '' ?>"> <?= lang('Validation.test')?> </a>
                      </div>
                   </div>
-                  <a href="<?= base_url('home/acreditacion/') ?>" class="nav-item nav-link <?= uri_string() == 'home/acreditacion' ? 'active' : '' ?>">Acreditación</a>
-                  <a href="<?= base_url('home/blog/') ?>" class="nav-item nav-link <?= uri_string() == 'home/blog' ? 'active' : '' ?>">Blog</a>
+                  <a href="<?= base_url('home/acreditacion/') ?>" class="nav-item nav-link <?= uri_string() == 'home/acreditacion' ? 'active' : '' ?>"> <?= lang('Validation.accreditation')?> </a>
+                  <a href="<?= base_url('home/blog/') ?>" class="nav-item nav-link <?= uri_string() == 'home/blog' ? 'active' : '' ?>"> <?= lang('Validation.blog')?> </a>
 
 
 
                   <div class="nav-item dropdown">
                      <a class="nav-link dropdown-toggle 
-                        <?= in_array(uri_string(), ['home/about', 'home/directorio']) ? 'active' : '' ?>" data-bs-toggle="dropdown">Nosotros
+                        <?= in_array(uri_string(), ['home/about', 'home/directorio']) ? 'active' : '' ?>" data-bs-toggle="dropdown" data-bs-toggle="dropdown"> <?= lang('Validation.about')?>
                      </a>
                      <div class="dropdown-menu m-0">
-                        <a href="<?= base_url('home/about/')?>" class="dropdown-item <?= uri_string() == 'home/directorio' ? 'active' : '' ?>">Staff</a>
-                        <a href="<?= base_url('home/directorio/')?>" class="dropdown-item <?= uri_string() == 'home/directorio' ? 'active' : '' ?>">Directorio</a>
+                        <a href="<?= base_url('home/about/')?>" class="dropdown-item <?= uri_string() == 'home/about' ? 'active' : '' ?>"> <?= lang('Validation.staff')?> </a>
+                        <a href="<?= base_url('home/directorio/')?>" class="dropdown-item <?= uri_string() == 'home/directorio' ? 'active' : '' ?>"> <?= lang('Validation.directory')?> </a>
                      </div>
                   </div>
 
 
-                  <a href="<?= base_url('home/contact/') ?>" class="nav-item nav-link <?= uri_string() == 'home/contact' ? 'active' : '' ?>">Contacto</a>
+                  <a href="<?= base_url('home/contact/') ?>" class="nav-item nav-link <?= uri_string() == 'home/contact' ? 'active' : '' ?>"> <?= lang('Validation.contact')?> </a>
                </div>
                <form class="d-flex ms-3 align-items-center" role="search" action="<?= base_url('buscar') ?>" method="get" style="max-width: 250px;">
                   <input
@@ -85,7 +85,7 @@
                      class="form-control form-control-sm me-2 bg-transparent border border-light text-light"
                      type="search"
                      name="q"
-                     placeholder="Buscar..."
+                     placeholder=<?= lang('Validation.search')?>
                      aria-label="Buscar"
                      style="min-width: 0;"
                      >

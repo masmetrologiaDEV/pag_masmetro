@@ -36,12 +36,11 @@
             
 
             <?php if (!empty($blog_details['img'])): ?>
-        <img 
+         <img 
             src="data:image/jpeg;base64,<?= base64_encode($blog_details['img']) ?>" 
             alt="<?= esc($blog_details['title']) ?>" 
-            class="img-fluid rounded mb-3"
-        >
-    <?php endif; ?>
+            class="img-fluid rounded mb-3">
+         <?php endif; ?>
                <h1 class="mb-4"><?= esc($blog_details['title'])?></h1>
                <p><?= esc($blog_details['content'])?></p>
 
