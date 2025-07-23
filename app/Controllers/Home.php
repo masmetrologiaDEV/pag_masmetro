@@ -25,6 +25,28 @@ class Home extends BaseController
 
 		return view('header', $data) . view('inicio', $data).view('footer');
 	}
+	public function error_404()
+{
+    $model = new ContenidoModel();
+    $idioma = 'es';
+
+    $data['contenido'] = $model->getContenidoPublicado($idioma, 'header');
+    $data['header_content'] = $model->getContenidoPublicado($idioma, 'services_content');
+    $data['footer_content'] = $model->getContenidoPublicado($idioma, 'footer_content');
+	$data['error_content'] = $model->getContenidoPublicado($idioma, 'error_content');
+    $data['footer_logo'] = $model->getContenidoPublicado($idioma, 'footer_logo');
+    $data['privacy_content'] = $model->getContenidoPublicado($idioma, 'privacy_content');
+    $data['video_header'] = 'MAS Cobertura H.mov';
+
+    return view('header', $data)
+         . view('error_404', $data)
+         . view('footer');
+}
+
+
+
+
+
 	public function services(){
 		$model = new ContenidoModel();
 

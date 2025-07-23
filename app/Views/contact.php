@@ -168,7 +168,7 @@ $firstCategory = isset($contact_content[0]->category) ? $contact_content[0]->cat
         </div>
     </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script href="<?= base_url('template/css/owl.carousel.min.js')?>"></script>
     <!-- Contact End --><script>
    $(document).ready(function () {
        let sync2 = $(".sync2");

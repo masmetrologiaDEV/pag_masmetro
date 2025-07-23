@@ -3,6 +3,20 @@
 use CodeIgniter\Events\Events;
 use CodeIgniter\Exceptions\FrameworkException;
 
+use CodeIgniter\Exceptions\PageNotFoundException;
+
+Events::on('pre_system', function () {
+    set_exception_handler(function ($e) {
+        if ($e instanceof PageNotFoundException) {
+            $controller = new \App\Controllers\Home();
+            echo $controller->error_404();
+            exit;
+        }
+
+        throw $e; // Deja que otros errores se manejen normalmente
+    });
+});
+
 /*
  * --------------------------------------------------------------------
  * Application Events
