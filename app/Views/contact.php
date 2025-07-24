@@ -167,8 +167,8 @@ $firstCategory = isset($contact_content[0]->category) ? $contact_content[0]->cat
             </div>                            
         </div>
     </div>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script href="<?= base_url('template/css/owl.carousel.min.js')?>"></script>
+<script src="<?= base_url('template/js/jquery-3.6.0.min.js')?>"></script>
+<script href="<?= base_url('template/css/owl.carousel.min.css')?>"></script>
     <!-- Contact End --><script>
    $(document).ready(function () {
        let sync2 = $(".sync2");
@@ -196,11 +196,11 @@ $firstCategory = isset($contact_content[0]->category) ? $contact_content[0]->cat
 
 <!-- NUMERO DE TELEFONO - FORMULARIO -->
 <!-- CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.min.css"/>
+<link rel="stylesheet" href="<?= base_url('template/css/intlTelInput.min.css')?>"/>
 
 <!-- JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"></script>
+<script src="<?= base_url('template/js/intlTelInput.js')?>"></script>
+<script src="<?= base_url('template/js/utils.js')?>"></script>
 
 <script>
   const input = document.querySelector("#telefono");

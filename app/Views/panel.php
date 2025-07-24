@@ -146,7 +146,7 @@
   <div class="modal-dialog modal-lg">
     <form action="<?= base_url('admin/add_insert_rec') ?>" method="post" enctype="multipart/form-data">
       <div class="modal-content">
-        <div class="modal-header bg-secondary text-white">
+        <div class="modal-header bg-success text-white">
           <h5 class="modal-title" id="modalAgregarReconocimientoLabel">Agregar Reconocimiento</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
@@ -183,7 +183,7 @@
         </div>
 
         <div class="modal-footer">
-          <button type="submit" class="btn btn-secondary">Guardar</button>
+          <button type="submit" class="btn btn-success">Guardar</button>
         </div>
       </div>
     </form>

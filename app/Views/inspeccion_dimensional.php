@@ -108,8 +108,8 @@ $firstCategory = isset($inspection_content[0]->category) ? $inspection_content[0
   </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="<?= base_url('template/js/jquery-3.6.0.min.js') ?>"></script>
+<script src="<?= base_url('template/js/bootstrap.min.js') ?>"></script>
 
 <script>
     const base_url = "<?= base_url() ?>";

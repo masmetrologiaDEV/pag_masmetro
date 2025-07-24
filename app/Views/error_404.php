@@ -41,31 +41,41 @@ $error=$error_content[0];
 .error-container a.btn-home:hover {
     background-color: #00385e;
 }
+
+/* --- Botones Admin y Editar en línea --- */
+.error-buttons {
+    display: flex;
+    gap: 10px; /* Espacio entre botones */
+    margin-bottom: 20px; /* Separación respecto al título */
+}
+</style>
 </style>
 
 <div class="error-container">
 
-<?php
-               $item = $error_content[0];
-               $rol = session()->get('rol');
-               if (session()->has('id')): 
-            ?>
-               <?php if ($rol === 'admin'): ?>
-                  <a href="<?= base_url('admin/admin/' . $item->id); ?>">
-                     <button type="button" class="btn btn-success btn-sm">
+            <?php
+        $item = $error_content[0];
+        $rol = session()->get('rol');
+        if (session()->has('id')): 
+    ?>
+        <div class="error-buttons">
+            <?php if ($rol === 'admin'): ?>
+                <a href="<?= base_url('admin/admin/' . $item->id); ?>">
+                    <button type="button" class="btn btn-success btn-sm">
                         <i class="fa fa-eye"></i> Admin
-                     </button>
-                  </a>
-               <?php endif; ?>
-
-               <?php if ($rol === 'admin' || $rol === 'editor'): ?>
-                  <a href="<?= base_url('admin/edit/' . $item->id); ?>">
-                     <button type="button" class="btn btn-warning btn-sm">
-                        <i class="fa fa-pencil"></i> Editar
-                     </button>
-                  </a>
-               <?php endif; ?>
+                    </button>
+                </a>
             <?php endif; ?>
+
+            <?php if ($rol === 'admin' || $rol === 'editor'): ?>
+                <a href="<?= base_url('admin/edit/' . $item->id); ?>">
+                    <button type="button" class="btn btn-warning btn-sm">
+                        <i class="fa fa-pencil"></i> Editar
+                    </button>
+                </a>
+            <?php endif; ?>
+        </div>
+    <?php endif; ?>
 
     <h1><?= $error->title ?></h1>
     <p><?= $error->content ?></p>

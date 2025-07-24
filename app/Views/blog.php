@@ -53,39 +53,61 @@ $firstCategory = isset($blog_content[0]->category) ? $blog_content[0]->category 
     <div class="row g-5">
         <?php foreach ($blog_content as $index => $elem): ?>
             <div class="col-md-4 d-flex">
-                <div class="blog-item bg-light rounded overflow-hidden">
+                <!-- Tarjeta flexible -->
+                <div class="blog-item bg-light rounded overflow-hidden d-flex flex-column w-100">
+
+                    <!-- Imagen -->
                     <div class="blog-img position-relative overflow-hidden">
-                        <img src=<?= 'data:image/bmp;base64,' . base64_encode($elem->img); ?> alt="<?= esc($elem->title) ?>" class="img-fluid w-100">
+                        <img src="<?= 'data:image/bmp;base64,' . base64_encode($elem->img); ?>" 
+                             alt="<?= esc($elem->title) ?>" 
+                             class="img-fluid w-100" 
+                             style="height:220px; object-fit:cover;">
                     </div>
 
-                    <div class="p-4 pt-3">
-                        <div class="d-flex mb-3">
-                            <small class="me-3"><i class="far fa-user text-primary me-2"></i><?= esc($elem->intro_text) ?></small>
-                            <small><i class="far fa-calendar-alt text-primary me-2"></i><?= esc($elem->date) ?></small>
-                        </div>
-                        <h4 class="mb-3"><?= esc($elem->title) ?></h4>
-                        <p><?= esc($elem->content) ?></p>
-                        <a href="<?= base_url('home/' . $elem->slug . '/' . $elem->id) ?>" class="text-uppercase" rel="noopener"> Más <i class="bi bi-arrow-right"></i> </a>
+                    <!-- Contenido -->
+                    <div class="p-4 pt-3 d-flex flex-column justify-content-between flex-grow-1">
 
-                        <?php if (session()->has('id')): ?>
-                            <div class="mt-3 d-flex justify-content-center gap-2 flex-wrap">
-                                <?php if (session()->rol === 'admin'): ?>
-                                    <a href="<?= base_url('admin/admin/' . $elem->id); ?>" title="Administrar este servicio">
-                                        <button type="button" class="btn btn-success btn-sm">
-                                            <i class="fa fa-eye"></i> Admin
-                                        </button>
-                                    </a>
-                                <?php endif; ?>
-
-                                <?php if (in_array(session()->rol, ['admin', 'editor'])): ?>
-                                    <a href="<?= base_url('admin/edit/' . $elem->id); ?>" title="Editar este servicio">
-                                        <button type="button" class="btn btn-warning btn-sm">
-                                            <i class="fa fa-pencil"></i> Editar
-                                        </button>
-                                    </a>
-                                <?php endif; ?>
+                        <div>
+                            <div class="d-flex mb-3">
+                                <small class="me-3">
+                                    <i class="far fa-user text-primary me-2"></i><?= esc($elem->intro_text) ?>
+                                </small>
+                                <small>
+                                    <i class="far fa-calendar-alt text-primary me-2"></i><?= esc($elem->date) ?>
+                                </small>
                             </div>
-                        <?php endif; ?>
+                            <h4 class="mb-3"><?= esc($elem->title) ?></h4>
+                            <p><?= esc($elem->content) ?></p>
+                        </div>
+
+                        <!-- Enlace y botones al final -->
+                        <div>
+                            <a href="<?= base_url('home/' . $elem->slug . '/' . $elem->id) ?>" 
+                               class="text-uppercase" rel="noopener"> 
+                               Más <i class="bi bi-arrow-right"></i> 
+                            </a>
+
+                            <?php if (session()->has('id')): ?>
+                                <div class="mt-3 d-flex justify-content-center gap-2 flex-wrap">
+                                    <?php if (session()->rol === 'admin'): ?>
+                                        <a href="<?= base_url('admin/admin/' . $elem->id); ?>" title="Administrar este servicio">
+                                            <button type="button" class="btn btn-success btn-sm">
+                                                <i class="fa fa-eye"></i> Admin
+                                            </button>
+                                        </a>
+                                    <?php endif; ?>
+
+                                    <?php if (in_array(session()->rol, ['admin', 'editor'])): ?>
+                                        <a href="<?= base_url('admin/edit/' . $elem->id); ?>" title="Editar este servicio">
+                                            <button type="button" class="btn btn-warning btn-sm">
+                                                <i class="fa fa-pencil"></i> Editar
+                                            </button>
+                                        </a>
+                                    <?php endif; ?>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+
                     </div>
                 </div>
             </div>
