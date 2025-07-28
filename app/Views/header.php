@@ -1,5 +1,6 @@
 <?php
    $item=$contenido[0];
+   $icon = 'data:image/bmp;base64,' . base64_encode($item->icon);
    ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +12,7 @@
       <meta content="Free HTML Templates" name="keywords">
       <meta content="Free HTML Templates" name="description">
       <!-- Favicon -->
-      <link href="img/favicon.ico" rel="icon">
+      <link rel="icon" type="image/bmp" href="<?= $icon ?>">
       <!-- Google Web Fonts -->
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,9 +29,12 @@
       <link rel="stylesheet" href="<?= base_url('template/css/all.min.css')?>">
 
       
-      
+       
+                     
    </head>
+
    <body>
+
       <!-- Spinner Start -->
       <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
          <div class="spinner"></div>
@@ -41,7 +45,7 @@
          <nav class="navbar navbar-expand-lg navbar-dark px-5 custom-navbar">
 
             <a href="<?= base_url('/') ?>" class="navbar-brand p-0">
-            <img class="w-100" src="<?= base_url('template/img/header.png')?>" alt="Image">
+            <img class="w-100" src="<?= 'data:image/bmp;base64,' . base64_encode($item->img); ?>" alt="Image">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="fa fa-bars"></span>
@@ -113,12 +117,15 @@
 </form>-->
 
             </div>
+
          </nav>
+
          <div class="position-relative" style="height: 80vh; overflow: hidden;">
             <!-- Video de fondo -->
             <video autoplay muted loop playsinline class="position-absolute top-50 start-50 translate-middle object-fit-contain z-n1">
                <source src="<?= base_url('template/videos/'.$video_header) ?>" type="video/mp4">
             </video>
+
             <!-- Carrusel encima del video -->
             <div id="header-carousel" class="carousel slide h-100" data-bs-ride="carousel">
                <div class="carousel-inner h-100 d-flex align-items-center justify-content-start" style="padding-left: 200px;">
@@ -161,7 +168,22 @@
                <span class="visually-hidden">Siguiente</span>
                </button>
             </div>
+
          </div>
+           <?php   if (session()->has('id')): 
+                        if (session()->rol=='admin'): ?>
+                     <a href="<?= base_url('admin/admin/' . $item->id); ?>">
+                     <button type="button" class="btn btn-success btn-sm">
+                     <i class="fa fa-eye"></i> Admin
+                     </button>
+                     </a>
+                     <?php endif; ?>
+                     <a href="<?= base_url('admin/edit/' . $item->id); ?>">
+                     <button type="button" class="btn btn-warning btn-sm">
+                     <i class="fa fa-pencil"></i> Editar
+                     </button>
+                     </a>
+                     <?php endif; ?>
       </div>
       <!-- Navbar & Carousel End -->
       <!-- Full Screen Search Start -->
