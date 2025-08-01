@@ -36,6 +36,12 @@ $firstCategory = isset($header_content[0]->category) ? $header_content[0]->categ
 
     <h5 class="fw-bold text-primary text-uppercase"><?= $service->title ?></h5>
     <h1 class="mb-0"><?= $service->intro_text ?></h1>
+    
+    <a href="<?= base_url('home/contact/') ?>" target="_blank" class="btn btn-primary btn-sm shadow-sm d-inline-flex align-items-center gap-2 px-4 py-2">
+      <i class="fa fa-envelope"></i>
+      <span>Solicitar cotización</span>
+    </a>
+
 </div>
 
 <?php if (session()->has('id') && session()->rol == 'admin'): ?>
@@ -54,14 +60,15 @@ $firstCategory = isset($header_content[0]->category) ? $header_content[0]->categ
     <?php foreach ($header_content as $index => $elem): ?>
         <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
             <div class="service-item bg-white rounded shadow-sm p-4 text-center h-100 d-flex flex-column justify-content-between position-relative">
-                <img src="<?= 'data:image/bmp;base64,' . base64_encode($elem->img); ?>" 
+                <a href="<?= esc($elem->slug) ?>" title="Clic aquí"><img src="<?= 'data:image/bmp;base64,' . base64_encode($elem->img); ?>" 
                      alt="<?= esc($elem->title) ?>" 
                      class="img-fluid mx-auto mb-3" 
                      style="max-width: 240px; height: auto;">
-
+</a>
                 <div>
-                    <h5 class="fw-bold text-dark mb-2"><?= esc($elem->title) ?></h5>
-                    <p class="text-muted small"><?= esc($elem->content) ?></p>
+                   <a href="<?= esc($elem->slug) ?>" title="Clic aquí"> <h5 class="fw-bold text-dark mb-2"><?= esc($elem->title) ?></h5></a>
+                    <a href="<?= esc($elem->slug) ?>" title="Clic aquí"><p class="text-muted small"><?= esc($elem->content) ?></p>
+                    </a>
                 </div>
 
                 <a class="btn btn-ver-mas mt-3 d-inline-flex align-items-center justify-content-center" 

@@ -36,6 +36,10 @@ $firstCategory = isset($inspection_content[0]->category) ? $inspection_content[0
             <?php endif; ?>
             
             <h1 class="mb-0"><?= $inspeccion->title?></h1>
+            <a href="<?= base_url('home/contact/') ?>" target="_blank" class="btn btn-primary btn-sm shadow-sm d-inline-flex align-items-center gap-2 px-4 py-2">
+      <i class="fa fa-envelope"></i>
+      <span>Solicitar cotización</span>
+    </a>
             </div>
 
                     <?php if (session()->has('id') && session()->rol == 'admin'): ?>
@@ -56,13 +60,13 @@ $firstCategory = isset($inspection_content[0]->category) ? $inspection_content[0
                         <img src="<?= 'data:image/bmp;base64,' . base64_encode($elem->img); ?>" 
                              alt="<?= esc($elem->title) ?>" 
                              class="img-fluid mx-auto mb-3" 
-                             style="max-width: 240px; height: auto;">
+                             style="max-width: 240px; height: auto;" onclick='modal(<?=$elem->id?>)' title="Clic aquí">
 
                         <div>
-                            <h5 class="fw-bold text-dark mb-2"><?= esc($elem->title) ?></h5>
+                            <h5 class="fw-bold text-dark mb-2" onclick='modal(<?=$elem->id?>)' title="Clic aquí"><?= esc($elem->title) ?></h5>
                         </div>
                         
-                        <a class="btn" onclick='modal(<?=$elem->id?>)'>
+                        <a class="btn" onclick='modal(<?=$elem->id?>)' title="Clic aquí">
                              <img src=<?= 'data:image/bmp;base64,' . base64_encode($elem->icon); ?> alt="<?= esc($elem->icon) ?>" class="img-fluid me-4" style="width: 200px; height: auto;">
                         </a>
 
@@ -121,14 +125,32 @@ function modal(id)
         url:URL,
         data:{id:id},
         success: function(result){
-            if (result) {
-                var rs=JSON.parse(result);
-             
-                $('#contenido').html(rs.content);
-                $('#inspeccion').modal('show');
-              
-            }
-        }
+    if (result) {
+        var rs = JSON.parse(result);
+
+        // Agregamos contenedor con botón Leer más
+        const contenidoCompleto = `
+           
+            <div class="modal-body">
+                <div id="contenido-recortado" style="max-height: 300px; overflow: hidden;">
+                    ${rs.content}
+                </div>
+                <div class="text-center mt-3">
+                    <button id="leerMasBtn" class="btn btn-primary btn-sm">Leer más</button>
+                </div>
+            </div>
+        `;
+
+        $('#contenido').html(contenidoCompleto);
+        $('#inspeccion').modal('show');
+
+        // Evento del botón "Leer más"
+        $(document).on('click', '#leerMasBtn', function () {
+            $('#contenido-recortado').css('max-height', 'none');
+            $(this).remove(); // Ocultamos el botón
+        });
+    }
+}
             
 
 

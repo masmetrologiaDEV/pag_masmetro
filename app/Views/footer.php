@@ -41,7 +41,11 @@ $firstCategory = isset($footer_content[0]->category) ? $footer_content[0]->categ
                <?php endif; ?>
                </div>
             <?php endif; ?>
-            <img src=<?= 'data:image/bmp;base64,' . base64_encode($precision->img); ?> alt="<?= esc($precision->title) ?>" class="img-fluid rounded" style="width: 600px; height: 125px;">
+            <img src="<?= 'data:image/bmp;base64,' . base64_encode($precision->img); ?>" 
+     alt="<?= esc($precision->title) ?>" 
+     class="img-fluid rounded footer-logo">
+
+
          </div>
 
          <?php if (session()->has('id') && session()->rol == 'admin'): ?>
@@ -56,7 +60,11 @@ $firstCategory = isset($footer_content[0]->category) ? $footer_content[0]->categ
 
          <div class="row text-center justify-content-center py-5 text-white fondo-footer">
             <?php foreach ($footer_content as $index => $elem): ?>
-            <div class="col-6 col-md text-center px-3 <?= $index < count($footer_content) - 1 ? 'border-end border-white' : '' ?>">
+               
+            <div class="col-6 col-md text-center px-3 mb-4 <?= $index < count($footer_content) - 1 ? 'border-md-end border-white' : '' ?>">
+
+
+
                <img src="<?= 'data:image/bmp;base64,' . base64_encode($elem->img); ?>"
                   alt="<?= esc($elem->title) ?>"
                   class="img-fluid mb-3"

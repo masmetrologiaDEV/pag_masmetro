@@ -28,9 +28,9 @@
                <p class="mb-4"><?= $item->content ?>.</p>
                <h5 class="mb-4"><?= $item->tags ?></h5>
             </div>
-            <div class="row gx-3">
+            <div class="row gx-0">
                <!-- Bloque Misión -->
-               <div class="col-sm-6 wow zoomIn" data-wow-delay="0.2s">
+               <div class="col-sm-6 pe-md-5 wow zoomIn" data-wow-delay="0.2s">
                   <?php
                      $mision = $home_content[1];
                      ?>
@@ -56,7 +56,7 @@
                   <p class="mb-4"><?= $mision->content ?></p>
                </div>
                <!-- Bloque Visión -->
-               <div class="col-sm-6 wow zoomIn" data-wow-delay="0.4s">
+               <div class="col-sm-6 ps-md-5 wow zoomIn" data-wow-delay="0.4s">
                   <?php
                      $vision = $home_content[2];
                      ?>
