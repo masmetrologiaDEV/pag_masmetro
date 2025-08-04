@@ -122,6 +122,7 @@
 
          <div class="position-relative video-container" style="height: 80vh; overflow: hidden;">
             <!-- Video de fondo -->
+
             <video autoplay muted loop playsinline class="video-bg-limited position-absolute top-50 start-50 translate-middle">
     <source src="<?= base_url('template/videos/'.$video_header) ?>" type="video/mp4">
   </video>
@@ -169,21 +170,11 @@
                </button>
             </div>
 
+            <video autoplay muted loop playsinline class="position-absolute top-50 start-50 translate-middle object-fit-contain z-n1">
+               <source src="<?= base_url('template/videos/'.$video_header) ?>" type="video/mp4">
+            </video>
          </div>
-           <?php   if (session()->has('id')): 
-                        if (session()->rol=='admin'): ?>
-                     <a href="<?= base_url('admin/admin/' . $item->id); ?>">
-                     <button type="button" class="btn btn-success btn-sm">
-                     <i class="fa fa-eye"></i> Admin
-                     </button>
-                     </a>
-                     <?php endif; ?>
-                     <a href="<?= base_url('admin/edit/' . $item->id); ?>">
-                     <button type="button" class="btn btn-warning btn-sm">
-                     <i class="fa fa-pencil"></i> Editar
-                     </button>
-                     </a>
-                     <?php endif; ?>
+           
       </div>
       <!-- Navbar & Carousel End -->
       <!-- Full Screen Search Start -->

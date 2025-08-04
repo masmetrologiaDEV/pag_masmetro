@@ -59,8 +59,13 @@ $firstCategory = isset($header_content[0]->category) ? $header_content[0]->categ
 <div class="row g-4">
     <?php foreach ($header_content as $index => $elem): ?>
         <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
+
             <div class="service-item bg-white rounded shadow-sm p-4 text-center h-100 d-flex flex-column justify-content-between position-relative">
                 <a href="<?= esc($elem->slug) ?>" title="Clic aquí"><img src="<?= 'data:image/bmp;base64,' . base64_encode($elem->img); ?>" 
+
+            <div class="service-item bg-white rounded shadow-sm p-5 text-center h-100 d-flex flex-column justify-content-between position-relative">
+                <img src="<?= 'data:image/bmp;base64,' . base64_encode($elem->img); ?>" 
+
                      alt="<?= esc($elem->title) ?>" 
                      class="img-fluid mx-auto mb-3" 
                      style="max-width: 240px; height: auto;">
@@ -71,12 +76,15 @@ $firstCategory = isset($header_content[0]->category) ? $header_content[0]->categ
                     </a>
                 </div>
 
-                <a class="btn btn-ver-mas mt-3 d-inline-flex align-items-center justify-content-center" 
+                <a class="btn btn-ver-mas mt-3 d-inline-flex align-items-center justify-content-center p-0" 
                    href="<?= esc($elem->slug) ?>" 
-                   style="width: 45px; height: 45px; border-radius: 6px;">
+                   style="width: 70px; height: 90px; border-radius: 8px;">
                     <img src="<?= 'data:image/bmp;base64,' . base64_encode($elem->icon); ?>" 
                          alt="Ver más" 
-                         style="width: 40px; height: auto;" title="Clic aquí">
+
+
+                         style="width: 80px; height: auto;" title="Clic aquí">
+
                 </a>
 
                 <!-- Botones de acción solo para usuarios con sesión -->
