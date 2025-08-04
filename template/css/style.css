@@ -818,3 +818,8 @@ h6,
     max-width: 90%;
   }
 }
+
+.btn-ver-mas {
+    margin-top: 20px; /* separa del título */
+    margin-bottom: -30px; /* evita que se acerque demasiado al siguiente servicio */
+}

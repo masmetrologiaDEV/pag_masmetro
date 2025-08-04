@@ -64,9 +64,15 @@ $firstCategory = isset($cross_content[0]->category) ? $cross_content[0]->categor
                             <h5 class="fw-bold text-dark mb-2" onclick='modal(<?=$elem->id?>)' title="Clic aquí"><?= esc($elem->title) ?></h5>
                         </div>
 
-                         <a class="btn" onclick='modal(<?=$elem->id?>)' title="Clic aquí">
-                             <img src=<?= 'data:image/bmp;base64,' . base64_encode($elem->icon); ?> alt="<?= esc($elem->icon) ?>" class="img-fluid me-4" style="width: 200px; height: auto;">
-                        </a>
+                          <!-- Botón con ícono central (estilo unificado) -->
+            <a class="btn btn-ver-mas mt-3 d-inline-flex align-items-center justify-content-center p-0" 
+               onclick='modal(<?= $elem->id ?>)' 
+               title="Clic aquí" 
+               style="width: 70px; height: 120px; border-radius: 8px;">
+                <img src="<?= 'data:image/bmp;base64,' . base64_encode($elem->icon); ?>" 
+                     alt="Ver más" 
+                     style="width: 80px; height: auto;">
+            </a>
                 <!-- Botones de acción solo para usuarios con sesión -->
 
                 <?php if (session()->has('id')): ?>
