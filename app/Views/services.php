@@ -61,19 +61,21 @@ $firstCategory = isset($header_content[0]->category) ? $header_content[0]->categ
         <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
 
             <div class="service-item bg-white rounded shadow-sm p-4 text-center h-100 d-flex flex-column justify-content-between position-relative">
-                <a href="<?= esc($elem->slug) ?>" title="Clic aquí"><img src="<?= 'data:image/bmp;base64,' . base64_encode($elem->img); ?>" 
 
-            <div class="service-item bg-white rounded shadow-sm p-5 text-center h-100 d-flex flex-column justify-content-between position-relative">
-                <img src="<?= 'data:image/bmp;base64,' . base64_encode($elem->img); ?>" 
+                <a href="<?= esc($elem->slug) ?>" title="Clic aquí">
+                    <img src="<?= 'data:image/bmp;base64,' . base64_encode($elem->img); ?>" 
+                         alt="<?= esc($elem->title) ?>" 
+                         class="img-fluid mx-auto mb-3" 
+                         style="max-width: 240px; height: auto;">
+                </a>
 
-                     alt="<?= esc($elem->title) ?>" 
-                     class="img-fluid mx-auto mb-3" 
-                     style="max-width: 240px; height: auto;">
-</a>
                 <div>
-                   <a href="<?= esc($elem->slug) ?>" title="Clic aquí"> <h5 class="fw-bold text-dark mb-2"><?= esc($elem->title) ?></h5></a>
-                    <a href="<?= esc($elem->slug) ?>" title="Clic aquí"><p class="text-muted small"><?= esc($elem->content) ?></p>
-                    </a>
+                   <a href="<?= esc($elem->slug) ?>" title="Clic aquí">
+                       <h5 class="fw-bold text-dark mb-2"><?= esc($elem->title) ?></h5>
+                   </a>
+                   <a href="<?= esc($elem->slug) ?>" title="Clic aquí">
+                       <p class="text-muted small"><?= esc($elem->content) ?></p>
+                   </a>
                 </div>
 
                 <a class="btn btn-ver-mas mt-3 d-inline-flex align-items-center justify-content-center p-0" 
@@ -81,10 +83,7 @@ $firstCategory = isset($header_content[0]->category) ? $header_content[0]->categ
                    style="width: 70px; height: 90px; border-radius: 8px;">
                     <img src="<?= 'data:image/bmp;base64,' . base64_encode($elem->icon); ?>" 
                          alt="Ver más" 
-
-
                          style="width: 80px; height: auto;" title="Clic aquí">
-
                 </a>
 
                 <!-- Botones de acción solo para usuarios con sesión -->
@@ -108,8 +107,9 @@ $firstCategory = isset($header_content[0]->category) ? $header_content[0]->categ
                     </div>
                 <?php endif; ?>
 
-            </div>
-        </div>
+            </div> <!-- end service-item -->
+
+        </div> <!-- end col -->
     <?php endforeach; ?>
 </div>
 
