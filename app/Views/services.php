@@ -76,7 +76,7 @@ $firstCategory = isset($header_content[0]->category) ? $header_content[0]->categ
                    style="width: 45px; height: 45px; border-radius: 6px;">
                     <img src="<?= 'data:image/bmp;base64,' . base64_encode($elem->icon); ?>" 
                          alt="Ver más" 
-                         style="width: 40px; height: auto;">
+                         style="width: 40px; height: auto;" title="Clic aquí">
                 </a>
 
                 <!-- Botones de acción solo para usuarios con sesión -->
