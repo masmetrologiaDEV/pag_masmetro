@@ -31,10 +31,27 @@
       </div>
 
       <!-- Content -->
-      <div class="mb-3">
-         <label for="content" class="form-label">Contenido</label>
-         <textarea class="form-control" id="content" name="content" rows="5"><?= esc($data->content ?? '') ?></textarea>
-      </div>
+     <div class="mb-3">
+    <label for="content" class="form-label">Contenido</label>
+    <textarea class="form-control" id="content" name="content" rows="10">
+        <?= esc($data->content ?? '') ?>
+    </textarea>
+</div>
+
+<script>
+    ClassicEditor
+        .create(document.querySelector('#content'), {
+            toolbar: [
+                'heading', '|',
+                'bold', 'italic', 'link', 'bulletedList', 'numberedList', '|',
+                'insertTable', 'blockQuote', 'undo', 'redo'
+            ]
+        })
+        .catch(error => {
+            console.error(error);
+        });
+</script>
+
 
       <!-- Tags -->
       <div class="mb-3">
@@ -102,3 +119,5 @@
       </button>
    </form>
 </div>
+
+

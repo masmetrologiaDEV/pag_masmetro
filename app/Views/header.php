@@ -28,7 +28,8 @@
       <link href="<?= base_url('template/css/style.css')?>" rel="stylesheet">
       <link rel="stylesheet" href="<?= base_url('template/css/all.min.css')?>">
 
-      
+      <script src="<?= base_url('template/js/ckeditor.js')?>"></script>
+
        
                      
    </head>

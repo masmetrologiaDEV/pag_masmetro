@@ -823,3 +823,9 @@ h6,
     margin-top: 20px; /* separa del título */
     margin-bottom: -30px; /* evita que se acerque demasiado al siguiente servicio */
 }
+
+
+.ck-editor__editable {
+    max-height: 300px;  /* altura máxima visible */
+    overflow-y: auto;   /* agrega scroll interno */
+}
