@@ -125,65 +125,8 @@
             <video autoplay muted loop playsinline class="position-absolute top-50 start-50 translate-middle object-fit-contain z-n1">
                <source src="<?= base_url('template/videos/'.$video_header) ?>" type="video/mp4">
             </video>
-
-            <!-- Carrusel encima del video -->
-            <div id="header-carousel" class="carousel slide h-100" data-bs-ride="carousel">
-               <div class="carousel-inner h-100 d-flex align-items-center justify-content-start" style="padding-left: 200px;">
-                  <?php foreach ($header_content as $index => $elem): ?>
-                  <div class="carousel-item <?= $index === 0 ? 'active' : '' ?>">
-                     <?php   if (session()->has('id')): 
-                        if (session()->rol=='admin'): ?>
-                     <a href="<?= base_url('admin/admin/' . $elem->id); ?>">
-                     <button type="button" class="btn btn-success btn-sm">
-                     <i class="fa fa-eye"></i> Admin
-                     </button>
-                     </a>
-                     <?php endif; ?>
-                     <a href="<?= base_url('admin/edit/' . $elem->id); ?>">
-                     <button type="button" class="btn btn-warning btn-sm">
-                     <i class="fa fa-pencil"></i> Editar
-                     </button>
-                     </a>
-                     <?php endif; ?>
-                     <div class="rounded p-4 shadow d-flex flex-column align-items-center text-center" style="max-width: 300px; background-color: rgba(255,255,255,0.2);">
-                        <img src="<?= 'data:image/bmp;base64,' . base64_encode($elem->img); ?>" 
-                           alt="<?= esc($elem->title) ?>" 
-                           class="img-fluid mb-3" 
-                           style="width: 100%; max-height: 200px; object-fit: contain;">
-                        <a href="<?=base_url('home/'.$elem->slug)?>" target="" rel="noopener">
-                           <h4 class="fw-bold text-light"><?= esc($elem->title) ?></h4>
-                        </a>
-                        <p class="mb-0 text-white small"><?= esc($elem->content) ?></p>
-                     </div>
-                  </div>
-                  <?php endforeach; ?>
-               </div>
-               <!-- Controles del carrusel -->
-               <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
-               <span class="carousel-control-prev-icon"></span>
-               <span class="visually-hidden">Anterior</span>
-               </button>
-               <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
-               <span class="carousel-control-next-icon"></span>
-               <span class="visually-hidden">Siguiente</span>
-               </button>
-            </div>
-
          </div>
-           <?php   if (session()->has('id')): 
-                        if (session()->rol=='admin'): ?>
-                     <a href="<?= base_url('admin/admin/' . $item->id); ?>">
-                     <button type="button" class="btn btn-success btn-sm">
-                     <i class="fa fa-eye"></i> Admin
-                     </button>
-                     </a>
-                     <?php endif; ?>
-                     <a href="<?= base_url('admin/edit/' . $item->id); ?>">
-                     <button type="button" class="btn btn-warning btn-sm">
-                     <i class="fa fa-pencil"></i> Editar
-                     </button>
-                     </a>
-                     <?php endif; ?>
+           
       </div>
       <!-- Navbar & Carousel End -->
       <!-- Full Screen Search Start -->
