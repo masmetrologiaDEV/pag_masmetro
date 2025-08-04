@@ -64,7 +64,7 @@ $firstCategory = isset($header_content[0]->category) ? $header_content[0]->categ
                     <p class="text-muted small"><?= esc($elem->content) ?></p>
                 </div>
 
-                <a class="btn btn-ver-mas mt-3 d-inline-flex align-items-center justify-content-center" 
+                <a class="btn btn-ver-mas mt-3 d-inline-flex align-items-center justify-content-center p-0" 
                    href="<?= esc($elem->slug) ?>" 
                    style="width: 70px; height: 90px; border-radius: 8px;">
                     <img src="<?= 'data:image/bmp;base64,' . base64_encode($elem->icon); ?>" 
