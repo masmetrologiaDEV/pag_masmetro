@@ -159,15 +159,7 @@
                   </div>
                   <?php endforeach; ?>
                </div>
-               <!-- Controles del carrusel -->
-               <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
-               <span class="carousel-control-prev-icon"></span>
-               <span class="visually-hidden">Anterior</span>
-               </button>
-               <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
-               <span class="carousel-control-next-icon"></span>
-               <span class="visually-hidden">Siguiente</span>
-               </button>
+               
             </div>
 
             <video autoplay muted loop playsinline class="position-absolute top-50 start-50 translate-middle object-fit-contain z-n1">
