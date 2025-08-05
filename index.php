@@ -25,7 +25,7 @@ $paths = new Config\Paths();
 $paths->systemDirectory = FCPATH . 'system';
 
 // Opcional: Forzar entorno a desarrollo
-$_SERVER['CI_ENVIRONMENT'] = 'production';
+$_SERVER['CI_ENVIRONMENT'] = 'development';
 
 // Location of the framework bootstrap file.
 $app = require rtrim($paths->systemDirectory, '/ ') . '/bootstrap.php';
