@@ -62,7 +62,7 @@ $error=$error_content[0];
             <?php if ($rol === 'admin'): ?>
                 <a href="<?= base_url('admin/admin/' . $item->id); ?>">
                     <button type="button" class="btn btn-success btn-sm">
-                        <i class="fa fa-eye"></i> Admin
+                        <i class="fa fa-eye"></i> <?= lang('Validation.admin') ?>
                     </button>
                 </a>
             <?php endif; ?>
@@ -70,7 +70,7 @@ $error=$error_content[0];
             <?php if ($rol === 'admin' || $rol === 'editor'): ?>
                 <a href="<?= base_url('admin/edit/' . $item->id); ?>">
                     <button type="button" class="btn btn-warning btn-sm">
-                        <i class="fa fa-pencil"></i> Editar
+                        <i class="fa fa-pencil"></i> <?= lang('Validation.edit') ?>
                     </button>
                 </a>
             <?php endif; ?>

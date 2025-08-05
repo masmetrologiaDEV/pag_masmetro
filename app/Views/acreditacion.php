@@ -27,7 +27,7 @@ $firstCategory = isset($acreditacion_content[0]->category) ? $acreditacion_conte
                         <?php if ($rol === 'admin'): ?>
                             <a href="<?= base_url('admin/admin/' . $item->id); ?>">
                                 <button type="button" class="btn btn-success btn-sm">
-                                <i class="fa fa-eye"></i> Admin
+                                <i class="fa fa-eye"></i> <?= lang('Validation.admin') ?>
                                 </button>
                             </a>
                         <?php endif; ?>
@@ -35,7 +35,7 @@ $firstCategory = isset($acreditacion_content[0]->category) ? $acreditacion_conte
                         <?php if ($rol === 'admin' || $rol === 'editor'): ?>
                             <a href="<?= base_url('admin/edit/' . $item->id); ?>">
                                 <button type="button" class="btn btn-warning btn-sm">
-                                <i class="fa fa-pencil"></i> Editar
+                                <i class="fa fa-pencil"></i> <?= lang('Validation.edit') ?>
                                 </button>
                             </a>
                         <?php endif; ?>
@@ -57,7 +57,7 @@ $firstCategory = isset($acreditacion_content[0]->category) ? $acreditacion_conte
     <div class="text-center mb-4" style="margin-top: -10px;">
         <a href="<?= base_url('admin/add/' . $firstCategory); ?>" title="Agregar nuevo contenido">
             <button type="button" class="btn btn-danger btn-sm">
-                <i class="fa fa-plus"></i> Agregar
+                <i class="fa fa-plus"></i> <?= lang('Validation.add') ?>
             </button>
         </a>
     </div>
@@ -97,7 +97,7 @@ $firstCategory = isset($acreditacion_content[0]->category) ? $acreditacion_conte
                         <?php if (session()->rol === 'admin'): ?>
                             <a href="<?= base_url('admin/admin/' . $elem->id); ?>" title="Administrar este servicio">
                                 <button type="button" class="btn btn-success btn-sm">
-                                    <i class="fa fa-eye"></i> Admin
+                                    <i class="fa fa-eye"></i> <?= lang('Validation.admin') ?>
                                 </button>
                             </a>
                         <?php endif; ?>
@@ -105,7 +105,7 @@ $firstCategory = isset($acreditacion_content[0]->category) ? $acreditacion_conte
                         <?php if (in_array(session()->rol, ['admin', 'editor'])): ?>
                             <a href="<?= base_url('admin/edit/' . $elem->id); ?>" title="Editar este servicio">
                                 <button type="button" class="btn btn-warning btn-sm">
-                                    <i class="fa fa-pencil"></i> Editar
+                                    <i class="fa fa-pencil"></i> <?= lang('Validation.edit') ?>
                                 </button>
                             </a>
                         <?php endif; ?>
@@ -129,7 +129,7 @@ $firstCategory = isset($acreditacion_content[0]->category) ? $acreditacion_conte
                         <?php if ($rol === 'admin'): ?>
                             <a href="<?= base_url('admin/admin/' . $item->id); ?>">
                                 <button type="button" class="btn btn-success btn-sm">
-                                <i class="fa fa-eye"></i> Admin
+                                <i class="fa fa-eye"></i> <?= lang('Validation.admin') ?>
                                 </button>
                             </a>
                         <?php endif; ?>
@@ -137,7 +137,7 @@ $firstCategory = isset($acreditacion_content[0]->category) ? $acreditacion_conte
                         <?php if ($rol === 'admin' || $rol === 'editor'): ?>
                             <a href="<?= base_url('admin/edit/' . $item->id); ?>">
                                 <button type="button" class="btn btn-warning btn-sm">
-                                <i class="fa fa-pencil"></i> Editar
+                                <i class="fa fa-pencil"></i> <?= lang('Validation.edit') ?>
                                 </button>
                             </a>
                         <?php endif; ?>

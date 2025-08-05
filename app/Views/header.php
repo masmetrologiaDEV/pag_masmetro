@@ -72,7 +72,7 @@
 
                   <div class="nav-item dropdown">
                      <a class="nav-link dropdown-toggle 
-                        <?= in_array(uri_string(), ['home/about', 'home/directorio']) ? 'active' : '' ?>" data-bs-toggle="dropdown" data-bs-toggle="dropdown"> <?= lang('Validation.about')?>
+                        <?= in_array(uri_string(), ['home/about', 'home/directorio']) ? 'active' : '' ?>" data-bs-toggle="dropdown"> <?= lang('Validation.about')?>
                      </a>
                      <div class="dropdown-menu m-0">
                         <a href="<?= base_url('home/about/')?>" class="dropdown-item <?= uri_string() == 'home/about' ? 'active' : '' ?>"> <?= lang('Validation.staff')?> </a>

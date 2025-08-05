@@ -4,7 +4,7 @@
 <div class="container-fluid py-5 bg-light">
     <div class="container">
         <div class="text-center mb-5">
-            <h2 class="fw-bold text-primary">RESULTADOS PARA:</h2>
+            <h2 class="fw-bold text-primary"><?= lang('Validation.resultsFor') ?></h2>
             <h1 class="display-5 fw-bold text-dark"><?= esc(strtoupper($keyword)) ?></h1>
         </div>
 
@@ -20,7 +20,7 @@
                                 </p>
                                 <div class="mt-auto">
                                     <a href="<?= base_url('home/' . esc($res['slug'])) ?>" class="btn btn-outline-primary btn-sm text-uppercase">
-                                        Leer más »
+                                        <?= lang('Validation.readMore') ?>
                                     </a>
                                 </div>
                             </div>
@@ -29,7 +29,7 @@
                 <?php endforeach; ?>
             <?php else: ?>
                 <div class="col-12 text-center">
-                    <p class="text-muted">No se encontraron resultados.</p>
+                    <p class="text-muted"><?= lang('Validation.noResults') ?></p>
                 </div>
             <?php endif; ?>
         </div>

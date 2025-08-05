@@ -8,12 +8,12 @@
   <!-- Formulario para cambiar la foto -->
   <form action="<?= base_url('admin/cambiar_foto') ?>" method="post" enctype="multipart/form-data" class="mt-2" style="width: 100px;">
     <input type="file" name="foto" accept="image/*" class="form-control form-control-sm mb-2" required>
-    <button type="submit" class="btn btn-sm btn-outline-secondary w-100">Actualizar</button>
+    <button type="submit" class="btn btn-sm btn-outline-secondary w-100"><?= lang('Validation.update') ?></button>
   </form>
 
   <!-- Botón para abrir modal cambiar contraseña -->
   <button type="button" class="btn btn-sm btn-outline-warning mt-2 w-100" data-bs-toggle="modal" data-bs-target="#modalCambiarContrasena">
-    Cambiar contraseña
+    <?= lang('Validation.changePassword') ?>
   </button>
 </div>
 
@@ -27,14 +27,14 @@
       <div class="ms-auto">
         <?php if (session()->rol == 'admin'): ?>
           <button class="btn btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#modalUsuarios">
-            Ver Usuarios
+            <?= lang('Validation.viewUsers') ?>
           </button>
           <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalAgregar">
-            Agregar Usuario
+            <?= lang('Validation.addUser') ?>
           </button>
           <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalAgregarReconocimiento">
-      Agregar Reconocimiento
-    </button>
+          <?= lang('Validation.addRecognition') ?>
+          </button>
         <?php endif; ?>
       </div>
     </div>
@@ -46,18 +46,18 @@
   <div class="modal-dialog modal-lg modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header bg-primary text-white">
-        <h5 class="modal-title" id="modalUsuariosLabel">Usuarios y Privilegios</h5>
+        <h5 class="modal-title" id="modalUsuariosLabel"><?= lang('Validation.usersAndPrivileges') ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
       </div>
       <div class="modal-body">
         <table class="table table-hover table-bordered">
           <thead class="table-light">
             <tr>
-              <th>Nombre</th>
-              <th>Email</th>
-              <th>Rol</th>
-              <th>Estatus</th>
-              <th>Acción</th>
+              <th><?= lang('Validation.name') ?></th>
+              <th><?= lang('Validation.email') ?></th>
+              <th><?= lang('Validation.role') ?></th>
+              <th><?= lang('Validation.status') ?></th>
+              <th><?= lang('Validation.action') ?></th>
             </tr>
           </thead>
           <tbody>
@@ -70,25 +70,27 @@
                 <form class="d-flex" action="<?= base_url('admin/cambiar_rol') ?>" method="post">
                     <input type="hidden" name="user_id" value="<?= $user->id ?>">
                     <select class="form-select form-select-sm me-2" name="rol">
-                        <option value="admin" <?= $user->rol === 'admin' ? 'selected' : '' ?>>Admin</option>
-                        <option value="editor" <?= $user->rol === 'editor' ? 'selected' : '' ?>>Editor</option>
+                        <option value="admin" <?= $user->rol === 'admin' ? 'selected' : '' ?>><?= lang('Validation.roleAdmin') ?></option>
+                        <option value="editor" <?= $user->rol === 'editor' ? 'selected' : '' ?>><?= lang('Validation.roleEditor') ?></option>
                     </select>
-                    <button type="submit" class="btn btn-sm btn-outline-success">Guardar</button>
+                    <button type="submit" class="btn btn-sm btn-outline-success"><?= lang('Validation.save') ?></button>
                 </form>
             </td>
             <td>
-                <?= $user->status ? '<span class="badge bg-success">Activo</span>' : '<span class="badge bg-danger">Inactivo</span>' ?>
+                 <?= $user->status 
+                    ? '<span class="badge bg-success">'.lang('Validation.active').'</span>' 
+                    : '<span class="badge bg-danger">'.lang('Validation.inactive').'</span>' ?>
             </td>
             <td>
                 <form action="<?= base_url('admin/eliminar_usuario') ?>" method="post" onsubmit="return confirm('¿Eliminar este usuario?');">
                     <input type="hidden" name="user_id" value="<?= $user->id ?>">
-                    <button type="submit" class="btn btn-sm btn-outline-danger">Eliminar</button>
+                    <button type="submit" class="btn btn-sm btn-outline-danger"><?= lang('Validation.delete') ?></button>
                 </form>
             </td>
         </tr>
     <?php endforeach; ?>
 <?php else: ?>
-    <tr><td colspan="5" class="text-center text-muted">No hay usuarios registrados.</td></tr>
+    <tr><td colspan="5" class="text-center text-muted"><?= lang('Validation.noUsersRegistered') ?></td></tr>
 <?php endif; ?>
 </tbody>
 
@@ -104,36 +106,36 @@
     <form action="<?= base_url('admin/crear') ?>" method="post">
       <div class="modal-content">
         <div class="modal-header bg-success text-white">
-          <h5 class="modal-title" id="modalAgregarLabel">Agregar Nuevo Usuario</h5>
+          <h5 class="modal-title" id="modalAgregarLabel"><?= lang('Validation.addNewUser') ?></h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
         <div class="modal-body">
           <div class="mb-3">
-            <label class="form-label">Nombre</label>
+            <label class="form-label"><?= lang('Validation.name') ?></label>
             <input type="text" class="form-control" name="nombre" required>
           </div>
           <div class="mb-3">
-            <label class="form-label">No. Empleado</label>
+            <label class="form-label"><?= lang('Validation.employeeNumber') ?></label>
             <input type="text" class="form-control" name="no_empleado" required>
           </div>
           <div class="mb-3">
-            <label class="form-label">Correo</label>
+            <label class="form-label"><?= lang('Validation.email') ?></label>
             <input type="email" class="form-control" name="email" required>
           </div>
           <div class="mb-3">
-            <label class="form-label">Rol</label>
+            <label class="form-label"><?= lang('Validation.role') ?></label>
             <select class="form-select" name="rol" required>
-              <option value="admin">Admin</option>
-              <option value="editor">Editor</option>
+              <option value="admin"><?= lang('Validation.roleAdmin') ?></option>
+              <option value="editor"><?= lang('Validation.roleEditor') ?></option>
             </select>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-success">Crear Usuario</button>
+          <button type="submit" class="btn btn-success"><?= lang('Validation.createUser') ?></button>
         </div>
 
         <button class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#modalAgregarReconocimiento">
-        + Reconocimiento
+        <?= lang('Validation.addRecognitionBtn') ?>
     </button>
         
       </div>
@@ -147,32 +149,32 @@
     <form action="<?= base_url('admin/add_insert_rec') ?>" method="post" enctype="multipart/form-data">
       <div class="modal-content">
         <div class="modal-header bg-success text-white">
-          <h5 class="modal-title" id="modalAgregarReconocimientoLabel">Agregar Reconocimiento</h5>
+          <h5 class="modal-title" id="modalAgregarReconocimientoLabel"><?= lang('Validation.addRecognitionModal') ?></h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
 
         <div class="modal-body">
           <!-- Título -->
           <div class="mb-3">
-            <label for="title" class="form-label">Título</label>
+            <label for="title" class="form-label"><?= lang('Validation.title') ?></label>
             <input type="text" class="form-control" id="title" name="title" required>
           </div>
 
           <!-- Slug -->
           <div class="mb-3">
-            <label for="slug" class="form-label">Slug</label>
+            <label for="slug" class="form-label"><?= lang('Validation.slug') ?></label>
             <input type="text" class="form-control" id="slug" name="slug">
           </div>
 
           <!-- Contenido -->
           <div class="mb-3">
-            <label for="content" class="form-label">Contenido</label>
+            <label for="content" class="form-label"><?= lang('Validation.content') ?></label>
             <textarea class="form-control" id="content" name="content" rows="4"></textarea>
           </div>
 
           <!-- Imagen -->
           <div class="mb-3">
-            <label for="foto" class="form-label">Imagen</label>
+            <label for="foto" class="form-label"><?= lang('Validation.image') ?></label>
             <input type="file" class="form-control" id="foto" name="foto" accept="image/*">
           </div>
 
@@ -183,7 +185,7 @@
         </div>
 
         <div class="modal-footer">
-          <button type="submit" class="btn btn-success">Guardar</button>
+          <button type="submit" class="btn btn-success"><?= lang('Validation.save') ?></button>
         </div>
       </div>
     </form>
@@ -197,21 +199,21 @@
     <form action="<?= base_url('admin/cambiar_contrasena') ?>" method="post">
       <div class="modal-content">
         <div class="modal-header bg-warning text-dark">
-          <h5 class="modal-title" id="modalCambiarContrasenaLabel">Cambiar contraseña</h5>
+          <h5 class="modal-title" id="modalCambiarContrasenaLabel"><?= lang('Validation.changePassword') ?></h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
         <div class="modal-body">
           <div class="mb-3">
-            <label for="password_nueva" class="form-label">Nueva contraseña</label>
+            <label for="password_nueva" class="form-label"><?= lang('Validation.newPassword') ?></label>
             <input type="password" class="form-control" id="password_nueva" name="password_nueva" required>
           </div>
           <div class="mb-3">
-            <label for="password_confirmar" class="form-label">Confirmar nueva contraseña</label>
+            <label for="password_confirmar" class="form-label"><?= lang('Validation.confirmNewPassword') ?></label>
             <input type="password" class="form-control" id="password_confirmar" name="password_confirmar" required>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-warning">Guardar cambios</button>
+          <button type="submit" class="btn btn-warning"><?= lang('Validation.saveChanges') ?></button>
         </div>
       </div>
     </form>

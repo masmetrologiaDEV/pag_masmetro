@@ -3,21 +3,21 @@
         <table class="table table-bordered table-hover align-middle text-center" style="min-width: 2500px; width: 100%;">
             <thead>
                 <tr>
-                    <th>Title</th>
-                    <th>Slug</th>
-                    <th>Tags</th>
-                    <th>Category</th>
-                    <th>Intro Text</th>
-                    <th>Content</th>
-                    <th>Img</th>
-                    <th>Icon</th>
-                    <th>Files</th>
-                    <th>Publicado</th>
-                    <th>Publicado en</th>
-                    <th>Idioma</th>
-                    <th>Usuario</th>
-                    <th>Fecha</th>
-                    <th>Última Modificación</th>
+                    <th><?= lang('Validation.title') ?></th>
+                    <th><?= lang('Validation.slug') ?></th>
+                    <th><?= lang('Validation.tags') ?></th>
+                    <th><?= lang('Validation.category') ?></th>
+                    <th><?= lang('Validation.introText') ?></th>
+                    <th><?= lang('Validation.content') ?></th>
+                    <th><?= lang('Validation.imageShort') ?></th>
+                    <th><?= lang('Validation.icon') ?></th>
+                    <th><?= lang('Validation.files') ?></th>
+                    <th><?= lang('Validation.published') ?></th>
+                    <th><?= lang('Validation.publishedAt') ?></th>
+                    <th><?= lang('Validation.language') ?></th>
+                    <th><?= lang('Validation.user') ?></th>
+                    <th><?= lang('Validation.date') ?></th>
+                    <th><?= lang('Validation.lastModified') ?></th>
                 </tr>
             </thead>
             <tbody>
@@ -32,28 +32,28 @@
                             <td class="text-wrap"><?= esc($elem->content) ?></td>
                             <td>
                                 <?php if (!empty($elem->img)): ?>
-                                    <img src="data:image/*;base64,<?= base64_encode($elem->img); ?>" alt="Img" class="img-thumbnail" width="100">
+                                    <img src="data:image/*;base64,<?= base64_encode($elem->img); ?>" alt="<?= lang('Validation.imageShort') ?>" class="img-thumbnail" width="100">
                                 <?php else: ?>
-                                    <span class="text-muted">Sin imagen</span>
+                                    <span class="text-muted"><?= lang('Validation.noImage') ?></span>
                                 <?php endif; ?>
                             </td>
                             <td>
                                 <?php if (!empty($elem->icon)): ?>
-                                    <img src="data:image/*;base64,<?= base64_encode($elem->icon); ?>" alt="Icon" class="img-thumbnail" width="50">
+                                    <img src="data:image/*;base64,<?= base64_encode($elem->icon); ?>" alt="<?= lang('Validation.icon') ?>" class="img-thumbnail" width="50">
                                 <?php else: ?>
-                                    <span class="text-muted">Sin icono</span>
+                                    <span class="text-muted"><?= lang('Validation.noIcon') ?></span>
                                 <?php endif; ?>
                             </td>
                             <td>
                                 <?php if (!empty($elem->files)): ?>
                                     <a href="<?= base_url('admin/download/' . $elem->idPrimaria) ?>" class="btn btn-sm btn-outline-primary" target="_blank">
-                                        <i class="bi bi-download"></i> Descargar
+                                        <i class="bi bi-download"></i> <?= lang('Validation.download') ?>
                                     </a>
                                 <?php else: ?>
-                                    <span class="text-muted">Sin archivo</span>
+                                    <span class="text-muted"><?= lang('Validation.noFile') ?></span>
                                 <?php endif; ?>
                             </td>
-                            <td><?= $elem->is_published ? 'Sí' : 'No' ?></td>
+                            <td><?= $elem->is_published ? lang('Validation.yes') : lang('Validation.no') ?></td>
                             <td><?= esc($elem->published_at) ?></td>
                             <td><?= esc($elem->language) ?></td>
                             <td><?= esc($elem->fullname) ?></td>
@@ -63,7 +63,7 @@
                     <?php endforeach; ?>
                 <?php else: ?>
                     <tr>
-                        <td colspan="16" class="text-center text-muted">No hay registros disponibles</td>
+                        <td colspan="16" class="text-center text-muted"><?= lang('Validation.noRecords') ?></td>
                     </tr>
                 <?php endif; ?>
             </tbody>

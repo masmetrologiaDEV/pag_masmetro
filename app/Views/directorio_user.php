@@ -16,7 +16,7 @@
 
           <?= $profile->data_profiles?>
           <a href="<?= base_url('directorio/descargar-vcard/' . $profile->slug) ?>" class="btn btn-outline-primary btn-sm">
-    <i class="bi bi-download me-1"></i> Descargar vCard
+    <i class="bi bi-download me-1"></i> <?= lang('Validation.downloadVCard') ?>
 </a>
         </div>
       </div>

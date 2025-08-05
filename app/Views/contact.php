@@ -18,7 +18,7 @@ $firstCategory = isset($contact_content[0]->category) ? $contact_content[0]->cat
                <?php if ($rol === 'admin'): ?>
                   <a href="<?= base_url('admin/admin/' . $item->id); ?>">
                      <button type="button" class="btn btn-success btn-sm">
-                        <i class="fa fa-eye"></i> Admin
+                        <i class="fa fa-eye"></i>  <?= lang('Validation.admin') ?>
                      </button>
                   </a>
                <?php endif; ?>
@@ -26,7 +26,7 @@ $firstCategory = isset($contact_content[0]->category) ? $contact_content[0]->cat
                <?php if ($rol === 'admin' || $rol === 'editor'): ?>
                   <a href="<?= base_url('admin/edit/' . $item->id); ?>">
                      <button type="button" class="btn btn-warning btn-sm">
-                        <i class="fa fa-pencil"></i> Editar
+                        <i class="fa fa-pencil"></i>  <?= lang('Validation.edit') ?>
                      </button>
                   </a>
                <?php endif; ?>
@@ -39,28 +39,28 @@ $firstCategory = isset($contact_content[0]->category) ? $contact_content[0]->cat
 
             <div class="row g-5">
                 <div class="col-lg-6 wow slideInUp" data-wow-delay="0.3s">
-                    <form method="POST" action=<?= base_url('home/correo_contacto')?> novalidate>
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <input type="text" name="name" class="form-control border-0 bg-light px-4" placeholder="<?= lang('Validation.namePlaceholder') ?>" style="height: 55px;" required>
-                            </div>
-                            <div class="col-md-6">
-                                <input type="email" name="email" class="form-control border-0 bg-light px-4" placeholder="<?= lang('Validation.email') ?>" style="height: 55px;" required>
-                            </div>
-                            <div class="col-md-12">
-                                <input id="telefono" type="tel" name="phone" class="form-control border-0 bg-light px-4 telefono-input" placeholder="<?= lang('Validation.phone') ?>" style="height: 55px;" required>
-                            </div>
-                            <div class="col-12">
-                                <input type="text" name="subject" class="form-control border-0 bg-light px-4" placeholder="<?= lang('Validation.subject') ?>" style="height: 55px;" required>
-                            </div>
-                            <div class="col-12">
-                                <textarea name="message" class="form-control border-0 bg-light px-4 py-3" rows="4" placeholder="<?= lang('Validation.message') ?>" required></textarea>
-                            </div>
-                            <div class="col-12">
-                                <button class="btn btn-primary w-100 py-3" type="submit" placeholder="<?= lang('Validation.submit') ?>"required ><?= lang('Validation.message') ?></button>
-                            </div>
-                        </div> 
+                    <form method="POST" action="<?= base_url('home/correo_contacto') ?>" novalidate>
+    <div class="row g-3">
+        <div class="col-md-6">
+            <input type="text" name="name" class="form-control border-0 bg-light px-4" placeholder="<?= lang('Validation.namePlaceholder') ?>" style="height: 55px;" required>
+        </div>
+        <div class="col-md-6">
+            <input type="email" name="email" class="form-control border-0 bg-light px-4" placeholder="<?= lang('Validation.emailPlaceholder') ?>" style="height: 55px;" required>
+        </div>
+        <div class="col-md-12">
+            <input id="telefono" type="tel" name="phone" class="form-control border-0 bg-light px-4 telefono-input" placeholder="<?= lang('Validation.phoneLabel') ?>" style="height: 55px;" required>
+        </div>
+        <div class="col-12">
+            <input type="text" name="subject" class="form-control border-0 bg-light px-4" placeholder="<?= lang('Validation.subjectLabel') ?>" style="height: 55px;" required>
+        </div>
+        <div class="col-12">
+            <textarea name="message" class="form-control border-0 bg-light px-4 py-3" rows="4" placeholder="<?= lang('Validation.messageLabel') ?>" required></textarea>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-primary w-100 py-3" type="submit"><?= lang('Validation.submit') ?></button></div>
+    </div>
                     </form>
+
                     <!-- Redes sociales debajo del formulario -->
                         <div class="mt-4 text-center">
                             <h6 class="text-primary fw-bold mb-3"><?= $contact_info->content ?></h6>
@@ -102,7 +102,7 @@ $firstCategory = isset($contact_content[0]->category) ? $contact_content[0]->cat
                 <div class="text-center mb-4" style="margin-top: -10px;">
                     <a href="<?= base_url('admin/add/' . $firstCategory); ?>" title="Agregar nuevo contenido">
                         <button type="button" class="btn btn-danger btn-sm">
-                            <i class="fa fa-plus"></i> Agregar
+                            <i class="fa fa-plus"></i>  <?= lang('Validation.add') ?>
                         </button>
                     </a>
                 </div>
@@ -142,7 +142,7 @@ $firstCategory = isset($contact_content[0]->category) ? $contact_content[0]->cat
                         <?php if (session()->rol === 'admin'): ?>
                             <a href="<?= base_url('admin/admin/' . $elem->id); ?>" title="Administrar">
                                 <button type="button" class="btn btn-success btn-sm">
-                                    <i class="fa fa-eye"></i> Admin
+                                    <i class="fa fa-eye"></i>  <?= lang('Validation.admin') ?>
                                 </button>
                             </a>
                         <?php endif; ?>
@@ -150,7 +150,7 @@ $firstCategory = isset($contact_content[0]->category) ? $contact_content[0]->cat
                         <?php if (in_array(session()->rol, ['admin', 'editor'])): ?>
                             <a href="<?= base_url('admin/edit/' . $elem->id); ?>" title="Editar">
                                 <button type="button" class="btn btn-warning btn-sm">
-                                    <i class="fa fa-pencil"></i> Editar
+                                    <i class="fa fa-pencil"></i>  <?= lang('Validation.edit') ?>
                                 </button>
                             </a>
                         <?php endif; ?>

@@ -21,7 +21,7 @@ $firstCategory = isset($inspection_content[0]->category) ? $inspection_content[0
                <?php if ($rol === 'admin'): ?>
                   <a href="<?= base_url('admin/admin/' . $item->id); ?>">
                      <button type="button" class="btn btn-success btn-sm">
-                        <i class="fa fa-eye"></i> Admin
+                        <i class="fa fa-eye"></i> <?= lang('Validation.admin') ?>
                      </button>
                   </a>
                <?php endif; ?>
@@ -29,7 +29,7 @@ $firstCategory = isset($inspection_content[0]->category) ? $inspection_content[0
                <?php if ($rol === 'admin' || $rol === 'editor'): ?>
                   <a href="<?= base_url('admin/edit/' . $item->id); ?>">
                      <button type="button" class="btn btn-warning btn-sm">
-                        <i class="fa fa-pencil"></i> Editar
+                        <i class="fa fa-pencil"></i> <?= lang('Validation.edit') ?>
                      </button>
                   </a>
                <?php endif; ?>
@@ -38,7 +38,7 @@ $firstCategory = isset($inspection_content[0]->category) ? $inspection_content[0
             <h1 class="mb-0"><?= $inspeccion->title?></h1>
             <a href="<?= base_url('home/contact/') ?>" target="_blank" class="btn btn-primary btn-sm shadow-sm d-inline-flex align-items-center gap-2 px-4 py-2">
       <i class="fa fa-envelope"></i>
-      <span>Solicitar cotización</span>
+      <span><?= lang('Validation.requestQuote') ?></span>
     </a>
             </div>
 
@@ -46,7 +46,7 @@ $firstCategory = isset($inspection_content[0]->category) ? $inspection_content[0
                         <div class="text-center mb-4" style="margin-top: -10px;">
                             <a href="<?= base_url('admin/add/' . $firstCategory); ?>" title="Agregar nuevo contenido">
                                 <button type="button" class="btn btn-danger btn-sm">
-                                    <i class="fa fa-plus"></i> Agregar
+                                    <i class="fa fa-plus"></i> <?= lang('Validation.add') ?>
                                 </button>
                             </a>
                         </div>
@@ -83,7 +83,7 @@ $firstCategory = isset($inspection_content[0]->category) ? $inspection_content[0
                         <?php if (session()->rol === 'admin'): ?>
                             <a href="<?= base_url('admin/admin/' . $elem->id); ?>" title="Administrar este servicio">
                                 <button type="button" class="btn btn-success btn-sm">
-                                    <i class="fa fa-eye"></i> Admin
+                                    <i class="fa fa-eye"></i> <?= lang('Validation.admin') ?>
                                 </button>
                             </a>
                         <?php endif; ?>
@@ -91,7 +91,7 @@ $firstCategory = isset($inspection_content[0]->category) ? $inspection_content[0
                         <?php if (in_array(session()->rol, ['admin', 'editor'])): ?>
                             <a href="<?= base_url('admin/edit/' . $elem->id); ?>" title="Editar este servicio">
                                 <button type="button" class="btn btn-warning btn-sm">
-                                    <i class="fa fa-pencil"></i> Editar
+                                    <i class="fa fa-pencil"></i> <?= lang('Validation.edit') ?>
                                 </button>
                             </a>
                         <?php endif; ?>

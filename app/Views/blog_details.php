@@ -19,7 +19,7 @@
                <?php if ($rol === 'admin'): ?>
                   <a href="<?= base_url('admin/admin/' . $item->id); ?>">
                      <button type="button" class="btn btn-success btn-sm">
-                        <i class="fa fa-eye"></i> Admin
+                        <i class="fa fa-eye"></i> <?= lang('Validation.admin') ?>
                      </button>
                   </a>
                <?php endif; ?>
@@ -27,7 +27,7 @@
                <?php if ($rol === 'admin' || $rol === 'editor'): ?>
                   <a href="<?= base_url('admin/edit/' . $item->id); ?>">
                      <button type="button" class="btn btn-warning btn-sm">
-                        <i class="fa fa-pencil"></i> Editar
+                        <i class="fa fa-pencil"></i> <?= lang('Validation.edit') ?>
                      </button>
                   </a>
                <?php endif; ?>
@@ -52,7 +52,13 @@
             <!-- COMENTARIOS -->
             <div class="mb-5">
                <div class="section-title section-title-sm position-relative pb-3 mb-4">
-                  <h3 class="mb-0" id="count_comments">Comments</h3>
+                  <h3 class="mb-0" id="count_comments"
+    data-singular="<?= lang('Validation.comment') ?>"
+    data-plural="<?= lang('Validation.comments') ?>">
+    <?= lang('Validation.comments') ?>
+</h3>
+
+
                </div>
                <div id='comments_container'></div>
             </div>
@@ -61,7 +67,7 @@
             <!-- FORMULARIO DE COMENTARIO -->
             <div class="bg-light rounded p-5">
                <div class="section-title section-title-sm position-relative pb-3 mb-4">
-                  <h3 class="mb-0">Deja un comentario</h3>
+                  <h3 class="mb-0"><?= lang('Validation.leaveComment') ?></h3>
                </div>
                <form id="" method="POST" action="<?= base_url('home/save_comments') ?>" enctype="multipart/form-data">
                   <div class="row g-3">
@@ -76,7 +82,7 @@
                         <textarea name="comentario" class="form-control bg-white border-0" rows="5" placeholder="<?= lang('Validation.comment') ?>" required></textarea>
                      </div>
                      <div class="col-12">
-                        <button class="btn btn-primary w-100 py-3" type="submit">Enviar comentario</button>
+                        <button class="btn btn-primary w-100 py-3" type="submit"><?= lang('Validation.sendComment') ?></button>
                      </div>
                   </div>
                </form>
@@ -88,7 +94,7 @@
             <!-- Recent Post Start -->
             <div class="mb-5 wow slideInUp" data-wow-delay="0.1s">
                <div class="section-title section-title-sm position-relative pb-3 mb-4">
-                  <h3 class="mb-0">Recent Post</h3>
+                  <h3 class="mb-0"><?= lang('Validation.recentBlogs') ?></h3>
                </div>
                <?php
                   if ($recent_posts):
@@ -137,7 +143,11 @@ function get_comments()
             if (result) {
                 var rs=JSON.parse(result);
                 let content = $("#comments_container");
-                $('#count_comments').text(rs.length + (rs.length == 1 ? " Comment" : " Comments"));
+               let singular = $('#count_comments').data('singular');
+let plural   = $('#count_comments').data('plural');
+
+$('#count_comments').text(rs.length + ' ' + (rs.length === 1 ? singular : plural));
+
                 rs.forEach(rs => {
                     let html = `
     <div class="pt-3 border-top">
