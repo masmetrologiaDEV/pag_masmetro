@@ -1,3 +1,9 @@
+<?php 
+$slug = null;
+if ($data == 'blog_content') {
+   $slug = 'blog_details';
+}
+ ?>
 <div class="container my-5">
    <h2 class="mb-4"><?= lang('Validation.addContent') ?></h2>
 
@@ -12,7 +18,7 @@
       <!-- Slug -->
       <div class="mb-3">
          <label for="slug" class="form-label"><?= lang('Validation.slug') ?></label>
-         <input type="text" class="form-control" id="slug" name="slug">
+         <input type="text" class="form-control" id="slug" name="slug" value="<?= esc($slug ?? '') ?>" >
       </div>
 
       <!-- Categoría -->
@@ -78,3 +84,10 @@
       </button>
    </form>
 </div>
+<script type="text/javascript">
+     var slug = "<?= $slug ?>";
+     if (slug == 'blog_details') {
+     $('#slug').prop('readonly', true); 
+  }
+
+</script>
