@@ -54,7 +54,8 @@ $firstCategory = isset($blog_content[0]->category) ? $blog_content[0]->category 
         <?php foreach ($blog_content as $index => $elem): ?>
             <div class="col-md-4 d-flex">
                 <!-- Tarjeta flexible -->
-                <div class="blog-item bg-light rounded overflow-hidden d-flex flex-column w-100">
+                <div class="blog-item bg-light rounded overflow-hidden d-flex flex-column w-100" title="Clic aquí" onclick="window.location='<?= base_url('home/' . $elem->slug . '/' . $elem->id) ?>'"
+             style="cursor: pointer;">
 
                     <!-- Imagen -->
                     <div class="blog-img position-relative overflow-hidden">

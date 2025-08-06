@@ -1,6 +1,7 @@
 <?php 
 $slug = null;
-if ($data == 'blog_content') {
+$isBlog = ($data == 'blog_content');
+if ($isBlog) {
    $slug = 'blog_details';
 }
  ?>
@@ -18,8 +19,8 @@ if ($data == 'blog_content') {
       <!-- Slug -->
       <div class="mb-3">
          <label for="slug" class="form-label"><?= lang('Validation.slug') ?></label>
-         <input type="text" class="form-control" id="slug" name="slug" value="<?= esc($slug ?? '') ?>" >
-      </div>
+         <input type="text" class="form-control" id="slug" name="slug" value="<?= esc($slug ?? '') ?>" <?= $isBlog ? 'readonly' : '' ?>>
+      </div>      
 
       <!-- Categoría -->
       <div class="mb-3">
@@ -84,10 +85,3 @@ if ($data == 'blog_content') {
       </button>
    </form>
 </div>
-<script type="text/javascript">
-     var slug = "<?= $slug ?>";
-     if (slug == 'blog_details') {
-     $('#slug').prop('readonly', true); 
-  }
-
-</script>
