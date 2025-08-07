@@ -68,6 +68,12 @@ return [
     'viewUsers'         => 'View Users',
     'addUser'           => 'Add User',
     'addRecognition'    => 'Add Recognition',
+    'editLang'    => 'Edit Texts',
+    'esp' => 'Spanish',
+    'eng' => 'English',
+    'select' => 'Select language...',
+
+
 
     /* USERS MODAL */
     'usersAndPrivileges' => 'Users and Privileges',

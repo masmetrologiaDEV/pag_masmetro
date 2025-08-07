@@ -26,6 +26,18 @@
 
       <div class="ms-auto">
         <?php if (session()->rol == 'admin'): ?>
+          
+          <!-- Botón Dropdown -->
+<div class="btn-group">
+  <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownEditLang" data-bs-toggle="dropdown" aria-expanded="false">
+    <?= lang('Validation.editLang') ?>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownEditLang">
+    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalEditarIdioma" data-lang="es"><?= lang('Validation.esp') ?></a></li>
+    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalEditarIdioma" data-lang="en"><?= lang('Validation.eng') ?></a></li>
+  </ul>
+</div>
+
           <button class="btn btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#modalUsuarios">
             <?= lang('Validation.viewUsers') ?>
           </button>
@@ -133,8 +145,6 @@
         <div class="modal-footer">
           <button type="submit" class="btn btn-success"><?= lang('Validation.createUser') ?></button>
         </div>
-
-        
       </div>
     </form>
   </div>
@@ -217,7 +227,61 @@
   </div>
 </div>
 
+<!--Modal Editar Menus -->
+<div class="modal fade" id="modalEditarIdioma" tabindex="-1" aria-labelledby="modalEditarIdiomaLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <form id="formEditarIdioma" method="post">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title" id="modalEditarIdiomaLabel"><?= lang('Validation.editLang') ?></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body" id="modalIdiomaContent" style="max-height: 60vh; overflow-y: auto;">
+          <div class="text-center text-muted"><?= lang('Validation.select') ?></div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary"><?= lang('Validation.saveChanges') ?></button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
 <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('modalEditarIdioma');
+    const modalBody = document.getElementById('modalIdiomaContent');
+    const form = document.getElementById('formEditarIdioma');
+
+    modal.addEventListener('show.bs.modal', function (event) {
+        const button = event.relatedTarget;
+        const langCode = button.getAttribute('data-lang');
+
+        // Cambiar la acción del formulario
+        form.action = `<?= base_url('admin/guardar_idioma') ?>/${langCode}`;
+
+        // Mostrar loader
+        modalBody.innerHTML = '<div class="text-center p-3">Cargando...</div>';
+
+        // Cargar datos del idioma desde PHP sin AJAX
+        const data = <?= json_encode($idioma_data) ?>;
+        if (data[langCode]) {
+            let html = '';
+            for (const key in data[langCode]) {
+                html += `
+                    <div class="mb-3">
+                        <label class="form-label">${key}</label>
+                        <input type="text" class="form-control" name="lang[${key}]" value="${data[langCode][key]}">
+                    </div>
+                `;
+            }
+            modalBody.innerHTML = html;
+        } else {
+            modalBody.innerHTML = '<div class="text-danger text-center">Idioma no encontrado</div>';
+        }
+    });
+});
 document.addEventListener('DOMContentLoaded', function () {
   const form = document.querySelector('#modalCambiarContrasena form');
   const passNueva = document.getElementById('password_nueva');

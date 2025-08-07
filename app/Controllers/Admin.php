@@ -3,6 +3,10 @@ use App\Models\ContenidoModel; // <--- ESTA LÍNEA ES CLAVE
 use App\Models\AdminModel; // <--- ESTA LÍNEA ES CLAVE
 $lang = \Config\Services::language();
 use App\Libraries\Correo;
+$langFile = APPPATH . 'Language/es/Validation.php';
+$langArray = require($langFile);
+
+
 
 class Admin extends BaseController
 {
@@ -33,36 +37,39 @@ class Admin extends BaseController
     }
 
     public function panel()
-    {
-        if (session()->has('id')) {
-
-        $idioma = "es"; // o detecta desde URL, sesión, etc.
-        $model = new ContenidoModel();
-        $user = new AdminModel();
-        $data["video_header"] = "MAS Precisión.mov";
-        $data["contenido"] = $model->getContenidoPublicado($idioma, "header");
-        $data["header_content"] = $model->getContenidoPublicado(
-            $idioma,
-            "services_content"
-        );
-        $data["footer_content"] = $model->getContenidoPublicado(
-            $idioma,
-            "footer_content"
-        );
-        $data["footer_logo"] = $model->getContenidoPublicado(
-            $idioma,
-            "footer_logo"
-        );
-        $data["privacy_content"] = $model->getContenidoPublicado(
-            $idioma,
-            "privacy_content"
-        );
-         $data["users"] = $user->getUsers();
-        return view("header", $data) . view("panel", $data) . view("footer");
-    }else{
+{
+    if (!session()->has('id')) {
         return redirect()->to(base_url("/"));
     }
+
+    $model = new ContenidoModel();
+    $user = new AdminModel();
+
+    $idiomas = ['es', 'en']; // Idiomas soportados
+    $idioma_data = [];
+
+    foreach ($idiomas as $lang) {
+        $archivoIdioma = APPPATH . "Language/{$lang}/Validation.php";
+        if (file_exists($archivoIdioma)) {
+            $idioma_data[$lang] = require $archivoIdioma;
+        } else {
+            $idioma_data[$lang] = [];
+        }
     }
+
+    $data = [
+        "video_header"   => "MAS Precisión.mov",
+        "contenido"      => $model->getContenidoPublicado("es", "header"),
+        "header_content" => $model->getContenidoPublicado("es", "services_content"),
+        "footer_content" => $model->getContenidoPublicado("es", "footer_content"),
+        "footer_logo"    => $model->getContenidoPublicado("es", "footer_logo"),
+        "privacy_content"=> $model->getContenidoPublicado("es", "privacy_content"),
+        "users"          => $user->getUsers(),
+        "idioma_data"    => $idioma_data
+    ];
+
+    return view("header", $data) . view("panel", $data) . view("footer");
+}
 
     public function autenticar()
     {
@@ -490,4 +497,21 @@ class Admin extends BaseController
 
         return redirect()->to(base_url("admin/panel"));
     }
+public function guardar_idioma($langCode)
+{
+    $data = $this->request->getPost('lang');
+
+    $contenido = "<?php\n\nreturn [\n";
+    foreach ($data as $clave => $valor) {
+        $clave = addslashes($clave);
+        $valor = addslashes($valor);
+        $contenido .= "    '$clave' => '$valor',\n";
+    }
+    $contenido .= "];\n";
+
+    file_put_contents(APPPATH . "Language/{$langCode}/Validation.php", $contenido);
+
+    return redirect()->back()->with('msg', 'Idioma actualizado correctamente.');
+}
+
 }
