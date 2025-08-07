@@ -37,7 +37,7 @@ return [
     'services'          => 'Services',
     'calibration'       => 'Calibration Laboratory',
     'dimensional'       => 'Dimensional Inspection',
-    'inventory'         => 'Inventory Equipment',
+    'inventory'         => 'Scales and inventory equipment',
     'test'              => 'Reliability Testing',
     'accreditation'     => 'Accreditation',
     'blog'              => 'Blog',

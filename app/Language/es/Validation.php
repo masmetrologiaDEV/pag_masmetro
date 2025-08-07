@@ -37,7 +37,7 @@ return [
     'services'          => 'Servicios',
     'calibration'       => 'Laboratorio de Calibración',
     'dimensional'       => 'Inspección Dimensional',
-    'inventory'         => 'Equipos para Inventarios',
+    'inventory'         => 'Basculas y equipos para inventarios',
     'test'              => 'Pruebas de confiabilidad',
     'accreditation'     => 'Acreditación',
     'blog'              => 'Blog',

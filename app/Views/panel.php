@@ -134,9 +134,6 @@
           <button type="submit" class="btn btn-success"><?= lang('Validation.createUser') ?></button>
         </div>
 
-        <button class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#modalAgregarReconocimiento">
-        <?= lang('Validation.addRecognitionBtn') ?>
-    </button>
         
       </div>
     </form>
