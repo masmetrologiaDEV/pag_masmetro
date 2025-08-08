@@ -64,27 +64,11 @@ $firstCategory = isset($contact_content[0]->category) ? $contact_content[0]->cat
                     <!-- Redes sociales debajo del formulario -->
                         <div class="mt-4 text-center">
                             <h6 class="text-primary fw-bold mb-3"><?= $contact_info->content ?></h6>
-                            <div class="d-flex justify-content-center gap-4">
-    <a href="https://www.facebook.com/masmetrologia" target="_blank" class="text-decoration-none">
-        <img src="<?= base_url('template/images/social/face.png') ?>" alt="Facebook" style="width:32px; height:32px;">
-    </a>
 
-    <a href="https://x.com/Masmetrologia" target="_blank" class="text-decoration-none">
-        <img src="<?= base_url('template/images/social/twitter.jpeg') ?>" alt="Twitter/X" style="width:32px; height:32px;">
-    </a>
+                            <?php
+                                echo str_replace('src="template/', 'src="' . base_url('template/images/social/') , $contact_info->tags);
+                            ?>
 
-    <a href="https://www.instagram.com/masmetrologia/" target="_blank" class="text-decoration-none">
-        <img src="<?= base_url('template/images/social/instagram.png') ?>" alt="Instagram" style="width:32px; height:32px;">
-    </a>
-
-    <a href="https://www.youtube.com/@masmetrologia" target="_blank" class="text-decoration-none">
-        <img src="<?= base_url('template/images/social/youtube.png') ?>" alt="YouTube" style="width:32px; height:32px;">
-    </a>
-
-    <a href="" target="_blank" class="text-decoration-none">
-        <img src="<?= base_url('template/images/social/linkedin.png') ?>" alt="Instagram" style="width:32px; height:32px;">
-    </a>
-</div>
 
                         </div>
                         <div class="mt-4 text-center">
