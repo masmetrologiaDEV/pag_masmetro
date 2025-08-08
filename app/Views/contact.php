@@ -65,19 +65,27 @@ $firstCategory = isset($contact_content[0]->category) ? $contact_content[0]->cat
                         <div class="mt-4 text-center">
                             <h6 class="text-primary fw-bold mb-3"><?= $contact_info->content ?></h6>
                             <div class="d-flex justify-content-center gap-4">
-                                <a href="https://www.facebook.com/masmetrologia" target="_blank" class="text-decoration-none">
-                                    <i class="fab fa-facebook fa-2x" style="color: #1877F2;"></i>
-                                </a>
-                                <a href="https://x.com/Masmetrologia" target="_blank" class="text-decoration-none">
-                                    <i class="fab fa-x-twitter  fa-2x" style="color:rgb(0, 0, 0);"></i>
-                                </a>
-                                <a href="https://www.instagram.com/masmetrologia/" target="_blank" class="text-decoration-none">
-                                    <i class="fab fa-instagram fa-2x" style="color: #E1306C;"></i>
-                                </a>
-                                <a href="https://www.youtube.com/@masmetrologia" target="_blank" class="text-decoration-none">
-                                    <i class="fab fa-youtube fa-2x" style="color: #FF0000;"></i>
-                                </a>
-                            </div>
+    <a href="https://www.facebook.com/masmetrologia" target="_blank" class="text-decoration-none">
+        <img src="<?= base_url('template/images/social/face.png') ?>" alt="Facebook" style="width:32px; height:32px;">
+    </a>
+
+    <a href="https://x.com/Masmetrologia" target="_blank" class="text-decoration-none">
+        <img src="<?= base_url('template/images/social/twitter.jpeg') ?>" alt="Twitter/X" style="width:32px; height:32px;">
+    </a>
+
+    <a href="https://www.instagram.com/masmetrologia/" target="_blank" class="text-decoration-none">
+        <img src="<?= base_url('template/images/social/instagram.png') ?>" alt="Instagram" style="width:32px; height:32px;">
+    </a>
+
+    <a href="https://www.youtube.com/@masmetrologia" target="_blank" class="text-decoration-none">
+        <img src="<?= base_url('template/images/social/youtube.png') ?>" alt="YouTube" style="width:32px; height:32px;">
+    </a>
+
+    <a href="" target="_blank" class="text-decoration-none">
+        <img src="<?= base_url('template/images/social/linkedin.png') ?>" alt="Instagram" style="width:32px; height:32px;">
+    </a>
+</div>
+
                         </div>
                         <div class="mt-4 text-center">
                         <img src=<?= 'data:image/bmp;base64,' . base64_encode($contact_info->img); ?> alt="<?= esc($contact_info->img) ?>" class="img-fluid me-4" style="width: 400px; height: 100px;">
