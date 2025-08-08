@@ -80,7 +80,7 @@ $firstCategory = isset($header_content[0]->category) ? $header_content[0]->categ
 
                 <a class="btn btn-ver-mas-services mt-3 d-inline-flex align-items-center justify-content-center p-0" 
                    href="<?= esc($elem->slug) ?>" 
-                   style="width: 70px; height: 90px; border-radius: 8px;">
+                   style="width: 70px; height: 450px; border-radius: 8px;">
                     <img src="<?= 'data:image/bmp;base64,' . base64_encode($elem->icon); ?>" 
                          alt="Ver más" 
                          style="width: 80px; height: auto;" title="Clic aquí">
