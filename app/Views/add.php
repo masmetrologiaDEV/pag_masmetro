@@ -35,16 +35,30 @@ if ($isBlog) {
       </div>
 
       <!-- Content -->
+     
       <div class="mb-3">
-         <label for="content" class="form-label"><?= lang('Validation.content') ?></label>
-         <textarea class="form-control" id="content" name="content" rows="5"></textarea>
-      </div>
-
+        <label for="content" class="form-label"><?= lang('Validation.content') ?></label>
+        <textarea class="form-control" id="content" name="content" rows="10">
+        </textarea>
+     </div>
+<script>
+    ClassicEditor
+        .create(document.querySelector('#content'), {
+            toolbar: [
+                'heading', '|',
+                'bold', 'italic', 'link', 'bulletedList', 'numberedList', '|',
+                'insertTable', 'blockQuote', 'undo', 'redo'
+            ]
+        })
+        .catch(error => {
+            console.error(error);
+        });
+</script>
       <!-- Tags -->
       <div class="mb-3">
-         <label for="tags" class="form-label"><?= lang('Validation.tags') ?></label>
-         <input type="text" class="form-control" id="tags" name="tags">
-      </div>
+    <label for="tags" class="form-label"><?= lang('Validation.tags') ?></label>
+    <textarea class="form-control" id="tags" name="tags" rows="4"></textarea>
+</div>
 
       <!-- Publicado -->
       <div class="form-check mb-3">

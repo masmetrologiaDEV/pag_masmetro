@@ -826,6 +826,7 @@ h6,
 
 
 .ck-editor__editable {
-    max-height: 300px;  /* altura máxima visible */
-    overflow-y: auto;   /* agrega scroll interno */
+    min-height: 200px;  /* tamaño inicial */
+    max-height: 400px;  /* opcional, tope */
+    overflow-y: auto;
 }

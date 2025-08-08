@@ -28,9 +28,12 @@
                <p class="mb-4"><?= $item->content ?>.</p>
                <h5 class="mb-4"><?= $item->tags ?></h5>
             </div>
-            <div class="row gx-0">
+            
+         </div>
+      </div>
+      <div class="row g-3">
                <!-- Bloque Misión -->
-               <div class="col-sm-6 pe-md-5 wow zoomIn" data-wow-delay="0.2s">
+               <div class="col-sm-5 pe-md-3 wow zoomIn" data-wow-delay="0.2s">
                   <?php
                      $mision = $home_content[1];
                      ?>
@@ -55,8 +58,9 @@
                   <img src=<?= 'data:image/bmp;base64,' . base64_encode($mision->img); ?> alt="<?= esc($mision->title) ?>" class="img-fluid rounded">
                   <p class="mb-4"><?= $mision->content ?></p>
                </div>
+                 <div class="col-sm-2"></div> <!-- Separador -->
                <!-- Bloque Visión -->
-               <div class="col-sm-6 ps-md-5 wow zoomIn" data-wow-delay="0.4s">
+               <div class="col-sm-5 ps-md-3 wow zoomIn" data-wow-delay="0.4s">
                   <?php
                      $vision = $home_content[2];
                      ?>
@@ -82,7 +86,6 @@
                   <p class="mb-4"><?= $vision->content ?></p>
                </div>
             </div>
-         </div>
-      </div>
+
    </div>
 </div>

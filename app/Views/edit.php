@@ -51,11 +51,13 @@
         });
 </script>
 
-      <!-- Tags -->
-      <div class="mb-3">
-         <label for="tags" class="form-label"><?= lang('Validation.tags') ?></label>
-         <input type="text" class="form-control" id="tags" name="tags" value="<?= esc($data->tags ?? '') ?>">
-      </div>
+    <!-- Tags -->
+<div class="mb-3">
+    <label for="tags" class="form-label"><?= lang('Validation.tags') ?></label>
+    <textarea class="form-control" id="tags" name="tags" rows="4"><?= esc($data->tags ?? '', 'html') ?></textarea>
+</div>
+
+
 
       <!-- Publicado -->
       <div class="form-check mb-3">

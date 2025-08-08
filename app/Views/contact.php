@@ -66,7 +66,8 @@ $firstCategory = isset($contact_content[0]->category) ? $contact_content[0]->cat
                             <h6 class="text-primary fw-bold mb-3"><?= $contact_info->content ?></h6>
 
                             <?php
-                            echo str_replace('src="template/', 'src="' . base_url('template/') , $contact_info->tags);
+                            $link = base_url();
+                            echo str_replace('{BASE_URL}', $link, $contact_info->tags);
                             ?>
 
 
