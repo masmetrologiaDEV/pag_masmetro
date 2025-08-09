@@ -72,7 +72,7 @@
         </a>
 
         <h2><?= esc($certificado['title']) ?></h2>
-        <p><?= esc($certificado['content']) ?></p>
+        <p><?= ($certificado['content']) ?></p>
     </div>
 </div>
 

@@ -42,7 +42,7 @@
             class="img-fluid rounded mb-3">
          <?php endif; ?>
                <h1 class="mb-4"><?= esc($blog_details['title'])?></h1>
-               <p><?= esc($blog_details['content'])?></p>
+               <p><?= ($blog_details['content'])?></p>
 
                
             </div>

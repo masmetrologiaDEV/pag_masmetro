@@ -73,7 +73,7 @@ $firstCategory = isset($contact_content[0]->category) ? $contact_content[0]->cat
 
                         </div>
                         <div class="mt-4 text-center">
-                        <img src=<?= 'data:image/bmp;base64,' . base64_encode($contact_info->img); ?> alt="<?= esc($contact_info->img) ?>" class="img-fluid me-4" style="width: 400px; height: 100px;">
+                        <img src=<?= 'data:image/bmp;base64,' . base64_encode($contact_info->img); ?> alt="<?= esc($contact_info->title) ?>" class="img-fluid me-4" style="width: 400px; height: 100px;">
                         </div>
 
                 </div>
@@ -121,11 +121,11 @@ $firstCategory = isset($contact_content[0]->category) ? $contact_content[0]->cat
 
             <!-- Contenido -->
             <div class="pt-4 pb-2 px-4 small">
-                <small class="text-uppercase"><?= esc($elem->content) ?></small>
+                <small class="text-uppercase"><?= ($elem->content) ?></small>
             </div>
 
             <div class="pb-2 px-4 small">
-                <small class="text-uppercase"><?= esc($elem->tags) ?></small>
+                <small class="text-uppercase"><?= ($elem->tags) ?></small>
             </div>
 
             <!-- Botones de acción -->

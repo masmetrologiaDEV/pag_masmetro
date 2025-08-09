@@ -155,7 +155,7 @@
                         <a href="<?=base_url('home/'.$elem->slug)?>" target="" rel="noopener">
                            <h4 class="fw-bold text-light"><?= esc($elem->title) ?></h4>
                         </a>
-                        <p class="mb-0 text-white small"><?= esc($elem->content) ?></p>
+                        <p class="mb-0 text-white small"><?= ($elem->content) ?></p>
                      </div>
                   </div>
                   <?php endforeach; ?>

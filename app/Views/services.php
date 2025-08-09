@@ -74,7 +74,7 @@ $firstCategory = isset($header_content[0]->category) ? $header_content[0]->categ
                        <h5 class="fw-bold text-dark mb-2"><?= esc($elem->title) ?></h5>
                    </a>
                    <a href="<?= esc($elem->slug) ?>" title="Clic aquí">
-                       <p class="text-muted small"><?= esc($elem->content) ?></p>
+                       <p class="text-muted small"><?= ($elem->content) ?></p>
                    </a>
                 </div>
 

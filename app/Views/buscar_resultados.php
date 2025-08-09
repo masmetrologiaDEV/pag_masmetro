@@ -16,7 +16,7 @@
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title text-primary"><?= esc($res['title']) ?></h5>
                                 <p class="card-text text-muted">
-                                    <?= esc(substr(strip_tags($res['content']), 0, 200)) . '...' ?>
+                                    <?= (substr(strip_tags($res['content']), 0, 200)) . '...' ?>
                                 </p>
                                 <div class="mt-auto">
                                     <a href="<?= base_url('home/' . esc($res['slug'])) ?>" class="btn btn-outline-primary btn-sm text-uppercase">

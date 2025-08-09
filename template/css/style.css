@@ -830,3 +830,7 @@ h6,
     max-height: 400px;  /* opcional, tope */
     overflow-y: auto;
 }
+.truncate-3 {
+   max-height: 4.5em; /* alto aprox. de 3 líneas según el font-size */
+    overflow: hidden;
+}

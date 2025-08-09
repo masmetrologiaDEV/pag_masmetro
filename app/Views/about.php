@@ -47,7 +47,7 @@
                <div class="team-img position-relative overflow-hidden">
                   <img src=<?= 'data:image/bmp;base64,' . base64_encode($elem->img); ?> alt="<?= esc($elem->title) ?>" class="img-fluid w-100">
                   <div class="team-social">
-                     <p class="text-uppercase m-0"><?= esc($elem->content) ?></p>
+                     <p class="text-uppercase m-0"><?= ($elem->content) ?></p>
                      <p class="text-uppercase m-0"><?= esc($elem->title) ?></p>
                   </div>
                </div>

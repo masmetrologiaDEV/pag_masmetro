@@ -16,9 +16,6 @@
         <label for="contrasena" class="form-label text-muted small"><?= lang('Validation.password') ?></label>
         <input type="password" class="form-control bg-light border-0 rounded-3" name="pass" id="pass" placeholder="••••••" required>
       </div>
-      <div class="d-flex justify-content-between align-items-center mb-4">
-        <a href="#" class="small text-primary text-decoration-none"><?= lang('Validation.forgotPassword') ?></a>
-      </div>
       <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold rounded-3"><?= lang('Validation.getStarted') ?></button>
     </form>
   </div>
